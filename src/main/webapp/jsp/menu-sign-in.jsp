@@ -5,7 +5,7 @@
         <ul>
             <form action="validateSignIn" method="GET">
                 Username:<br />
-                <input type="text" name="userName" size="10" maxlength="45" autofocus><br /><br />
+                <input type="text" name="userId" size="10" maxlength="45" autofocus><br /><br />
                 Password: <input type="password" name="password" size="10" maxlength="45" <br /> <br/><br/>
                 <input type="submit" name="submit" value="Go!" />
             </form>

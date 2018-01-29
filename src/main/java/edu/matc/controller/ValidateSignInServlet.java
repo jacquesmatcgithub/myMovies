@@ -13,6 +13,7 @@ import javax.servlet.annotation.*;
         urlPatterns = "/validateSignIn"
 )
 public class ValidateSignInServlet extends HttpServlet {
+
     /**
      *  Handles HTTP GET requests.
      *
@@ -45,14 +46,18 @@ public class ValidateSignInServlet extends HttpServlet {
     }
 
     private int getUserData(HttpServletRequest request, HttpServletResponse response) {
-        String userName = request.getParameter("userName").trim();
-        String userPassword = request.getParameter("password").trim();
+        String userId = request.getParameter("userId").trim();
+        String password = request.getParameter("password").trim();
 
         UserData userData = new UserData();
+        User userBean = userData.getUser(userId, password);
 
-        User userBean = userData.getUser(userName, userPassword);
+        HttpSession session = request.getSession();
+        session.removeAttribute("userId");
 
         if (userBean.getActive()) {
+            session.setAttribute("userId", userId);
+
             return userBean.getLevel();
         } else {
             return 0;

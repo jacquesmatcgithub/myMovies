@@ -4,6 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
 
@@ -18,8 +19,17 @@ public class GenerateMovieGrid extends HttpServlet {
      *@exception  IOException       if there is a general
      *                              I/O exception
      */
-    public static void generateGrid(JspWriter out, HttpServletRequest request, HttpServletResponse response)
+//    public static void generateGrid(JspWriter out, HttpServletRequest request, HttpServletResponse response)
+    public static void generateGrid(JspWriter out, HttpServletRequest request)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String userId = (String)session.getAttribute("userId");
+
+        /*
+        The code below is just a mock-up.  The final version will access the user's movie table to build the
+        movie grid.
+         */
+        out.print("<h1>" + userId + "</h1>");
         out.print("<table>");
         out.print("<tr>");
         out.print("<td><a href=\"clickedThumb?id=1\"><img src=\"images/thumbs/1.jpg\" width=\"100\" class=\"post-img\" alt=\"Sideways\"></a></td>");

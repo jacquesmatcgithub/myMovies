@@ -3,7 +3,7 @@ package edu.matc.entity;
 /**
  * A class to represent a user.
  *
- * @author pwaite
+ * @author Jacques Fourie
  */
 public class User {
     private String userId;

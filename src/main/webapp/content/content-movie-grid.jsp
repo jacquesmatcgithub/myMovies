@@ -3,6 +3,6 @@
 
 <div id="content" style="height:480px; width:830px; overflow-y: scroll;">
 <%
-    GenerateMovieGrid.generateGrid(out, request, response);
+    GenerateMovieGrid.generateGrid(out, request);
 %>
 </div>
