@@ -1,17 +1,10 @@
 ## myMovies
 ### Problem Statement
-Over the last 25 years I've built up quit a large movie collection, and sometimes I find myself unable to decide what movie to watch when I'm in the mood for a movie.
+Over the last 25 years I've built up quit a large movie collection, and sometimes I find myself unable to decide what to watch when I'm in the mood for a movie.
 
 myMovies will aim to solve that problem by making suggestions on what to watch based on the season and current weather conditions.
 
 ### Project Technologies/Techniques
-
-
-### Design
-
-### Project Plan
-
-### Development Journal
 * Security/Authentication
 	* Tomcat's JDBC Realm Authentication
 	* Admin role: create/read/update/delete (crud) of all data
@@ -52,9 +45,17 @@ myMovies will aim to solve that problem by making suggestions on what to watch b
 * Independent Research Topic/s
 	* ????
 
-* Project Lombok to eliminate boilerplate code like getters/setters/equals
-Unit Testing
-
 * JUnit tests to achieve 80%+ code coverage
 
 * IDE: IntelliJ IDEA	  
+
+
+
+### Design
+* [Screen Design](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/page_design.pdf)
+* [Database Design](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/data_design.jpeg)
+
+
+### Project Plan
+
+### Development Journal
