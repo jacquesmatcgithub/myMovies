@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<c:set var = "pageTitle" value="Hello Admin" scope="request" />
+<c:set var = "pageTitle" value="ADMIN" scope="request" />
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 

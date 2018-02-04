@@ -11,7 +11,7 @@
 <div id="wrap">
   <c:import url="jsp/header.jsp" />
 
-  <c:import url="jsp/menu-main.jsp" />
+  <c:import url="jsp/menu-sign-in.jsp" />
 
   <c:import url="content/content-home.jsp" />
 

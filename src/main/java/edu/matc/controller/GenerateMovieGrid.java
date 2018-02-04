@@ -19,7 +19,6 @@ public class GenerateMovieGrid extends HttpServlet {
      *@exception  IOException       if there is a general
      *                              I/O exception
      */
-//    public static void generateGrid(JspWriter out, HttpServletRequest request, HttpServletResponse response)
     public static void generateGrid(JspWriter out, HttpServletRequest request)
             throws ServletException, IOException {
         HttpSession session = request.getSession();

@@ -1,0 +1,8 @@
+
+
+
+https://vaadin.com/blog/consuming-rest-services-from-java-applications       << got me the github link below:
+https://github.com/mstahv/consuming-rest-apis         << This is where I got the json weather api stuff from
+
+
+

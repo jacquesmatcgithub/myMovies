@@ -1,14 +1,68 @@
+
+--------------------------------------------------------------------------------
 API Key (v3 auth)
 25da234db00ce6d226e5bc0072b39a02
 
-
-
 API Read Access Token (v4 auth)
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNWRhMjM0ZGIwMGNlNmQyMjZlNWJjMDA3MmIzOWEwMiIsInN1YiI6IjVhNjlmZTE2MGUwYTI2MGQ2NDAxNGY5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.SHuJhRkza6ckQe1qBenNr07Vemird7PrQVd0sJgjQGY
+--------------------------------------------------------------------------------
+
+
+Steps to get movie info:
+1.  Do a GET /configuration:
+    https://api.themoviedb.org/3/configuration?api_key=<<api_key>>
+    Example: https://api.themoviedb.org/3/configuration?api_key=25da234db00ce6d226e5bc0072b39a02
+
+2.  Do a Search:
+    https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
+    Example: https://api.themoviedb.org/3/search/movie?api_key=25da234db00ce6d226e5bc0072b39a02&query=Jack+Reacher
+
+3.  With the movie id from from the /search, do a query for the details:
+    https://api.themoviedb.org/3/movie/{movie id}?api_key={api_key}
+    https://api.themoviedb.org/3/movie/75780?api_key=25da234db00ce6d226e5bc0072b39a02
+
+3.  Use the base_url and size from the /configuration and the file_path from the query to build up the paths to the
+    movie info and poster
+    Example: base_url: http://image.tmdb.org/t/p/
+             size: w92
+             poster path: /38bmEXmuJuInLs9dwfgOGCHmZ7l.jpg
+
+             https://image.tmdb.org/t/p/w92/38bmEXmuJuInLs9dwfgOGCHmZ7l.jpg
 
 
 
 
-Example API Request
+
+
+
+Example API Request:
 https://api.themoviedb.org/3/movie/550?api_key=25da234db00ce6d226e5bc0072b39a02
+
+
+
+https://api.themoviedb.org/3/search/movie?api_key=25da234db00ce6d226e5bc0072b39a02&query=Jack+Reacher
+
+Example:   Jack Reacher:
+https://api.themoviedb.org/3/movie/343611?api_key=25da234db00ce6d226e5bc0072b39a02
+https://api.themoviedb.org/3/movie/75780?api_key=25da234db00ce6d226e5bc0072b39a02
+
+
+1. Do a Get API Configuration:
+https://api.themoviedb.org/3/configuration?api_key=<<api_key>>
+https://api.themoviedb.org/3/configuration?api_key=25da234db00ce6d226e5bc0072b39a02
+
+Get the system wide configuration information. Some elements of the API require some knowledge of this
+configuration data. The purpose of this is to try and keep the actual API responses as light as possible.
+It is recommended you cache this data within your application and check for updates every few days.
+
+This method currently holds the data relevant to building image URLs as well as the change key map.
+
+To build an image URL, you will need 3 pieces of data. The base_url, size and file_path. Simply combine
+them all and you will have a fully qualified URL. Here’s an example URL:
+
+base_url: http://image.tmdb.org/t/p/
+size: w92
+poster path: /38bmEXmuJuInLs9dwfgOGCHmZ7l.jpg
+
+https://image.tmdb.org/t/p/w92/38bmEXmuJuInLs9dwfgOGCHmZ7l.jpg
 

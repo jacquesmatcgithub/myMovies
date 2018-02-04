@@ -2,8 +2,6 @@
 
 <!DOCTYPE html>
 
-<c:set var="pageTitle" value="Movie Details" scope="request" />
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <c:import url="head-tag.jsp" />
