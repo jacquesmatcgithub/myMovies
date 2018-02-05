@@ -1,3 +1,4 @@
+
 ##Project Plan
 
 The myMovies app has the following major areas of functionality:
