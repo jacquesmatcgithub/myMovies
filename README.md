@@ -27,7 +27,7 @@ myMovies will aim to solve that problem by making suggestions on what to watch b
 
 * Web Services consumed
 	* The Movie Database (TMDb)
-	* NOOA Weather conditions
+	* Wundermap Weather
 
 
 * CSS
@@ -57,5 +57,6 @@ myMovies will aim to solve that problem by making suggestions on what to watch b
 
 
 ### Project Plan
+* [Project Plan](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/project_plan.md)
 
 ### Development Journal
