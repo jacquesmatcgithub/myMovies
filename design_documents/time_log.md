@@ -12,5 +12,5 @@ Date  | Hours | Notes
 02/02/2018  | 4.5 | Created my data design for the week 3 deliverables. Also worked on learning JSON and finding out how to access the APIs I want to use.
 02/03/2018  | 7.0 | Watched some of the week 4 videos. Worked on finding how to access the APIs I want to use. Worked on the user login page.
 02/04/2018  | 2.0 | Worked on my Week 3 deliverables.
-02/05/2018 | 4.0 | Worked out how to get my API call to work.
+02/05/2018 | 5.0 | Worked out how to get my API call to work. Also created a mock-up of the movie grid page.
 
