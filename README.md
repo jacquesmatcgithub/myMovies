@@ -60,4 +60,4 @@ myMovies will aim to solve that problem by making suggestions on what to watch b
 * [Project Plan](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/project_plan.md)
 
 ### Time Log
-[Timelog](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/time_log.md)
+* [Timelog](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/time_log.md)

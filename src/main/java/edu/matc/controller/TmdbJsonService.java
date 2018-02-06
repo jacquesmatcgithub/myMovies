@@ -1,43 +1,71 @@
 package edu.matc.controller;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
-import org.apache.deltaspike.core.api.config.ConfigProperty;
-import org.example.domain.ForecastResponse;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-    /**
-     */
-    @ApplicationScoped
-    public class TmdbJsonService {
+import javax.json.Json;
+import javax.json.stream.JsonParser;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-        @Inject
-        @ConfigProperty(name = "weathermap.apikey")
-        private String apikey;
+public class TmdbJsonService {
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
-        private Client client;
-        private WebTarget target;
+    public int readTmdbApi() throws MalformedURLException {
+        logger.info("-------------------------------------------------------------------------");
+        URL url = new URL("https://api.themoviedb.org/3/configuration?api_key=25da234db00ce6d226e5bc0072b39a02");
 
-        @PostConstruct
-        protected void init() {
-            client = ClientBuilder.newClient();
-            //example query params: ?q=Turku&cnt=10&mode=json&units=metric
-            target = client.target(
-                    "http://api.openweathermap.org/data/2.5/forecast/daily").queryParam("cnt", "10")
-                    .queryParam("mode", "json")
-                    .queryParam("units", "metric")
-                    .queryParam("appid", apikey)
-            ;
+        try (InputStream is = url.openStream(); JsonParser parser = Json.createParser(is)) {
+            while (parser.hasNext()) {
+                JsonParser.Event e = parser.next();
+                if (e == JsonParser.Event.KEY_NAME) {
+                    logger.info(parser.getString());
+                    switch (parser.getString()) {
+                        case "base_url":
+                            parser.next();
+                            logger.info("  " + parser.getString());
+                            break;
+                        case "secure_base_url":
+                            parser.next();
+                            logger.info("  " + parser.getString());
+                            break;
+                        case "backdrop_sizes":
+                            parseArray(parser);
+                            break;
+                        case "logo_sizes":
+                            parseArray(parser);
+                            break;
+                        case "poster_sizes":
+                            parseArray(parser);
+                            break;
+                        case "profile_sizes":
+                            parseArray(parser);
+                            break;
+                        case "still_sizes":
+                            parseArray(parser);
+                            break;
+                        case "change_keys":
+                            parseArray(parser);
+                            break;
+                    }
+                }
+            }
+        } catch (IOException io) {
+            logger.error("IOException", io);
         }
+        return 10;
+    }
 
-        public ForecastResponse getForecast(String place) {
-            return target.queryParam("q", place)
-                    .request(MediaType.APPLICATION_JSON)
-                    .get(ForecastResponse.class);
+    private void parseArray(JsonParser parser) {
+        JsonParser.Event e = parser.next();
+        if (e == JsonParser.Event.START_ARRAY) {
+            e = parser.next();
+            while (e != JsonParser.Event.END_ARRAY) {
+                logger.info("  " + parser.getString());
+                e = parser.next();
+            }
         }
     }
 }
