@@ -16,11 +16,12 @@ li { color: #036DA7; list-style-type: none; margin-bottom: 6px; }
 #sidebar { width: 100px; float: right; background: #FFF; color: #666; margin-right: 20px; }
 #sidebar .box { margin-bottom: 10px; padding: 10px 3px; color: #666; }
 #sidebar h2 { font-size: 1.2em; font-weight: 100; padding: 3px; }
-#content { margin-left: 20px; margin-right: 250px; text-align: justify; color: #777; }
+#content { margin-left: 20px; margin-right: 250px; text-align: justify; color: #777;}
 #content h2 { color: #555; font-size: 1.4em; font-weight: 200;}
 #content p { margin: 10px 0 20px 0; line-height: 25px;}
 #footer { clear: both; color: #eee; background: #777; text-align: left; margin: 0px 0px 0px 0px; padding: 5px 20px; font-size: .9em; }
 #footer a { color : #ddd; text-decoration: none; }
+
 .post-span {color:#ccc; font-size:12px;}
 .post-img{margin-top:10px;}
 
