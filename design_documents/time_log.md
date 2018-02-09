@@ -1,4 +1,4 @@
-##Timelog
+## Timelog
 
 Date  | Hours | Notes
 ----- | -----: | -------
@@ -13,4 +13,6 @@ Date  | Hours | Notes
 02/03/2018  | 7.0 | Watched some of the week 4 videos. Worked on finding how to access the APIs I want to use. Worked on the user login page.
 02/04/2018  | 2.0 | Worked on my Week 3 deliverables.
 02/05/2018 | 5.0 | Worked out how to get my API call to work. Also created a mock-up of the movie grid page.
+02/08/2018 | 4.75 | Watched the week 4 videos. 
+
 

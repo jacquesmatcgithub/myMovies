@@ -1,5 +1,5 @@
 
-##Project Plan
+## Project Plan
 The myMovies app has the following major areas of functionality:
 
 * Opening Page
@@ -36,49 +36,49 @@ The myMovies app has the following major areas of functionality:
 	* Lets the user reject the suggestion so thre app can try again
 
 
-###Week 1
+### Week 1
 * Come up with a project idea
 
-###Week 2
+### Week 2
 * Do prelim screen and data design
 
-###Week 3
+### Week 3
 * Find webservice to use
 * Begin work on the Opening Page (user login)
 * Finalize screen design
 * Get database design to an advanced state
 
-###Week 4
+### Week 4
 * Figure out how to use the TMDb API
 * Begin work on the Movie Grid Page
 * Begin work on the Admin Page
 * Finalize the Opening Page
 
-###Week 5
+### Week 5
 * Figure out how to use the Wundermap API
 * Convert to Hybernate for user and user_level tables
 * Continue building the Admin Page
 * Continue building the Movie Grid Page
 
-###Week 6
+### Week 6
 * Finalize the Movie Grid Page
 * Continue building the Admin Page
 * Begin work on the Movie Info Page
 
-###Week 7
+### Week 7
 * Finalize the Admin Page
 * Finalize the Movie Info Page
 
-###Week 8
+### Week 8
 * Begin work on the Add Movie Page
 * Begin work on the Movie Found Page
 
-###Week 9
+### Week 9
 * Finalize the Add Movie Page
 * Finalize the Movie Found Page
 * Begin work on the Movie Suggestion Page
 
-###Week 10
+### Week 10
 * Finalize work on the Movie Suggestion Page
 
 
