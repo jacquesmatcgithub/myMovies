@@ -1,20 +1,138 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="content">
-    <div class = "tabinator">
-        <input type = "radio" id = "tab1" name = "tabs" checked>
-        <label for = "tab1">Users</label>
-        <input type = "radio" id = "tab2" name = "tabs">
-        <label for = "tab2">Catalogs</label>
-        <input type = "radio" id = "tab3" name = "tabs">
-        <label for = "tab2">Movies</label>
+<div id="content" style="height:473px; width:800px;">
 
-        <div id = "content1" style="height:500px; width:650px; overflow-y: scroll;">
-        </div>
-        <div id = "content2" style="height:500px; width:650px; overflow-y: scroll;">
-        </div>
-        <div id = "content3" style="height:500px; width:650px; overflow-y: scroll;">
-        </div>
+    <div style="width:150px; border:1px; float:left; padding-left: 30px;">
+        <br/>
+        <h2>User List</h2>
+
+        <form action="selectedUser" method="GET">
+            <select name="userList" onchange="userSelected()" size="15" style="width: 140px;">
+                <option value="user1">jfourie</option>
+                <option value="user2">tuser1</option>
+                <option value="user3">tuser2</option>
+                <option value="user4">tuser3</option>
+                <option value="user5">tuser4</option>
+                <option value="user6">tuser5</option>
+                <option value="user7">tuser6</option>
+                <option value="user8">tuser7</option>
+                <option value="user9">tuser8</option>
+            </select>
+            <input type="submit" name="selectedUser" value="Select" />
+        </form>
+        <br/><br>
+    </div>
+
+
+
+    <div style="width:300px; float:left; padding-left: 25px;">
+        <br/>
+        <form id="userDetails" action="crudUser" method="GET">
+            <table>
+                <tr><td align="right"><h2>Details</h2></td><td><button type="button" onclick="clearUserFields()">Clear</button></td></tr>
+                <tr>
+                    <td align="right">User ID:</td>
+                    <td><input autofocus type="text" name="userId" id="userId" size="25" maxlength="45"/><br/></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td align="right">First Name:</td>
+                    <td><input type="text" name="firstName" size="25" maxlength="45">
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">Last Name:</td>
+                    <td><input type="text" name="lastName" size="25" maxlength="45"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">Catalog Name:</td>
+                    <td><input type="text" name="catalogName" size="25" maxlength="45"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Date Created:</td>
+                    <td><input type="text" name="catalogName" size="25" maxlength="45"/></td>
+                </tr>
+                <tr>
+                    <td align="right">Active (Y/N):</td>
+                    <td><input type="text" name="catalogName" size="25" maxlength="45"/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="checkbox" name="adminUser" value="adminUser"> Admin User?</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><br/>
+                        <input type="submit" name="addUser" value="Add" />
+                        <input type="submit" formaction="searchUser" value="Search"/>
+                        <input type="submit" formaction="updateUser" value="Update"/>
+                        <input type="submit" formaction="deleteUser" value="Delete"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+
+    <div style="width:200px; border:1px; float:left; padding-left: 30px;">
+        <br/>
+        <h2>Movies</h2>
+        <select name="movieList" size="20" style="width: 190px;">
+            <option value="movie1">movie1</option>
+            <option value="movie2">movie2</option>
+            <option value="movie3">movie3</option>
+            <option value="movie4">movie4</option>
+            <option value="movie4">movie5</option>
+            <option value="movie4">movie6</option>
+            <option value="movie4">movie7</option>
+            <option value="movie4">movie8</option>
+            <option value="movie4">movie9</option>
+            <option value="movie4">movie10</option>
+            <option value="movie4">movie11</option>
+            <option value="movie4">movie12</option>
+            <option value="movie4">movie13</option>
+            <option value="movie4">movie14</option>
+            <option value="movie4">movie15</option>
+            <option value="movie4">movie16</option>
+            <option value="movie4">movie17</option>
+            <option value="movie4">movie18</option>
+            <option value="movie4">movie19</option>
+            <option value="movie4">movie20</option>
+            <option value="movie4">movie21</option>
+            <option value="movie4">movie22</option>
+            <option value="movie4">movie23</option>
+            <option value="movie4">movie24</option>
+            <option value="movie4">movie25</option>
+            <option value="movie4">movie26</option>
+            <option value="movie4">movie27</option>
+            <option value="movie4">movie28</option>
+            <option value="movie4">movie29</option>
+            <option value="movie4">movie30</option>
+        </select>
+
+    </div>
+
+
+
+    <div style="width:50px; border:1px; float:left;">
+        <br/>
+        <h2>Sats</h2>
+        <form action="resetStats" method="GET">
+            <input type="submit" name="resetStats" value="Reset" /><br/>
+            <input type="submit" formaction="resetAllStats" value="Reset All"/>
+        </form>
     </div>
 </div>
 
+<script>
+    function clearUserFields() {
+        document.getElementById("userDetails").reset();
+        document.getElementById("userId").focus();
+    }
+
+    function userSelected() {
+
+    }
+</script>

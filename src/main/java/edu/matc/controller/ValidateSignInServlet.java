@@ -36,7 +36,8 @@ public class ValidateSignInServlet extends HttpServlet {
             request.setAttribute("signInMessage", "Invalid Sign In");
         } else if (userLevel == 1) {        // user is an administrator
             url = "/jsp/signed-in-admin.jsp";
-            request.setAttribute("signInMessage", "Hello Admin");
+//            request.setAttribute("signInMessage", "Hello Admin");
+            request.removeAttribute("signInMessage");
         } else {                            // user is a regular user
             url = "/jsp/signed-in-user.jsp";
         }
