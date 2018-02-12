@@ -15,6 +15,9 @@ Date  | Hours | Notes
 02/05/2018 | 5.0 | Worked out how to get my API call to work. Also created a mock-up of the movie grid page.
 02/08/2018 | 4.75 | Watched the week 4 videos. 
 02/10/2018 | 8.0 | Working on the admin page of my app. Also watched the week 5 videos.
+02/11/2018 | 11.0 | Finished watching the week 4 videos. Watched week 5 videos. Did the week 4 excercise. Changed my indie app to use a DAO for the User. Got the user list to show on my app admin page. Also coded so if the admin clcks on a user that user's info is displayed.
+
+
 
 
 

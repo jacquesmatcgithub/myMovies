@@ -2,25 +2,20 @@
 
 <div id="content" style="height:473px; width:800px;">
 
-    <div style="width:150px; border:1px; float:left; padding-left: 30px;">
+    <div style="width:150px; float:left; padding-left: 30px;">
         <br/>
         <h2>User List</h2>
 
+        <h2>
         <form action="selectedUser" method="GET">
-            <select name="userList" onchange="userSelected()" size="15" style="width: 140px;">
-                <option value="user1">jfourie</option>
-                <option value="user2">tuser1</option>
-                <option value="user3">tuser2</option>
-                <option value="user4">tuser3</option>
-                <option value="user5">tuser4</option>
-                <option value="user6">tuser5</option>
-                <option value="user7">tuser6</option>
-                <option value="user8">tuser7</option>
-                <option value="user9">tuser8</option>
+            <select name="listOfUsers" onchange="this.form.submit()" size="15" style="width: 140px; padding-left: 2px; color: #555;">
+                <c:forEach var="userList" items="${users}">
+                    <option value="${userList.userId}">${userList.userId}</option>
+                </c:forEach>
             </select>
             <input type="submit" name="selectedUser" value="Select" />
         </form>
-        <br/><br>
+        </h2>
     </div>
 
 
@@ -29,33 +24,33 @@
         <br/>
         <form id="userDetails" action="crudUser" method="GET">
             <table>
-                <tr><td align="right"><h2>Details</h2></td><td><button type="button" onclick="clearUserFields()">Clear</button></td></tr>
+                <tr><td align="right"><h2>Details</h2></td></tr>
                 <tr>
                     <td align="right">User ID:</td>
-                    <td><input autofocus type="text" name="userId" id="userId" size="25" maxlength="45"/><br/></td>
+                    <td><input autofocus type="text" name="userId" id="inputField" size="25" maxlength="45" value="${detailsUserId}"/><br/></td>
                 </tr>
                 <tr></tr>
                 <tr>
                     <td align="right">First Name:</td>
-                    <td><input type="text" name="firstName" size="25" maxlength="45">
+                    <td><input type="text" name="firstName" size="25" maxlength="45" value="${detailsFirstName}"/>
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Last Name:</td>
-                    <td><input type="text" name="lastName" size="25" maxlength="45"/>
+                    <td><input type="text" name="lastName" size="25" maxlength="45" value="${detailsLastName}"/>
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Catalog Name:</td>
-                    <td><input type="text" name="catalogName" size="25" maxlength="45"/></td>
+                    <td><input type="text" name="catalogName" size="25" maxlength="45" value="${detailsCatalogName}"/></td>
                 </tr>
                 <tr>
-                    <td align="right">Date Created:</td>
-                    <td><input type="text" name="catalogName" size="25" maxlength="45"/></td>
+                    <td align="right">Date Active:</td>
+                    <td><input type="text" name="dateActive" size="25" maxlength="45" value="${detailsDateActive}"/></td>
                 </tr>
                 <tr>
                     <td align="right">Active (Y/N):</td>
-                    <td><input type="text" name="catalogName" size="25" maxlength="45"/></td>
+                    <td><input type="text" name="active" size="25" maxlength="45" value="${detailsActive}"/></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -72,6 +67,7 @@
                 </tr>
             </table>
         </form>
+
     </div>
 
 
@@ -79,7 +75,8 @@
     <div style="width:200px; border:1px; float:left; padding-left: 30px;">
         <br/>
         <h2>Movies</h2>
-        <select name="movieList" size="20" style="width: 190px;">
+        <h2>
+        <select name="movieList" size="15" style="width: 190px; padding-left: 2px; color: #555;">
             <option value="movie1">movie1</option>
             <option value="movie2">movie2</option>
             <option value="movie3">movie3</option>
@@ -111,7 +108,7 @@
             <option value="movie4">movie29</option>
             <option value="movie4">movie30</option>
         </select>
-
+        </h2>
     </div>
 
 
@@ -126,13 +123,3 @@
     </div>
 </div>
 
-<script>
-    function clearUserFields() {
-        document.getElementById("userDetails").reset();
-        document.getElementById("userId").focus();
-    }
-
-    function userSelected() {
-
-    }
-</script>

@@ -1,13 +1,16 @@
 package edu.matc.entity;
 
+import java.time.LocalDate;
+
 /**
  * The type Catalog.
  */
 public class Catalog {
+    private int id;
     private String userId;
     private int catalogId;
     private String description;
-    private String dateCreated;
+    private LocalDate dateCreated;
 
     /**
      * Instantiates a new Catalog.
@@ -19,12 +22,14 @@ public class Catalog {
     /**
      * Instantiates a new Catalog.
      *
+     * @param id          the id
      * @param userId      the user id
      * @param catalogId   the catalog id
      * @param description the description
      * @param dateCreated the date created
      */
-    public Catalog(String userId, int catalogId, String description, String dateCreated) {
+    public Catalog(int id, String userId, int catalogId, String description, LocalDate dateCreated) {
+        this.id = id;
         this.userId = userId;
         this.catalogId = catalogId;
         this.description = description;
@@ -90,7 +95,7 @@ public class Catalog {
      *
      * @return the date created
      */
-    public String getDateCreated() {
+    public LocalDate getDateCreated() {
         return dateCreated;
     }
 
@@ -99,17 +104,36 @@ public class Catalog {
      *
      * @param dateCreated the date created
      */
-    public void setDateCreated(String dateCreated) {
+    public void setDateCreated(LocalDate dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         return "Catalog{" +
-                "userId='" + userId + '\'' +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
                 ", catalogId=" + catalogId +
                 ", description='" + description + '\'' +
-                ", dateCreated='" + dateCreated + '\'' +
+                ", dateCreated=" + dateCreated +
                 '}';
     }
 }

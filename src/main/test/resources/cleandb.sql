@@ -1,0 +1,4 @@
+delete from user;
+delete from catalog;
+INSERT INTO `user` VALUES  (1,'badmin','secret','Bad','Admin',TRUE,FALSE,'2018-01-01'),(2,'jfourie','secret','Jacques','Fourie',TRUE,TRUE,'2018-01-02'),(3,'tuser1','secret','Test','User1',FALSE,TRUE,'2018-01-03'),(4,'tuser2','secret','Test','User2',FALSE,FALSE,'2018-01-04'),(5,'z','z','Easy','User',TRUE,TRUE,'2018-01-05');
+INSERT INTO `catalog` VALUES   (1,'badmin',1,'Movie catalog for user Bad Admin','2018-01-01'),(2,'jfourie',2,'Movie catalog for user Jacques Fourie','2018-01-02'),(3,'tuser1',3,'Movie catalog for user Test User1','2018-01-03'),(4,'tuser2',4,'Movie catalog for user Test User2','2018-01-04'),(5,'z',5,'Movie catalog for user Easy User','2018-01-05');

@@ -1,19 +1,45 @@
 package edu.matc.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+
 /**
  * A class to represent a user.
  *
  * @author Jacques Fourie
  */
+
+@Entity(name = "User")
+@Table(name = "user")  // The @Table tag is case sensitive REMEMBER THAT!!!  Example: ="user"  vs  "=User"
+
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private int id;
+
+    @Column(name = "user_id")
     private String userId;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "first_name")
     private String firstName;
+
+    @Column(name = "last_name")
     private String lastName;
-    private int level;
+
+    @Column(name = "admin")
+    private boolean admin;
+
+    @Column(name = "active")
     private boolean active;
 
-
+    @Column(name = "date_active")
+    private LocalDate dateActive;
 
     /**
      * Instantiates a new User.
@@ -21,30 +47,15 @@ public class User {
     public User() {
     }
 
-    /**
-     * Instantiates a new User.
-     *
-     * @param userId    the user id
-     * @param password  the password
-     * @param firstName the first name
-     * @param lastName  the last name
-     * @param level     the level
-     * @param active    the active
-     */
-    public User(String userId,
-                String password,
-                String firstName,
-                String lastName,
-                int level,
-                boolean active) {
+    public User(String userId, String password, String firstName, String lastName, boolean admin, boolean active, LocalDate dateActive) {
         this.userId = userId;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.level = level;
+        this.admin = admin;
         this.active = active;
+        this.dateActive = dateActive;
     }
-
 
     /**
      * Gets user id.
@@ -119,21 +130,21 @@ public class User {
     }
 
     /**
-     * Gets level
+     * Gets admin
      *
-     * @return the level
+     * @return the admin
      */
-    public int getLevel() {
-        return level;
+    public boolean getAdmin() {
+        return admin;
     }
 
     /**
-     * Sets level.
+     * Sets admin.
      *
-     * @param level the level
+     * @param admin the admin
      */
-    public void setLevel(int level) {
-        this.level = level;
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     /**
@@ -154,18 +165,70 @@ public class User {
         this.active = active;
     }
 
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Is admin boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    /**
+     * Is active boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isActive() {
+        return active;
+    }
+
+    /**
+     * Gets date active.
+     *
+     * @return the date active
+     */
+    public LocalDate getDateActive() {
+        return dateActive;
+    }
+
+    /**
+     * Sets date active.
+     *
+     * @param dateActive the date active
+     */
+    public void setDateActive(LocalDate dateActive) {
+        this.dateActive = dateActive;
+    }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
+                "id=" + id +
+                ", userId='" + userId + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", level=" + level +
-                ", active='" + active +
+                ", admin=" + admin +
+                ", active=" + active +
                 '}';
     }
-
-
 }

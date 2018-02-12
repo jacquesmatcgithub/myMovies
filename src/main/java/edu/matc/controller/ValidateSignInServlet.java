@@ -2,8 +2,11 @@ package edu.matc.controller;
 
 import edu.matc.persistence.*;
 import edu.matc.entity.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -13,6 +16,8 @@ import javax.servlet.annotation.*;
         urlPatterns = "/validateSignIn"
 )
 public class ValidateSignInServlet extends HttpServlet {
+
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
      *  Handles HTTP GET requests.
@@ -27,41 +32,51 @@ public class ValidateSignInServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        UserDao userDao = new UserDao();
         String url;
 
-        int userLevel = getUserData(request, response);
+        HttpSession session = request.getSession();
+        session.removeAttribute("userId");
 
-        if (userLevel == 0) {               // either user not found, or user is not active
+        String userId = request.getParameter("userId").trim();
+        String password = request.getParameter("password").trim();
+
+        List<User> users = userDao.getByPropertyEqual("userId", userId);
+
+
+        if (users.size() == 0 || !users.get(0).getPassword().equals(password)) {
             url = "/jsp/sign-in.jsp";
             request.setAttribute("signInMessage", "Invalid Sign In");
-        } else if (userLevel == 1) {        // user is an administrator
-            url = "/jsp/signed-in-admin.jsp";
-//            request.setAttribute("signInMessage", "Hello Admin");
-            request.removeAttribute("signInMessage");
-        } else {                            // user is a regular user
-            url = "/jsp/signed-in-user.jsp";
+        } else if (users.get(0).getAdmin()) {
+            url = setupAdminUser(request, response);
+        } else {
+            url = setupNormalUser(request, response);
         }
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
 
-    private int getUserData(HttpServletRequest request, HttpServletResponse response) {
-        String userId = request.getParameter("userId").trim();
-        String password = request.getParameter("password").trim();
+    private String  setupAdminUser(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.removeAttribute("signInMessage");
 
-        UserData userData = new UserData();
-        User userBean = userData.getUser(userId, password);
+        logger.info("Listing all users");
 
-        HttpSession session = request.getSession();
-        session.removeAttribute("userId");
+        UserDao userDao = new UserDao();
 
-        if (userBean.getActive()) {
-            session.setAttribute("userId", userId);
+        request.setAttribute("users", userDao.getAllUsers());
 
-            return userBean.getLevel();
-        } else {
-            return 0;
-        }
+        return "/jsp/signed-in-admin.jsp";
+    }
+
+
+    private String setupNormalUser(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+
+
+        return "/jsp/signed-in-user.jsp";
+
     }
 }

@@ -47,8 +47,9 @@ public class UserData {
         user.setPassword(results.getString("password"));
         user.setLastName(results.getString("last_name"));
         user.setFirstName(results.getString("first_name"));
-        user.setLevel(results.getInt("level"));
+        user.setAdmin(results.getBoolean("admin"));
         user.setActive(results.getBoolean("active"));
+        user.setDateActive(results.getDate("date_active").toLocalDate());
 
         return user;
     }
