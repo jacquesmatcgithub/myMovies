@@ -13,7 +13,6 @@
                     <option value="${userList.userId}">${userList.userId}</option>
                 </c:forEach>
             </select>
-            <input type="submit" name="selectedUser" value="Select" />
         </form>
         </h2>
     </div>
@@ -22,7 +21,7 @@
 
     <div style="width:300px; float:left; padding-left: 25px;">
         <br/>
-        <form id="userDetails" action="crudUser" method="GET">
+        <form action="crudUser" method="GET">
             <table>
                 <tr><td align="right"><h2>Details</h2></td></tr>
                 <tr>
@@ -49,22 +48,19 @@
                     <td><input type="text" name="dateActive" size="25" maxlength="45" value="${detailsDateActive}"/></td>
                 </tr>
                 <tr>
-                    <td align="right">Active (Y/N):</td>
-                    <td><input type="text" name="active" size="25" maxlength="45" value="${detailsActive}"/></td>
-                </tr>
-                <tr>
                     <td></td>
-                    <td><input type="checkbox" name="adminUser" value="adminUser"> Admin User?</td>
+                    <td><input type="checkbox" name="adminUser" value="adminUser" ${userDetailsAdminCheckBox}> Admin User?
+                    <input type="checkbox" name="activeUser" value="activeUser" ${userDetailsActiveCheckBox}>Active?</td>
                 </tr>
                 <tr>
                     <td></td>
                     <td><br/>
-                        <input type="submit" name="addUser" value="Add" />
-                        <input type="submit" formaction="searchUser" value="Search"/>
-                        <input type="submit" formaction="updateUser" value="Update"/>
-                        <input type="submit" formaction="deleteUser" value="Delete"/>
+                        <input type="submit" name="userDetailsButton" value="Add/Update" />
+                        <input type="submit" name="userDetailsButton" value="Search"/>
+                        <input type="submit" name="userDetailsButton" value="Delete"/>
                     </td>
                 </tr>
+                <tr><td></td><td>${userDetailsMessage}</td></tr>
             </table>
         </form>
 

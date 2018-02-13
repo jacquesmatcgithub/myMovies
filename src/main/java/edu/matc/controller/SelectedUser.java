@@ -33,7 +33,7 @@ public class SelectedUser extends HttpServlet {
             throws ServletException, IOException {
 
         UserDao userDao = new UserDao();
-        String url;
+        String url = "/jsp/signed-in-admin.jsp";
 
         HttpSession session = request.getSession();
         session.removeAttribute("userId");
@@ -50,15 +50,19 @@ public class SelectedUser extends HttpServlet {
         request.setAttribute("detailsDateActive", users.get(0).getDateActive());
 
         if (users.get(0).getActive()) {
-            request.setAttribute("detailsActive", "Y");
+            request.setAttribute("userDetailsActiveCheckBox", "checked");
         } else {
-            request.setAttribute("detailsActive", "N");
+            request.setAttribute("userDetailsActiveCheckBox", "");
+        }
+
+        if (users.get(0).getAdmin()) {
+            request.setAttribute("userDetailsAdminCheckBox", "checked");
+        } else {
+            request.setAttribute("userDetailsAdminCheckBox", "");
         }
 
 
         request.setAttribute("users", userDao.getAllUsers());
-
-        url = "/jsp/signed-in-admin.jsp";
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
