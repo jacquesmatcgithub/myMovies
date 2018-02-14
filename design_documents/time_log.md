@@ -17,9 +17,4 @@ Date  | Hours | Notes
 02/10/2018 | 8.0 | Working on the admin page of my app. Also watched the week 5 videos.
 02/11/2018 | 11.0 | Finished watching the week 4 videos. Watched week 5 videos. Did the week 4 excercise. Changed my indie app to use a DAO for the User. Got the user list to show on my app admin page. Also coded so if the admin clcks on a user that user's info is displayed.
 02/12/2018 | 4.0 | Worked on the add/update user functionality of the admin page of my project.
-
-
-
-
-
-
+02/13/2018 | 3.75 | Worked on the crud aspects of the admin page of my indie project. 
