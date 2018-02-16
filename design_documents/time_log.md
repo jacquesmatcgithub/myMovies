@@ -18,3 +18,6 @@ Date  | Hours | Notes
 02/11/2018 | 11.0 | Finished watching the week 4 videos. Watched week 5 videos. Did the week 4 excercise. Changed my indie app to use a DAO for the User. Got the user list to show on my app admin page. Also coded so if the admin clcks on a user that user's info is displayed.
 02/12/2018 | 4.0 | Worked on the add/update user functionality of the admin page of my project.
 02/13/2018 | 3.75 | Worked on the crud aspects of the admin page of my indie project. 
+02/14/2018 | 5.0 | Could not get my OneToMany to work. Spent most this time figuring out what the issue was. Also created a dao for my Movies table and a tets dao also.
+
+

@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A class to represent a user.
@@ -13,15 +15,15 @@ import java.time.LocalDate;
 
 @Entity(name = "User")
 @Table(name = "user")  // The @Table tag is case sensitive REMEMBER THAT!!!  Example: ="user"  vs  "=User"
-
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "login_id")
+    private String loginId;
 
     @Column(name = "password")
     private String password;
@@ -41,14 +43,17 @@ public class User {
     @Column(name = "date_active")
     private LocalDate dateActive;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Movie> movies = new HashSet<>();
+
     /**
      * Instantiates a new User.
      */
     public User() {
     }
 
-    public User(String userId, String password, String firstName, String lastName, boolean admin, boolean active, LocalDate dateActive) {
-        this.userId = userId;
+    public User(String loginId, String password, String firstName, String lastName, boolean admin, boolean active, LocalDate dateActive) {
+        this.loginId = loginId;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,17 +67,17 @@ public class User {
      *
      * @return the user id
      */
-    public String getUserId() {
-        return userId;
+    public String getLoginId() {
+        return loginId;
     }
 
     /**
      * Sets user id.
      *
-     * @param userId the user id
+     * @param loginId the user id
      */
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     /**
@@ -219,11 +224,50 @@ public class User {
         this.dateActive = dateActive;
     }
 
+
+    /**
+     * Gets movies.
+     *
+     * @return the movies
+     */
+    public Set<Movie> getMovies() {
+        return movies;
+    }
+
+    /**
+     * Sets movies.
+     *
+     * @param movies the movies
+     */
+    public void setMovies(Set<Movie> movies) {
+        this.movies = movies;
+    }
+
+    /**
+     * Add movie.
+     *
+     * @param movie the movie
+     */
+    public void addMovie(Movie movie) {
+        movies.add(movie);
+        movie.setUser(this);
+    }
+
+    /**
+     * Remove movie.
+     *
+     * @param movie the movie
+     */
+    public void removeMovie(Movie movie) {
+        movies.remove(movie);
+        movie.setUser(null);
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userId='" + userId + '\'' +
+                ", loginId='" + loginId + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

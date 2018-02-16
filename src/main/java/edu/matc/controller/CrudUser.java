@@ -12,7 +12,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-
 @WebServlet (
         name = "CrudUserServlet",
         urlPatterns = "/crudUser"
@@ -28,18 +27,15 @@ public class CrudUser extends HttpServlet {
     
     private static final String BUTTON_ADD_UPDATE_USER = "Add/Update";
     private static final String BUTTON_DELETE_USER = "Delete";
-    private static final String BUTTON_RESET_STATS = "Reset";
-    private static final String BUTTON_RESET_ALL_STATS = "Reset All";
 
     private static final String MSG_USER_ADDED_UPDATED_SUCCESSFULLY = "Added/updated successfully";
     private static final String MSG_USER_DELETED_SUCCESSFULLY = "User deleted successfully";
     private static final String MSG_ENTER_FIELD = "Please enter field";
 
-    private static final int FORM_FIELD_USERID_EMPTY = 1;
+    private static final int FORM_FIELD_LOGINID_EMPTY = 1;
     private static final int FORM_FIELD_FIRSTNAME_EMPTY = 2;
     private static final int FORM_FIELD_LASTNAME_EMPTY = 3;
-    private static final int FORM_FIELD_CATALOGNAME_EMPTY = 4;
-    private static final int FORM_FIELD_DATEACTIVE_EMPTY = 5;
+    private static final int FORM_FIELD_DATEACTIVE_EMPTY = 4;
     private static final int FORM_FIELD_NONE_EMPTY = 99;
 
 
@@ -55,8 +51,11 @@ public class CrudUser extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletContext servletContext = getServletContext();
+        AdminPage adminPage = (AdminPage)servletContext.getAttribute("adminPage");
 
         UserDao userDao = new UserDao();
+
         String url = "/jsp/signed-in-admin.jsp";
         String userDetailsMessage = "";
 
@@ -67,10 +66,9 @@ public class CrudUser extends HttpServlet {
 
 
         // Capture all the user details fields for processing and redisplay
-        String formUserId = request.getParameter("userId");
+        String formLoginId = request.getParameter("loginId");
         String formFirstName = request.getParameter("firstName");
         String formLastName = request.getParameter("lastName");
-        String formCatalogName = request.getParameter("catalogName");
         LocalDate formDateActive = LocalDate.parse(request.getParameter("dateActive"));
 
         boolean formAdminUser = false;
@@ -89,24 +87,17 @@ public class CrudUser extends HttpServlet {
         // Act on which button was pressed
         switch (buttonPressed) {
             case BUTTON_ADD_UPDATE_USER:
-                userDetailsMessage = addNewUser(request, userDao, formUserId, formFirstName, formLastName, formCatalogName,
+                userDetailsMessage = addUpdateUser(request, userDao, formLoginId, formFirstName, formLastName,
                         formDateActive, formAdminUser, formActiveUser);
                 break;
             case BUTTON_DELETE_USER:
                 userDetailsMessage = deleteUser(request, userDao);
                 break;
-            case BUTTON_RESET_STATS:
-                userDetailsMessage = resetStats(request, userDao);
-                break;
-            case BUTTON_RESET_ALL_STATS:
-                userDetailsMessage = resetAllStats(request, userDao);
-                break;
         }
 
         request.setAttribute("userDetailsMessage", userDetailsMessage);
 
-        populateAdminPage(request, userDao, formUserId, formFirstName, formLastName, formCatalogName,
-                formDateActive, formAdminUser, formActiveUser);
+        adminPage.load(request, formLoginId);
 
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
@@ -116,24 +107,25 @@ public class CrudUser extends HttpServlet {
 
 
 
-    private String addNewUser(HttpServletRequest request, UserDao userDao,  String formUserId, String formFirstName,
-                              String formLastName, String formCatalogName, LocalDate formDateActive, boolean formAdminUser,
+    private String addUpdateUser(HttpServletRequest request, UserDao userDao,  String formLoginId, String formFirstName,
+                              String formLastName, LocalDate formDateActive, boolean formAdminUser,
                               boolean formActiveUser) {
 
-        int emptyField = findFirstEmptyField(request, formUserId, formFirstName, formLastName, formCatalogName, formDateActive);
+        int emptyField = findFirstEmptyField(request, formLoginId, formFirstName, formLastName, formDateActive);
 
         if (emptyField != FORM_FIELD_NONE_EMPTY) {
             return MSG_ENTER_FIELD;
         }
 
         
-        List<User> users = userDao.getByPropertyEqual("userId", formUserId);
+        List<User> users = userDao.getByPropertyEqual("loginId", formLoginId);
+
         if (users.size() == 0) {
-            User newUser = new User(formUserId, "temp", formFirstName, formLastName, formAdminUser, formActiveUser, formDateActive);
+            User newUser = new User(formLoginId, "temp", formFirstName, formLastName, formAdminUser, formActiveUser, formDateActive);
             int id = userDao.insert(newUser);
         } else {
             User userToUpdate = users.get(0);
-            userToUpdate.setUserId(formUserId);
+            userToUpdate.setLoginId(formLoginId);
             userToUpdate.setFirstName(formFirstName);
             userToUpdate.setLastName(formLastName);
             userToUpdate.setDateActive(formDateActive);
@@ -157,27 +149,23 @@ public class CrudUser extends HttpServlet {
 
 
 
-    private int findFirstEmptyField(HttpServletRequest request, String formUserId, String formFirstName,
-                                    String formLastName, String formCatalogName, LocalDate formDateActive) {
+    private int findFirstEmptyField(HttpServletRequest request, String formLoginId, String formFirstName,
+                                    String formLastName, LocalDate formDateActive) {
         
-        request.removeAttribute("userIdAutofocus");
+        request.removeAttribute("loginIdAutofocus");
         request.removeAttribute("firstNameAutofocus");
         request.removeAttribute("lastNameAutofocus");
-        request.removeAttribute("catalogNameAutofocus");
         request.removeAttribute("dateActiveAutofocus");
         
-        if (formUserId.isEmpty()) {
-            request.setAttribute("userIdAutofocus", "autofocus");
-            return FORM_FIELD_USERID_EMPTY;
+        if (formLoginId.isEmpty()) {
+            request.setAttribute("loginIdAutofocus", "autofocus");
+            return FORM_FIELD_LOGINID_EMPTY;
         } else if (formFirstName.isEmpty()) {
             request.setAttribute("firstNameAutofocus", "autofocus");
             return FORM_FIELD_FIRSTNAME_EMPTY;
         } else if (formLastName.isEmpty()) {
             request.setAttribute("lastNameAutofocus", "autofocus");
             return FORM_FIELD_LASTNAME_EMPTY;
-        } else if (formCatalogName.isEmpty()) {
-            request.setAttribute("catalogNameAutofocus", "autofocus");
-            return FORM_FIELD_CATALOGNAME_EMPTY;
         } else if (formDateActive.toString().isEmpty()) {
             request.setAttribute("dateActiveAutofocus", "autofocus");
             return FORM_FIELD_DATEACTIVE_EMPTY;
@@ -185,44 +173,4 @@ public class CrudUser extends HttpServlet {
             return FORM_FIELD_NONE_EMPTY;
         }
     }
-
-
-
-    private void populateAdminPage(HttpServletRequest request, UserDao userDao,  String formUserId, String formFirstName,
-                                   String formLastName, String formCatalogName, LocalDate formDateActive, boolean formAdminUser,
-                                   boolean formActiveUser) {
-
-        request.setAttribute("users", userDao.getAllUsers());
-
-        request.setAttribute("detailsUserId", formUserId);
-        request.setAttribute("detailsFirstName", formFirstName);
-        request.setAttribute("detailsLastName", formLastName);
-//TODO Must still populate the catalog name
-        request.setAttribute("detailsCatalogName", "catalog table not defined yet");
-        request.setAttribute("detailsDateActive", formDateActive);
-
-        if (formActiveUser) {
-            request.setAttribute("userDetailsActiveCheckBox", "checked");
-        } else {
-            request.setAttribute("userDetailsActiveCheckBox", "");
-        }
-
-        if (formAdminUser) {
-            request.setAttribute("userDetailsAdminCheckBox", "checked");
-        } else {
-            request.setAttribute("userDetailsAdminCheckBox", "");
-        }
-    }
-
-
-    private String resetStats(HttpServletRequest request, UserDao userDao) {
-        return "";
-    }
-
-
-
-    private String resetAllStats(HttpServletRequest request, UserDao userDao) {
-        return "";
-    }
-
 }

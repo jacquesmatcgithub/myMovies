@@ -111,7 +111,6 @@ public class Database {
                 logger.info(sql);
 
             }
-
         } catch (SQLException se) {
             logger.error(se);
         } catch (Exception e) {

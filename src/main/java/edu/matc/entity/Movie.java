@@ -1,0 +1,250 @@
+package edu.matc.entity;
+
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
+
+/**
+ * The type Movie.
+ */
+@Entity(name = "Movie")
+@Table(name = "movie")  // The @Table tag is case sensitive REMEMBER THAT!!!  Example: ="user"  vs  "=User"
+public class Movie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "poster_uri")
+    private String posterUri;
+
+    @Column(name = "thumb_uri")
+    private String thumbUri;
+
+    @Column(name = "desc_uri")
+    private String descUri;
+
+    @Column(name = "rating_uri")
+    private String ratingUri;
+
+    @Column(name = "user_rating")
+    private int userRating;
+
+    @Column(name = "sort_key")
+    private String sortKey;
+
+
+    @ManyToOne
+    private User user;
+
+
+    /**
+     * Instantiates a new Movie.
+     */
+    public Movie() {
+    }
+
+    /**
+     * Instantiates a new Movie.
+     *
+     * @param name       the name
+     * @param posterUri  the poster uri
+     * @param thumbUri   the thumb uri
+     * @param descUri    the desc uri
+     * @param ratingUri  the rating uri
+     * @param userRating the user rating
+     * @param sortKey    the sort key
+     */
+    public Movie(String name, String posterUri, String thumbUri, String descUri,
+                 String ratingUri, int userRating, String sortKey, User user) {
+        this.name = name;
+        this.posterUri = posterUri;
+        this.thumbUri = thumbUri;
+        this.descUri = descUri;
+        this.ratingUri = ratingUri;
+        this.userRating = userRating;
+        this.sortKey = sortKey;
+
+        this.user = user;
+    }
+
+    /**
+     * Gets id.
+     *
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets id.
+     *
+     * @param id the id
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Gets poster uri.
+     *
+     * @return the poster uri
+     */
+    public String getPosterUri() {
+        return posterUri;
+    }
+
+    /**
+     * Sets poster uri.
+     *
+     * @param posterUri the poster uri
+     */
+    public void setPosterUri(String posterUri) {
+        this.posterUri = posterUri;
+    }
+
+    /**
+     * Gets thumb uri.
+     *
+     * @return the thumb uri
+     */
+    public String getThumbUri() {
+        return thumbUri;
+    }
+
+    /**
+     * Sets thumb uri.
+     *
+     * @param thumbUri the thumb uri
+     */
+    public void setThumbUri(String thumbUri) {
+        this.thumbUri = thumbUri;
+    }
+
+    /**
+     * Gets desc uri.
+     *
+     * @return the desc uri
+     */
+    public String getDescUri() {
+        return descUri;
+    }
+
+    /**
+     * Sets desc uri.
+     *
+     * @param descUri the desc uri
+     */
+    public void setDescUri(String descUri) {
+        this.descUri = descUri;
+    }
+
+    /**
+     * Gets rating uri.
+     *
+     * @return the rating uri
+     */
+    public String getRatingUri() {
+        return ratingUri;
+    }
+
+    /**
+     * Sets rating uri.
+     *
+     * @param ratingUri the rating uri
+     */
+    public void setRatingUri(String ratingUri) {
+        this.ratingUri = ratingUri;
+    }
+
+    /**
+     * Gets user rating.
+     *
+     * @return the user rating
+     */
+    public int getUserRating() {
+        return userRating;
+    }
+
+    /**
+     * Sets user rating.
+     *
+     * @param userRating the user rating
+     */
+    public void setUserRating(int userRating) {
+        this.userRating = userRating;
+    }
+
+    /**
+     * Gets sort key.
+     *
+     * @return the sort key
+     */
+    public String getSortKey() {
+        return sortKey;
+    }
+
+    /**
+     * Sets sort key.
+     *
+     * @param sortKey the sort key
+     */
+    public void setSortKey(String sortKey) {
+        this.sortKey = sortKey;
+    }
+
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", posterUri='" + posterUri + '\'' +
+                ", thumbUri='" + thumbUri + '\'' +
+                ", descUri='" + descUri + '\'' +
+                ", ratingUri='" + ratingUri + '\'' +
+                ", userRating=" + userRating +
+                ", sortKey='" + sortKey + '\'' +
+                '}';
+    }
+}

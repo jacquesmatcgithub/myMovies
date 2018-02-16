@@ -1,12 +1,9 @@
 package edu.matc.controller;
 
-import edu.matc.persistence.*;
-import edu.matc.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
-import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -31,41 +28,16 @@ public class SelectedUser extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletContext servletContext = getServletContext();
+        AdminPage adminPage = (AdminPage)servletContext.getAttribute("adminPage");
 
-        UserDao userDao = new UserDao();
         String url = "/jsp/signed-in-admin.jsp";
 
-        HttpSession session = request.getSession();
-        session.removeAttribute("userId");
+        String loginIdSelected = request.getParameter("listOfUsers").trim();
 
-        String userIdSelected = request.getParameter("listOfUsers").trim();
-
-        List<User> users = userDao.getByPropertyEqual("userId", userIdSelected);
-
-        request.setAttribute("detailsUserId", users.get(0).getUserId());
-        request.setAttribute("detailsFirstName", users.get(0).getFirstName());
-        request.setAttribute("detailsLastName", users.get(0).getLastName());
-//TODO Must still populate the catalog name
-        request.setAttribute("detailsCatalogName", "catalog table not defined yet");
-        request.setAttribute("detailsDateActive", users.get(0).getDateActive());
-
-        if (users.get(0).getActive()) {
-            request.setAttribute("userDetailsActiveCheckBox", "checked");
-        } else {
-            request.setAttribute("userDetailsActiveCheckBox", "");
-        }
-
-        if (users.get(0).getAdmin()) {
-            request.setAttribute("userDetailsAdminCheckBox", "checked");
-        } else {
-            request.setAttribute("userDetailsAdminCheckBox", "");
-        }
-
-
-        request.setAttribute("users", userDao.getAllUsers());
+        adminPage.load(request, loginIdSelected);
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-
 }

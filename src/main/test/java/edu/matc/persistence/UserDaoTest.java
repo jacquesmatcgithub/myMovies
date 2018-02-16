@@ -1,6 +1,5 @@
 package edu.matc.persistence;
 
-// import edu.matc.entity.Order;
 import edu.matc.test.util.Database;
 import edu.matc.entity.User;
 import org.apache.logging.log4j.LogManager;
@@ -47,7 +46,7 @@ class UserDaoTest {
      */
     @Test
     void getSomeUsers() {
-        List<User> users = dao.getSomeUsers("u");
+        List<User> users = dao.getSomeUsers("f");
         assertEquals(3, users.size());
 
     }
@@ -81,40 +80,15 @@ class UserDaoTest {
         // TODO review .equals recommendations http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#mapping-model-pojo-equalshashcode
     }
 
-    /**
-     * Verify successful insert of a user with order
-     */
-    /**
-    @Test
-    void insertWithOrderSuccess() {
-
-        User newUser = new User("Fred", "Flintstone", "fflintstone", LocalDate.parse("1968-01-01"));
-
-        String orderDescription = "Order 1";
-        Order order = new Order(orderDescription, newUser);
-
-        newUser.addOrder(order);
 
 
-        int id = dao.insert(newUser);
-
-
-        assertNotEquals(0,id);
-        User insertedUser = dao.getById(id);
-        assertEquals("Fred", insertedUser.getFirstName());
-        assertEquals(1, insertedUser.getOrders().size());
-        // Could continue comparing all values, but
-        // it may make sense to use .equals()
-        // TODO review .equals recommendations http://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#mapping-model-pojo-equalshashcode
-    }
-    **/
     /**
      * Verify successful delete of user
      */
     @Test
     void deleteSuccess() {
-        dao.delete(dao.getById(3));
-        assertNull(dao.getById(3));
+        dao.delete(dao.getById(1));
+        assertNull(dao.getById(1));
     }
 
     /**
@@ -130,13 +104,13 @@ class UserDaoTest {
     void updateSuccess() {
         String newLastName = "Davis";
 
-        User userToUpdate = dao.getById(4);
+        User userToUpdate = dao.getById(1);
 
         userToUpdate.setLastName(newLastName);
 
         dao.saveOrUpdate(userToUpdate);
 
-        User retrievedUser = dao.getById(4);
+        User retrievedUser = dao.getById(1);
 
         assertEquals(newLastName, retrievedUser.getLastName());
     }
@@ -145,17 +119,25 @@ class UserDaoTest {
      */
     @Test
     void getByPropertyEqualSuccess() {
-        List<User> users = dao.getByPropertyEqual("lastName", "Fourie");
-        assertEquals(1, users.size());
-        assertEquals(2, users.get(0).getId());
+        List<User> users = dao.getByPropertyEqual("firstName", "Jacques");
+        assertEquals(2, users.size());
+//        assertEquals(2, users.get(0).getId());
     }
 
+    /**
+     * Verify successful get by boolean property (equal match)
+     */
+    @Test
+    void getByBooleanPropertyEqualSuccess() {
+        List<User> users = dao.getByBooleanPropertyEqual("admin", TRUE);
+        assertEquals(2, users.size());
+    }
     /**
      * Verify successful get by property (like match)
      */
     @Test
     void getByPropertyLikeSuccess() {
         List<User> users = dao.getByPropertyLike("lastName", "user");
-        assertEquals(3, users.size());
+        assertEquals(1, users.size());
     }
 }

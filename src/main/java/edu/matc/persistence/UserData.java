@@ -21,7 +21,7 @@ public class UserData {
         User user = new User();
         Database database = Database.getInstance();
         Connection connection = null;
-        String sql = "SELECT * FROM user WHERE user_id = '" + userId + "' and password = '" + password + "'" +
+        String sql = "SELECT * FROM user WHERE login_id = '" + userId + "' and password = '" + password + "'" +
                 " and active = TRUE";
 
         try {
@@ -43,7 +43,7 @@ public class UserData {
 
     private User createUserFromResults(ResultSet results) throws SQLException {
         User user = new User();
-        user.setUserId(results.getString("user_id"));
+        user.setLoginId(results.getString("login_id"));
         user.setPassword(results.getString("password"));
         user.setLastName(results.getString("last_name"));
         user.setFirstName(results.getString("first_name"));
