@@ -36,6 +36,8 @@ public class Movie {
     @Column(name = "sort_key")
     private String sortKey;
 
+    @Column(name = "login_id")
+    private String loginId;
 
     @ManyToOne
     private User user;
@@ -57,9 +59,10 @@ public class Movie {
      * @param ratingUri  the rating uri
      * @param userRating the user rating
      * @param sortKey    the sort key
+     * @param loginId    the login id
+     * @param user       the user
      */
-    public Movie(String name, String posterUri, String thumbUri, String descUri,
-                 String ratingUri, int userRating, String sortKey, User user) {
+    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, User user) {
         this.name = name;
         this.posterUri = posterUri;
         this.thumbUri = thumbUri;
@@ -67,7 +70,7 @@ public class Movie {
         this.ratingUri = ratingUri;
         this.userRating = userRating;
         this.sortKey = sortKey;
-
+        this.loginId = loginId;
         this.user = user;
     }
 
@@ -233,6 +236,23 @@ public class Movie {
         this.user = user;
     }
 
+    /**
+     * Gets login id.
+     *
+     * @return the login id
+     */
+    public String getLoginId() {
+        return loginId;
+    }
+
+    /**
+     * Sets login id.
+     *
+     * @param loginId the login id
+     */
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
 
     @Override
     public String toString() {
@@ -245,6 +265,8 @@ public class Movie {
                 ", ratingUri='" + ratingUri + '\'' +
                 ", userRating=" + userRating +
                 ", sortKey='" + sortKey + '\'' +
+                ", loginId=" + loginId +
+                ", user=" + user +
                 '}';
     }
 }

@@ -35,15 +35,11 @@ public class ValidateSignInServlet extends HttpServlet {
         UserDao userDao = new UserDao();
         String url;
 
-        HttpSession session = request.getSession();
-        session.removeAttribute("loginId");
-
-        String userId = request.getParameter("loginId").trim();
+        String loginId = request.getParameter("loginId").trim();
         String password = request.getParameter("password").trim();
 
-        List<User> users = userDao.getByPropertyEqual("loginId", userId);
-
-
+        List<User> users = userDao.getByPropertyEqual("loginId", loginId);
+        
         if (users.size() == 0 || !users.get(0).getPassword().equals(password)) {
             url = "/jsp/sign-in.jsp";
             request.setAttribute("signInMessage", "Invalid Sign In");
@@ -52,6 +48,9 @@ public class ValidateSignInServlet extends HttpServlet {
         } else {
             url = setupNormalUser(request, response);
         }
+
+        HttpSession session = request.getSession();
+        session.setAttribute("currentUser", loginId);
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
@@ -76,7 +75,9 @@ public class ValidateSignInServlet extends HttpServlet {
     private String setupNormalUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.removeAttribute("signInMessage");
 
+        logger.info("Setting up Admin Page");
 
         return "/jsp/signed-in-user.jsp";
 

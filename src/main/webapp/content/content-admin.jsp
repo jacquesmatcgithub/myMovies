@@ -58,7 +58,7 @@
                     <td></td>
                     <td><br/>
                         <input type="submit" name="adminPageButton" value="Add/Update" />
-                        <input type="submit" name="adminPageButton" value="Delete"/>
+                        <input type="button" name="adminPageButton" value="Delete" onClick="confirmDelete(this.form);"/>
                     </td>
                 </tr>
             </table>
@@ -66,8 +66,6 @@
 
     </div>
 
-
-    <form action="crudMovieStats" method="GET">
 
     <div style="width:200px; border:1px; float:left; padding-left: 30px;">
         <br/>
@@ -80,6 +78,14 @@
         </select>
         </h2>
     </div>
-    </form>
 </div>
+
+<script type="text/javascript">
+
+    function confirmDelete(form) {
+        if (confirm("Are you sure you want to delete the user?")) {
+            form.submit();
+        }
+    }
+</script>
 

@@ -1,10 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="sidebar">
-    <h2>Stats</h2>
+    <h2>Actions</h2>
     <div class="box">
-        Admin Users:<br/>${adminUserCount}<br/><br/>
-        Regular Users:<br/>${regularUserCount}<br/><br/>
-        Total Movies:<br/>${totalNumberOfMovies}<br/><br/>
+        <ul>
+            <li><a href="myMoviesAddServlet">Add</a></li>
+            <li><a href="myMoviesSearchServlet">Search</a></li>
+            <li><a href="myMoviesSignOutServlet">Sign Out</a></li>
+            <l1>${signInMessage}</l1>
+        </ul>
         <br/><br/><br/><br/>
         <form action="newPassword" method="GET">
             <input type="button" name="adminPageButton" value="Change Password" onClick="passwordChange(this.form);"/>

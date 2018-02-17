@@ -82,6 +82,7 @@ class MovieDaoTest {
                 "test",
                 2,
                 "afterhours",
+                "jfourie",
                 user);
 
         int id = dao.insert(newMovie);

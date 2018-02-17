@@ -1,6 +1,7 @@
 package edu.matc.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OrderBy;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -44,6 +45,7 @@ public class User {
     private LocalDate dateActive;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OrderBy(clause = "sort_key ASC")
     private Set<Movie> movies = new HashSet<>();
 
     /**

@@ -1,16 +1,18 @@
 package edu.matc.controller;
 
-import java.io.*;
+import edu.matc.persistence.*;
+import edu.matc.entity.*;
 
+import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet (
-        name = "SignInServlet",
-        urlPatterns = "/signIn"
+        name = "newpassword",
+        urlPatterns = "/newPassword"
 )
-public class SignInServlet extends HttpServlet {
+public class NewPassword extends HttpServlet {
     /**
      *  Handles HTTP GET requests.
      *
@@ -25,15 +27,17 @@ public class SignInServlet extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        session.removeAttribute("currentUser");
+        String currentUser = (String)session.getAttribute("currentUser");
 
-        String url = "/jsp/sign-in.jsp";
+        String newPassword = request.getParameter("hiddenPassword");
 
-        RequestDispatcher  dispatcher =
-                getServletContext().getRequestDispatcher(url);
+        String url = "/jsp/signed-in-admin.jsp";
+
+        request.setAttribute("passwordMessage", "Success!");
+
+        RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-
 
 
 }

@@ -993,23 +993,29 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="249" parent="234" name="movie_id_uindex">
+    <column id="249" parent="234" name="login_id">
+      <Position>10</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="250" parent="234" name="movie_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="250" parent="234" name="movie_user_id_fk">
+    <index id="251" parent="234" name="movie_user_id_fk">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="251" parent="234" name="PRIMARY">
+    <key id="252" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="252" parent="234" name="movie_id_uindex">
+    <key id="253" parent="234" name="movie_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>movie_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="253" parent="234" name="movie_user_id_fk">
+    <foreign-key id="254" parent="234" name="movie_user_id_fk">
       <ColNames>user_id</ColNames>
       <RefSchemaName>mymovies</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -1017,169 +1023,169 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="254" parent="235" name="season_id">
+    <column id="255" parent="235" name="season_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="235" name="desc">
+    <column id="256" parent="235" name="desc">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="256" parent="235" name="PRIMARY">
+    <key id="257" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>season_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="257" parent="236" name="base_url">
+    <column id="258" parent="236" name="base_url">
       <Position>1</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="258" parent="236" name="secure_base_url">
+    <column id="259" parent="236" name="secure_base_url">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="236" name="backfrop_size">
+    <column id="260" parent="236" name="backfrop_size">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="236" name="logo_size">
+    <column id="261" parent="236" name="logo_size">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="236" name="poster_size">
+    <column id="262" parent="236" name="poster_size">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="236" name="profile_size">
+    <column id="263" parent="236" name="profile_size">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="236" name="still_size">
+    <column id="264" parent="236" name="still_size">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="237" name="id">
+    <column id="265" parent="237" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="237" name="login_id">
+    <column id="266" parent="237" name="login_id">
       <Position>2</Position>
       <Comment>This is the user id the user uses to log into the system.</Comment>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="266" parent="237" name="password">
+    <column id="267" parent="237" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="267" parent="237" name="first_name">
+    <column id="268" parent="237" name="first_name">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="268" parent="237" name="last_name">
+    <column id="269" parent="237" name="last_name">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="269" parent="237" name="admin">
+    <column id="270" parent="237" name="admin">
       <Position>6</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="237" name="active">
+    <column id="271" parent="237" name="active">
       <Position>7</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="237" name="date_active">
+    <column id="272" parent="237" name="date_active">
       <Position>8</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="272" parent="237" name="user_id_uindex">
+    <index id="273" parent="237" name="user_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="273" parent="237" name="PRIMARY">
+    <key id="274" parent="237" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="274" parent="237" name="user_id_uindex">
+    <key id="275" parent="237" name="user_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
     </key>
-    <column id="275" parent="238" name="catalog_id">
+    <column id="276" parent="238" name="catalog_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="276" parent="238" name="movie_id">
+    <column id="277" parent="238" name="movie_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="277" parent="238" name="date_watched">
+    <column id="278" parent="238" name="date_watched">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="278" parent="238" name="season_id">
+    <column id="279" parent="238" name="season_id">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="238" name="weather_id">
+    <column id="280" parent="238" name="weather_id">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="280" parent="238" name="PRIMARY">
+    <key id="281" parent="238" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>catalog_id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="281" parent="239" name="weather_id">
+    <column id="282" parent="239" name="weather_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="239" name="desc">
+    <column id="283" parent="239" name="desc">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="283" parent="239" name="PRIMARY">
+    <key id="284" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>weather_id</ColNames>
       <Primary>1</Primary>
