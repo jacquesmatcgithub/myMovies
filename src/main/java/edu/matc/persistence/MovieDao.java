@@ -148,13 +148,9 @@ public class MovieDao {
         CriteriaQuery<Movie> query = builder.createQuery( Movie.class );
         Root<Movie> root = query.from(Movie.class );
         query.select(root).where(builder.equal(root.get(propertyName), value));
-//        query.orderBy(builder.asc(root.get("Movie_.sortKey")));
-
-//        root.get(Movie, "sort")
 
         List<Movie> movies = session.createQuery( query ).getResultList();
 
-//        movies.sort();
         session.close();
         return movies;
     }

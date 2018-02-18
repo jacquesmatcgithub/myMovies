@@ -26,11 +26,38 @@ public class ClickedThumb extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        HttpSession session = request.getSession();
+        String currentUser = (String)session.getAttribute("currentUser");
+        String baseUrlTmdb = (String)session.getAttribute("baseUrlTmdb");
+        String logoSizeTmdb = (String)session.getAttribute("logoSizeTmdb");
+        String backdropSizeTmdb = (String)session.getAttribute("backdropSizeTmdb");
 
-        String thumbId = request.getParameter("id");
+        int thumbId = Integer.parseInt(request.getParameter("id"));
 
-        // set all the parameters the display page will need here.
-        // things like the movie poster, description, and all that
+
+        MovieDao movieDao = new MovieDao();
+        Movie movie = movieDao.getById(thumbId);
+
+        String posterUri = movie.getPosterUri();
+        String movieName = movie.getName();
+
+        String movieDescription = "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ";
+
+        posterUri = baseUrlTmdb + backdropSizeTmdb + "/" + posterUri;
+
+        request.setAttribute("posterUri", posterUri);
+        request.setAttribute("movieName", movieName);
+        request.setAttribute("movieDescription", movieDescription);
+        request.setAttribute("publicRating", "images/3-stars(15 percent).jpeg");
+        request.setAttribute("yourRating", "images/5-stars(15 percent).jpeg");
+        request.setAttribute("movieCast", movieDescription);
+        request.setAttribute("lastTimeWatched", "Saturday, January 2 2018");
+        request.setAttribute("seasonOfYear", "Winter");
+        request.setAttribute("weatherConditions", "Snow");
+        request.setAttribute("temperature", "Cold");
+
+
+
 
         String url = "/jsp/show-movie-details.jsp";
 

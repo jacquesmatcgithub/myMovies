@@ -9,6 +9,7 @@
         <form action="newPassword" method="GET">
             <input type="button" name="adminPageButton" value="Change Password" onClick="passwordChange(this.form);"/>
             <input type="hidden" id="hiddenPassword" name="hiddenPassword"/>
+            <input type="hidden" id="hiddenUserLevel" name="hiddenUserLevel"/>
         </form>
         ${passwordMessage}
     </div>
@@ -20,6 +21,8 @@
         password = prompt('Enter New Password', ' ');
         if (password != null) {
             document.getElementById("hiddenPassword").value=password;
+            document.getElementById("hiddenUserLevel").value="admin";
+
             form.submit();
         }
     }

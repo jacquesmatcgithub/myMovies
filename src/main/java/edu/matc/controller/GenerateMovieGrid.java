@@ -21,7 +21,6 @@ public class GenerateMovieGrid extends HttpServlet {
      *  Handles HTTP GET requests.
      *
      *@param  request               the HttpRequest
-     *@param  response              the HttpResponse
      *@exception  ServletException  if there is a general
      *                              servlet exception
      *@exception  IOException       if there is a general
@@ -31,6 +30,10 @@ public class GenerateMovieGrid extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
+
+        String baseUrlTmdb = (String)session.getAttribute("baseUrlTmdb");
+        String logoSizeTmdb = (String)session.getAttribute("logoSizeTmdb");
+        String backdropSizeTmdb = (String)session.getAttribute("backdropSizeTmdb");
 
         UserDao userDao = new UserDao();
 
@@ -65,9 +68,10 @@ public class GenerateMovieGrid extends HttpServlet {
             }
 
             out.print("<td><a href=\"clickedThumb?id=" + thisMovie.getId() + "\"" +
-                    "><img src=\"" + thisMovie.getPosterUri() + "\"" +
-                    " class=\"post-img\"" +
-                    " title=\"" + thisMovie.getName() + "\"></a></td>");
+                    "><img src=\"" + baseUrlTmdb + logoSizeTmdb + "/" +
+                    thisMovie.getPosterUri() + "\"" +
+                    " class=\"post-img\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
+
             colCount += 1;
 
             if (colCount == 9) {

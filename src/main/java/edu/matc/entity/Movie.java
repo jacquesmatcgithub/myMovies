@@ -62,7 +62,9 @@ public class Movie {
      * @param loginId    the login id
      * @param user       the user
      */
-    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, User user) {
+    public Movie(String name, String posterUri, String thumbUri, String descUri,
+                 String ratingUri, int userRating, String sortKey, String loginId,
+                 User user) {
         this.name = name;
         this.posterUri = posterUri;
         this.thumbUri = thumbUri;

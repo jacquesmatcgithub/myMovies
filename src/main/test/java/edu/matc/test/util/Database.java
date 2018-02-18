@@ -107,8 +107,10 @@ public class Database {
                 if (sql == null) {
                     break;
                 }
-                stmt.executeUpdate(sql);
-                logger.info(sql);
+                if (!sql.isEmpty()) {
+                    stmt.executeUpdate(sql);
+                    logger.info(sql);
+                }
 
             }
         } catch (SQLException se) {

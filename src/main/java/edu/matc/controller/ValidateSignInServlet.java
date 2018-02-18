@@ -79,7 +79,15 @@ public class ValidateSignInServlet extends HttpServlet {
 
         logger.info("Setting up Admin Page");
 
-        return "/jsp/signed-in-user.jsp";
+        MetadataTmdbDao metadataTmdbDao = new MetadataTmdbDao();
 
+        MetadataTmdb metadataTmdb = metadataTmdbDao.getById(1);
+
+        HttpSession session = request.getSession();
+        session.setAttribute("baseUrlTmdb", metadataTmdb.getBaseUrl());
+        session.setAttribute("logoSizeTmdb", metadataTmdb.getLogoSize());
+        session.setAttribute("backdropSizeTmdb", metadataTmdb.getBackdropSize());
+
+        return "/jsp/signed-in-user.jsp";
     }
 }
