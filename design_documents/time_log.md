@@ -21,6 +21,8 @@ Date  | Hours | Notes
 02/14/2018 | 5.0 | Could not get my OneToMany to work. Spent most this time figuring out what the issue was. Also created a dao for my Movies table and a tets dao also.
 02/16/2018 | 4.0 | Got my OneToMany to work. Completed watching the week 5 videos. 
 02/17/2018 | 8.0 | Created junit tests for my new Daos. Got my project's movie grid to run off the database. Started working on the 'display movie' page.
+02/18/2018 | 3.0 | Worked on a framework for accessing the "The Movie Database" API.
+
  
 
 
