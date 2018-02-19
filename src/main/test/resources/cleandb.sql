@@ -14,5 +14,7 @@ INSERT INTO `movie` VALUES (5,'Abyss', 'kRP5dGXDhKt7bDpXX4YBa4dRwlL.jpg','test',
 INSERT INTO `movie` VALUES (6,'The Accountant', 'afhAUuWVB7k7PjJUd4lwO3rzhSq.jpg','test','test','test',4,'accountant',4);
 INSERT INTO `movie` VALUES (7,'Atomic Blonde', 'kV9R5h0Yct1kR8Hf8sJ1nX0Vz4x.jpg','test','test','test',3,'atomicblonde',4);
 INSERT INTO `movie` VALUES (8,'Ultimate Avengers', 'we6igIU5gXVwuSL6M6pJP75TwEf.jpg','test','test','test',3,'ultimateavengers',4);
+INSERT INTO `movie` VALUES (9,'After Earth', 'd0vReo0jcMhBjCLYZAFqWHcb7Lj.jpg','test','test','test',3,'afterearth',4);
 INSERT INTO `metadata_tmdb` VALUES (1, 'http://image.tmdb.org/t/p/', 'w92', 'w300');
+
 

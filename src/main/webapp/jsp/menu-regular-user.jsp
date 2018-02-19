@@ -3,8 +3,12 @@
     <h2>Actions</h2>
     <div class="box">
         <ul>
-            <li><a href="myMoviesAddServlet">Add</a></li>
-            <li><a href="myMoviesSearchServlet">Search</a></li>
+            <li>
+                <form action="addNewMovie" method="get">
+                    <a href="addNewMovie" onClick="enterMovieName(this.form);">Add Movie</a>
+                    <input type="hidden" id="hiddenMovieName" name="hiddenMovieName"/>
+                </form>
+            </li>
             <li><a href="myMoviesSignOutServlet">Sign Out</a></li>
             <l1>${signInMessage}</l1>
         </ul>
@@ -29,6 +33,16 @@
         if (password != null) {
             document.getElementById("hiddenPassword").value=password;
             document.getElementById("hiddenUserLevel").value="regular";
+
+            form.submit();
+        }
+    }
+
+    function enterMovieName(form) {
+        var movieSearchName;
+        movieSearchName = prompt('Movie Title', ' ');
+        if (movieSearchName != null) {
+            document.getElementById("hiddenMovieName").value=movieSearchName;
 
             form.submit();
         }

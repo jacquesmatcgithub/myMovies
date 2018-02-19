@@ -14,7 +14,7 @@ Steps to get movie info:
     Example: https://api.themoviedb.org/3/configuration?api_key=25da234db00ce6d226e5bc0072b39a02
 
 2.  Do a Search:
-    https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
+    https://api.themoviedb.org/3/search/movie?api_key={api_key}&query={movie name}&include_adult=false
     Example: https://api.themoviedb.org/3/search/movie?api_key=25da234db00ce6d226e5bc0072b39a02&query=Jack+Reacher
 
 3.  With the movie id from from the /search, do a query for the details:
@@ -90,7 +90,6 @@ The Accountant
 https://image.tmdb.org/t/p/w92/afhAUuWVB7k7PjJUd4lwO3rzhSq.jpg
 
 After Earth
-
 https://image.tmdb.org/t/p/w92/d0vReo0jcMhBjCLYZAFqWHcb7Lj.jpg"
 
 Atomic Blonde

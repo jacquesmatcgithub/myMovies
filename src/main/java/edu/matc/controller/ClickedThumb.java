@@ -40,7 +40,7 @@ public class ClickedThumb extends HttpServlet {
 
         String posterUri = movie.getPosterUri();
         String movieName = movie.getName();
-
+//TODO Get the movie description from the api
         String movieDescription = "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ";
 
         posterUri = baseUrlTmdb + backdropSizeTmdb + "/" + posterUri;
@@ -48,12 +48,19 @@ public class ClickedThumb extends HttpServlet {
         request.setAttribute("posterUri", posterUri);
         request.setAttribute("movieName", movieName);
         request.setAttribute("movieDescription", movieDescription);
+//TODO Get the movie rating from the api
         request.setAttribute("publicRating", "images/3-stars(15 percent).jpeg");
+//TODO Get the movie description from the api
         request.setAttribute("yourRating", "images/5-stars(15 percent).jpeg");
+//TODO Get the movie cast from the api
         request.setAttribute("movieCast", movieDescription);
+//TODO Get the time wathed from the database
         request.setAttribute("lastTimeWatched", "Saturday, January 2 2018");
+//TODO Get the season from the database
         request.setAttribute("seasonOfYear", "Winter");
+//TODO Get the weather conditions from the database
         request.setAttribute("weatherConditions", "Snow");
+//TODO Get the temperature from the database
         request.setAttribute("temperature", "Cold");
 
 
