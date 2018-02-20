@@ -100,6 +100,10 @@ class UserDaoTest {
         assertEquals(5, users.size());
     }
 
+
+    /**
+     * Verify the successful save/update of a user.
+     */
     @Test
     void updateSuccess() {
         String newLastName = "Davis";

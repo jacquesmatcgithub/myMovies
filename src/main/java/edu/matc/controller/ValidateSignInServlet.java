@@ -11,6 +11,11 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
+/**
+ * The ValidateSigninServlet validates the user and password. It also then routes the
+ * user to either the admin page or the movie grid page depending on whether the user
+ * is an admin user or a regular user.
+ */
 @WebServlet (
         name = "ValidateSignInServlet",
         urlPatterns = "/validateSignIn"
@@ -56,6 +61,16 @@ public class ValidateSignInServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+
+    /**
+     *  If the user is an admin user the setupAdminUser method will route processing to
+     *  the admin page.
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
     private String  setupAdminUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.removeAttribute("signInMessage");
@@ -72,6 +87,15 @@ public class ValidateSignInServlet extends HttpServlet {
     }
 
 
+    /**
+     *  If the user is a regular user the setupNormalUser method will route processing to
+     *  the movie grid page.
+     * @param request
+     * @param response
+     * @return
+     * @throws ServletException
+     * @throws IOException
+     */
     private String setupNormalUser(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

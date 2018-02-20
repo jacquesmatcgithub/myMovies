@@ -113,6 +113,9 @@ class MovieDaoTest {
         assertEquals(5, movies.size());
     }
 
+    /**
+     * Verifies that a movie gets saved/updated successfully.
+     */
     @Test
     void updateSuccess() {
         String newName = "War Games Forever";

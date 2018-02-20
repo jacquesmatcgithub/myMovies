@@ -11,7 +11,10 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-
+//*TODO Update the javadoc
+/**
+ * The type Crud user.
+ */
 @WebServlet (
         name = "CrudUserServlet",
         urlPatterns = "/crudUser"
@@ -105,8 +108,18 @@ public class CrudUser extends HttpServlet {
     }
 
 
-
-
+    /**
+     *
+     * @param request
+     * @param userDao
+     * @param formLoginId
+     * @param formFirstName
+     * @param formLastName
+     * @param formDateActive
+     * @param formAdminUser
+     * @param formActiveUser
+     * @return
+     */
     private String addUpdateUser(HttpServletRequest request, UserDao userDao,  String formLoginId, String formFirstName,
                               String formLastName, LocalDate formDateActive, boolean formAdminUser,
                               boolean formActiveUser) {
@@ -139,16 +152,26 @@ public class CrudUser extends HttpServlet {
     }
 
 
-
-
-
+    /**
+     *
+     * @param request
+     * @param userDao
+     * @return
+     */
     private String deleteUser(HttpServletRequest request, UserDao userDao) {
         return MSG_USER_DELETED_SUCCESSFULLY;
     }
 
 
-
-
+    /**
+     *
+     * @param request
+     * @param formLoginId
+     * @param formFirstName
+     * @param formLastName
+     * @param formDateActive
+     * @return
+     */
     private int findFirstEmptyField(HttpServletRequest request, String formLoginId, String formFirstName,
                                     String formLastName, LocalDate formDateActive) {
         

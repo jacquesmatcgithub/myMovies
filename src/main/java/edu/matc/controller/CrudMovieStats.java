@@ -11,8 +11,11 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+//TODO Add better javadoc
 
-
+/**
+ * The type Crud movie stats.
+ */
 @WebServlet (
         name = "CrudMovieStatsServlet",
         urlPatterns = "/crudMovieStats"
@@ -103,20 +106,40 @@ public class CrudMovieStats extends HttpServlet {
     }
 
 
-
-
+    /**
+     *
+     * @param request
+     * @param userDao
+     * @return
+     */
     private String resetStats(HttpServletRequest request, UserDao userDao) {
         return "";
     }
 
 
-
+    /**
+     *
+     * @param request
+     * @param userDao
+     * @return
+     */
     private String resetAllStats(HttpServletRequest request, UserDao userDao) {
         return "";
     }
 
 
-
+    /**
+     *
+     * @param request
+     * @param userDao
+     * @param formUserId
+     * @param formFirstName
+     * @param formLastName
+     * @param formCatalogName
+     * @param formDateActive
+     * @param formAdminUser
+     * @param formActiveUser
+     */
     private void populateAdminPage(HttpServletRequest request, UserDao userDao,  String formUserId, String formFirstName,
                                    String formLastName, String formCatalogName, LocalDate formDateActive, boolean formAdminUser,
                                    boolean formActiveUser) {

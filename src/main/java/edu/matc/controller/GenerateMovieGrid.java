@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+//TODO Structure this class better
 public class GenerateMovieGrid extends HttpServlet {
     /**
      *  Handles HTTP GET requests.
