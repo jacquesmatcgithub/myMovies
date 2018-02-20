@@ -37,6 +37,12 @@ public class MovieDao {
 
     }
 
+
+    /**
+     * The getSomeMovies function searches the movie table by uer_id with a like.
+     * @param searchTerm
+     * @return
+     */
     public List<Movie> getSomeMovies(String searchTerm) {
 
         logger.debug("Searching for: {}", searchTerm);

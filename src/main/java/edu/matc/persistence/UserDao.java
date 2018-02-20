@@ -18,6 +18,8 @@ public class UserDao {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
+
+
     /**
      * Gets all users.
      *
@@ -37,6 +39,12 @@ public class UserDao {
 
     }
 
+
+    /**
+     * The getSomeUsers function searches the user table by last name with a like.
+     * @param searchTerm
+     * @return
+     */
     public List<User> getSomeUsers(String searchTerm) {
 
         logger.debug("Searching for: {}", searchTerm);
@@ -89,6 +97,7 @@ public class UserDao {
         session.close();
     }
 
+
     /**
      * update user
      * @param user  User to be inserted or updated
@@ -102,6 +111,7 @@ public class UserDao {
         session.close();
         return id;
     }
+
 
     /**
      * Delete a user
@@ -155,7 +165,8 @@ public class UserDao {
     }
 
     /**
-     *
+     * The getByBooleanPropertyEqual function searches the user table on columns that
+     * are defined as Boolean.
      */
     public List<User> getByBooleanPropertyEqual(String propertyName, boolean value) {
         Session session = sessionFactory.openSession();
