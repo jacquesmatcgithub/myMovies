@@ -22,6 +22,10 @@ Date  | Hours | Notes
 02/16/2018 | 4.0 | Got my OneToMany to work. Completed watching the week 5 videos. 
 02/17/2018 | 8.0 | Created junit tests for my new Daos. Got my project's movie grid to run off the database. Started working on the 'display movie' page.
 02/18/2018 | 3.0 | Worked on a framework for accessing the "The Movie Database" API.
+02/19/2018 | 2.0 | Started watching the week 6 videos.
+02/21/2018 | 5.0 | Set up my AWS account, and finished the week 6 videos.
+02/22/2018 | 5.0 | Deployed my week 1 excercise to AWS. Got it to work after much struggle
+
 
  
 
