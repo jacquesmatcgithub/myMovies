@@ -51,7 +51,7 @@ public class MovieDao {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Movie> query = builder.createQuery(Movie.class);
         Root<Movie> root = query.from(Movie.class);
-        Expression<String> propertyPath = root.get("userId");
+        Expression<String> propertyPath = root.get("name");
         query.where(builder.like(propertyPath, searchTerm + "%"));
         List<Movie> movies = session.createQuery(query).getResultList();
 

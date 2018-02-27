@@ -41,15 +41,6 @@ class UserDaoTest {
         assertEquals(5, users.size());
     }
 
-    /**
-     * Gets some users.
-     */
-    @Test
-    void getSomeUsers() {
-        List<User> users = dao.getSomeUsers("f");
-        assertEquals(3, users.size());
-
-    }
 
     /**
      * This method was not built yet. I am using test driven development to
@@ -125,7 +116,6 @@ class UserDaoTest {
     void getByPropertyEqualSuccess() {
         List<User> users = dao.getByPropertyEqual("firstName", "Jacques");
         assertEquals(2, users.size());
-//        assertEquals(2, users.get(0).getId());
     }
 
     /**

@@ -54,6 +54,7 @@ myMovies will aim to solve that problem by making suggestions on what to watch b
 ### Design
 * [Screen Design](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/page_design.pdf)
 * [Database Design](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/data_design.jpeg)
+* [Class Design](https://github.com/jacquesmatcgithub/myMovies/blob/master/design_documents/class_design.pdf)
 
 
 ### Project Plan

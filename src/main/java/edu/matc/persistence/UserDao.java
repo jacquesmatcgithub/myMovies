@@ -41,31 +41,6 @@ public class UserDao {
 
 
     /**
-     * The getSomeUsers function searches the user table by last name with a like.
-     * @param searchTerm
-     * @return
-     */
-    public List<User> getSomeUsers(String searchTerm) {
-
-        logger.debug("Searching for: {}", searchTerm);
-
-        Session session = sessionFactory.openSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<User> query = builder.createQuery(User.class);
-        Root<User> root = query.from(User.class);
-        Expression<String> propertyPath = root.get("lastName");
-        query.where(builder.like(propertyPath, searchTerm + "%"));
-        List<User> users = session.createQuery(query).getResultList();
-
-        session.close();
-
-        return users;
-
-    }
-
-
-
-    /**
      * Gets a user by ID
      * @param searchTerm
      * @return a user

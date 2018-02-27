@@ -8,8 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,7 +37,7 @@ class MovieDaoTest {
     @Test
     void getAllMoviesSuccess() {
         List<Movie> movies = dao.getAllMovies();
-        assertEquals(5, movies.size());
+        assertEquals(9, movies.size());
     }
 
     /**
@@ -48,7 +46,7 @@ class MovieDaoTest {
     @Test
     void getSomeMovies() {
         List<Movie> movies = dao.getSomeMovies("u");
-        assertEquals(3, movies.size());
+        assertEquals(1, movies.size());
 
     }
 
@@ -76,7 +74,7 @@ class MovieDaoTest {
 
         Movie newMovie = new Movie(
                 "After Hours",
-                "https://image.tmdb.org/t/p/w92/s5XkBqUMwE0wQv9NY0XERs64cgs.jpg",
+                "s5XkBqUMwE0wQv9NY0XERs64cgs.jpg",
                 "test",
                 "test",
                 "test",
@@ -110,7 +108,7 @@ class MovieDaoTest {
     @Test
     void getAllSuccess() {
         List<Movie> movies = dao.getAll();
-        assertEquals(5, movies.size());
+        assertEquals(9, movies.size());
     }
 
     /**

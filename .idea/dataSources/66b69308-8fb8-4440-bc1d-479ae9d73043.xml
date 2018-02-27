@@ -1026,23 +1026,29 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="253" parent="235" name="movie_id_uindex">
+    <column id="253" parent="235" name="login_id">
+      <Position>10</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="254" parent="235" name="movie_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="254" parent="235" name="movie_user_id_fk">
+    <index id="255" parent="235" name="movie_user_id_fk">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="255" parent="235" name="PRIMARY">
+    <key id="256" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="256" parent="235" name="movie_id_uindex">
+    <key id="257" parent="235" name="movie_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>movie_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="257" parent="235" name="movie_user_id_fk">
+    <foreign-key id="258" parent="235" name="movie_user_id_fk">
       <ColNames>user_id</ColNames>
       <RefSchemaName>test_mymovies</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -1050,65 +1056,65 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="258" parent="236" name="id">
+    <column id="259" parent="236" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="236" name="login_id">
+    <column id="260" parent="236" name="login_id">
       <Position>2</Position>
       <Comment>This is the user id the user uses to log into the system.</Comment>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="236" name="password">
+    <column id="261" parent="236" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="236" name="first_name">
+    <column id="262" parent="236" name="first_name">
       <Position>4</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="236" name="last_name">
+    <column id="263" parent="236" name="last_name">
       <Position>5</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="236" name="admin">
+    <column id="264" parent="236" name="admin">
       <Position>6</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="236" name="active">
+    <column id="265" parent="236" name="active">
       <Position>7</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="236" name="date_active">
+    <column id="266" parent="236" name="date_active">
       <Position>8</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="236" name="user_id_uindex">
+    <index id="267" parent="236" name="user_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="267" parent="236" name="PRIMARY">
+    <key id="268" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="268" parent="236" name="user_id_uindex">
+    <key id="269" parent="236" name="user_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>user_id_uindex</UnderlyingIndexName>
     </key>
