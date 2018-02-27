@@ -3,9 +3,9 @@
     <h2>Actions</h2>
     <div class="box">
         <ul>
-            <li><a href="myMoviesWatchedItServlet">Watched it!</a></li>
-            <li><a href="myMoviesDeleteServlet">Delete it!</a></li>
-            <li><a href="myMoviesRateServlet">Rate it!</a></li>
+            <li><a href="watchedIt">Watched it!</a></li>
+            <li><a href="deleteMovie">Delete it!</a></li>
+            <li><a href="rateMovie">Rate it!</a></li>
             <l1>${signInMessage}</l1>
         </ul>
     </div>
