@@ -25,6 +25,9 @@ Date  | Hours | Notes
 02/19/2018 | 2.0 | Started watching the week 6 videos.
 02/21/2018 | 5.0 | Set up my AWS account, and finished the week 6 videos.
 02/22/2018 | 5.0 | Deployed my week 1 excercise to AWS. Got it to work after much struggle
+02/23/2018 | 2.0 | Started watching the week 7 videos.
+02/26/2018 | 2.5 | Created my class diagram. Posted reviews of the design reviews for Osama and Holli
+
 
 
  
