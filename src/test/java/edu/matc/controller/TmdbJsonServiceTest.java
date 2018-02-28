@@ -1,5 +1,7 @@
 package edu.matc.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
@@ -7,6 +9,10 @@ import java.net.MalformedURLException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TmdbJsonServiceTest {
+
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+
     @Test
     void getConfigurationTest() {
         // create the object that has the method we want to test
@@ -20,7 +26,7 @@ class TmdbJsonServiceTest {
         try {
             actualValue = test.getConfiguration();
         } catch (MalformedURLException m) {
-            System.out.println(m);
+            logger.error("MalformedURLException", m);
         }
 
         // compare the two, pass of fail
@@ -40,7 +46,7 @@ class TmdbJsonServiceTest {
         try {
             actualValue = test.searchMovies();
         } catch (MalformedURLException m) {
-            System.out.println(m);
+            logger.error("MalformedURLException", m);
         }
 
         // compare the two, pass of fail
@@ -60,7 +66,7 @@ class TmdbJsonServiceTest {
         try {
             actualValue = test.findSpecificMovie();
         } catch (MalformedURLException m) {
-            System.out.println(m);
+            logger.error("MalformedURLException", m);
         }
 
         // compare the two, pass of fail
