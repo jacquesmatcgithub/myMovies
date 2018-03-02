@@ -27,6 +27,8 @@ Date  | Hours | Notes
 02/22/2018 | 5.0 | Deployed my week 1 excercise to AWS. Got it to work after much struggle
 02/23/2018 | 2.0 | Started watching the week 7 videos.
 02/26/2018 | 2.5 | Created my class diagram. Posted reviews of the design reviews for Osama and Holli
+03/01/2018 | 4.5 | Implemented the GenericDao in my week 1 excercise. Added the Role table for the Tomcat Authentication work comming up, and also added the Role to my week 1 excercise output. Also made the output look a little better with a bit of color.
+
 
 
 
