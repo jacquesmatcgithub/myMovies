@@ -6,6 +6,7 @@ import org.hibernate.annotations.OrderBy;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -26,8 +27,9 @@ public class User {
     @Column(name = "login_id")
     private String loginId;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "user_password")
+    private String userPassword;
+
 
     @Column(name = "first_name")
     private String firstName;
@@ -56,7 +58,7 @@ public class User {
 
     public User(String loginId, String password, String firstName, String lastName, boolean admin, boolean active, LocalDate dateActive) {
         this.loginId = loginId;
-        this.password = password;
+        this.userPassword = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.admin = admin;
@@ -88,7 +90,7 @@ public class User {
      * @return the password
      */
     public String getPassword() {
-        return password;
+        return userPassword;
     }
 
     /**
@@ -97,7 +99,7 @@ public class User {
      * @param password the password
      */
     public void setPassword(String password) {
-        this.password = password;
+        this.userPassword = password;
     }
 
     /**
@@ -270,11 +272,32 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", loginId='" + loginId + '\'' +
-                ", password='" + password + '\'' +
+                ", password='" + userPassword + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", admin=" + admin +
                 ", active=" + active +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return id == user.id &&
+                admin == user.admin &&
+                active == user.active &&
+                Objects.equals(loginId, user.loginId) &&
+                Objects.equals(userPassword, user.userPassword) &&
+                Objects.equals(firstName, user.firstName) &&
+                Objects.equals(lastName, user.lastName) &&
+                Objects.equals(dateActive, user.dateActive);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, loginId, userPassword, firstName, lastName, admin, active, dateActive);
     }
 }

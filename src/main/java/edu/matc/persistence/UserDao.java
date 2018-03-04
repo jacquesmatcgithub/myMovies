@@ -42,7 +42,6 @@ public class UserDao {
 
     /**
      * Gets a user by ID
-     * @param searchTerm
      * @return a user
      */
     public User getById(int id) {

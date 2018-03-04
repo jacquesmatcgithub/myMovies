@@ -21,7 +21,7 @@ public class UserData {
         User user = new User();
         Database database = Database.getInstance();
         Connection connection = null;
-        String sql = "SELECT * FROM user WHERE login_id = '" + userId + "' and password = '" + password + "'" +
+        String sql = "SELECT * FROM user WHERE login_id = '" + userId + "' and user_password = '" + password + "'" +
                 " and active = TRUE";
 
         try {
