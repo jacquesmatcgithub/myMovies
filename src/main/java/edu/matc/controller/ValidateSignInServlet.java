@@ -46,7 +46,7 @@ public class ValidateSignInServlet extends HttpServlet {
         List<User> users = userDao.getByPropertyEqual("loginId", loginId);
         
         if (users.size() == 0 || !users.get(0).getPassword().equals(password)) {
-            url = "/jsp/sign-in.jsp";
+            url = "/sign-in.jsp";
             request.setAttribute("signInMessage", "Invalid Sign In");
         } else if (users.get(0).getAdmin()) {
             url = setupAdminUser(request, response);
@@ -83,7 +83,7 @@ public class ValidateSignInServlet extends HttpServlet {
         ServletContext servletContext = getServletContext();
         servletContext.setAttribute("adminPage", adminPage);
 
-        return "/jsp/signed-in-admin.jsp";
+        return "/signed-in-admin.jsp";
     }
 
 
@@ -112,6 +112,6 @@ public class ValidateSignInServlet extends HttpServlet {
         session.setAttribute("logoSizeTmdb", metadataTmdb.getLogoSize());
         session.setAttribute("backdropSizeTmdb", metadataTmdb.getBackdropSize());
 
-        return "/jsp/signed-in-user.jsp";
+        return "/signed-in-user.jsp";
     }
 }

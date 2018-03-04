@@ -36,9 +36,9 @@ public class NewPassword extends HttpServlet {
 
         String url;
         if (userLevel.equals(ADMIN_USER)) {
-            url = "/jsp/signed-in-admin.jsp";
+            url = "/signed-in-admin.jsp";
         } else {
-            url = "/jsp/signed-in-user.jsp";
+            url = "/signed-in-user.jsp";
         }
 
         request.setAttribute("passwordMessage", "Success!");

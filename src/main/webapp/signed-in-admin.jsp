@@ -2,13 +2,10 @@
 
 <!DOCTYPE html>
 
+<c:set var = "pageTitle" value="ADMIN" scope="request" />
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<c:set var="pageTitle" value="myMovies" scope="request" />
-
-<c:import url="head-tag.jsp" />
-
-<!--
 <head>
     <title>myMovies</title>
     <meta http-equiv="Content-Language" content="German" />
@@ -16,12 +13,9 @@
     <link rel="stylesheet" type="text/css" href="css/myMovieStyle.css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css' />
 </head>
--->
 
 <body>
 <div id="wrap">
-    <c:import url="header.jsp" />
-<!--
     <div id="header">
         <h1>
             <a href="index.jsp">myMovies</a>
@@ -32,30 +26,12 @@
             </div>
         </h1>
     </div>
--->
 
-    <c:import url="menu-pick-path.jsp" />
+    <c:import url="menu-admin.jsp" />
 
-<!--
-    <div id="sidebar">
-        <h3>Sign In:</h3>
-            <a href="prepareAdminPage">Admin</a>
-            <br />
-            <a href="signed-in-user.jsp">Collector</a>
-    </div>
--->
+    <c:import url="content-admin.jsp" />
 
-    <c:import url="content-home.jsp" />
-
-<!--
-    <div id="content" style="position:center; top:250px; height:473px;">
-        <img src="images/background.jpeg" class="post-img" alt="background" />
-    </div>
--->
     <c:import url="footer.jsp" />
 </div>
 </body>
 </html>
-
-
-

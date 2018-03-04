@@ -26,7 +26,7 @@ public class registerNewUser extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String url = "/jsp/new-user.jsp";
+        String url = "/new-user.jsp";
 
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);

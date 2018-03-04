@@ -6,16 +6,16 @@
 
 <c:set var="pageTitle" value="myMovies" scope="request" />
 
-<c:import url="jsp/head-tag.jsp" />
+<c:import url="head-tag.jsp" />
 <body>
 <div id="wrap">
-  <c:import url="jsp/header.jsp" />
+  <c:import url="header.jsp" />
 
-  <c:import url="jsp/menu-sign-in-failed.jsp" />
+  <c:import url="menu-sign-in-failed.jsp" />
 
-  <c:import url="content/content-home.jsp" />
+  <c:import url="content-home.jsp" />
 
-  <c:import url="jsp/footer.jsp" />
+  <c:import url="footer.jsp" />
 </div>
 </body>
 </html>

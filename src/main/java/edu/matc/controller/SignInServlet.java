@@ -27,7 +27,7 @@ public class SignInServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.removeAttribute("currentUser");
 
-        String url = "/jsp/sign-in.jsp";
+        String url = "/sign-in.jsp";
 
         RequestDispatcher  dispatcher =
                 getServletContext().getRequestDispatcher(url);

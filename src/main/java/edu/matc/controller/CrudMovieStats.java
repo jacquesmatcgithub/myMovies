@@ -51,7 +51,7 @@ public class CrudMovieStats extends HttpServlet {
             throws ServletException, IOException {
 
         UserDao userDao = new UserDao();
-        String url = "/jsp/signed-in-admin.jsp";
+        String url = "signed-in-admin.jsp";
         String userDetailsMessage = "";
 
         HttpSession session = request.getSession();

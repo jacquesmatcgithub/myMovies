@@ -31,7 +31,7 @@ public class SelectedUser extends HttpServlet {
         ServletContext servletContext = getServletContext();
         AdminPage adminPage = (AdminPage)servletContext.getAttribute("adminPage");
 
-        String url = "/jsp/signed-in-admin.jsp";
+        String url = "/signed-in-admin.jsp";
 
         String loginIdSelected = request.getParameter("listOfUsers").trim();
 

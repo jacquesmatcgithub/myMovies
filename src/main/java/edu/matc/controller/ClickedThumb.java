@@ -66,7 +66,7 @@ public class ClickedThumb extends HttpServlet {
 
 
 
-        String url = "/jsp/show-movie-details.jsp";
+        String url = "show-movie-details.jsp";
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);

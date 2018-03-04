@@ -11,7 +11,7 @@
 
     <c:import url="menu-regular-user.jsp" />
 
-    <c:import url="../content/content-movie-grid.jsp" />
+    <c:import url="content-movie-grid.jsp" />
 
     <c:import url="footer.jsp" />
 </div>

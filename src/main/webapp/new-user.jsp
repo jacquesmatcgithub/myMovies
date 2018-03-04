@@ -2,6 +2,8 @@
 
 <!DOCTYPE html>
 
+<c:set var = "pageTitle" value="ADMIN" scope="request" />
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <c:import url="head-tag.jsp" />
@@ -9,9 +11,9 @@
 <div id="wrap">
     <c:import url="header.jsp" />
 
-    <c:import url="menu-show-movie-details.jsp" />
+    <c:import url="menu-admin.jsp" />
 
-    <c:import url="../content/content-show-movie-details.jsp" />
+    <c:import url="content-new-user.jsp" />
 
     <c:import url="footer.jsp" />
 </div>
