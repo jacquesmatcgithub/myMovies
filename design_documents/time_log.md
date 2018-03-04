@@ -28,6 +28,9 @@ Date  | Hours | Notes
 02/23/2018 | 2.0 | Started watching the week 7 videos.
 02/26/2018 | 2.5 | Created my class diagram. Posted reviews of the design reviews for Osama and Holli
 03/01/2018 | 4.5 | Implemented the GenericDao in my week 1 excercise. Added the Role table for the Tomcat Authentication work comming up, and also added the Role to my week 1 excercise output. Also made the output look a little better with a bit of color.
+03/03/2018 | 6.0 | Finished watching the week 7 videos and reading material. Added form based authentication to my week 1 project
+03/04/2018 | 9.0 | Added authentication to my project. Also re-worked the entire project layout because of all the problems I was having with loosing the css formatting. I basically moved all my jsp files into one place. It solved all my issues
+
 
 
 
