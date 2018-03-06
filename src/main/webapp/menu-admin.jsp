@@ -13,9 +13,7 @@
         </form>
         ${passwordMessage}
         <br/><br/><br/><br/>
-        <form action="signOut" method="GET">
-            <input type="submit" value="Sign Out" />
-        </form>
+        <a href="signOut">Sign Out</a>
     </div>
 </div>
 

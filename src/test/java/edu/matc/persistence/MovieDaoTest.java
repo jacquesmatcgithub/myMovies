@@ -37,7 +37,7 @@ class MovieDaoTest {
     @Test
     void getAllMoviesSuccess() {
         List<Movie> movies = dao.getAllMovies();
-        assertEquals(9, movies.size());
+        assertEquals(33, movies.size());
     }
 
     /**
@@ -108,7 +108,7 @@ class MovieDaoTest {
     @Test
     void getAllSuccess() {
         List<Movie> movies = dao.getAll();
-        assertEquals(9, movies.size());
+        assertEquals(33, movies.size());
     }
 
     /**

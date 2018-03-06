@@ -14,6 +14,7 @@
   </login-config>
 
   <!-- Protect the admin and regular user pages. -->
+<!--
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>myMovies</web-resource-name>
@@ -23,7 +24,7 @@
       <role-name>admin</role-name>
     </auth-constraint>
   </security-constraint>
-
+-->
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>myMovies</web-resource-name>
