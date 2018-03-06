@@ -2,13 +2,11 @@ package edu.matc.controller;
 
 import edu.matc.entity.Movie;
 import edu.matc.entity.User;
-import edu.matc.persistence.MovieDao;
 import edu.matc.persistence.UserDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;

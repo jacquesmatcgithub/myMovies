@@ -9,7 +9,7 @@
                     <input type="hidden" id="hiddenMovieName" name="hiddenMovieName"/>
                 </form>
             </li>
-            <li><a href="myMoviesSignOutServlet">Sign Out</a></li>
+            <li><a href="signOut">Sign Out</a></li>
             <l1>${signInMessage}</l1>
         </ul>
         <br/><br/><br/><br/>

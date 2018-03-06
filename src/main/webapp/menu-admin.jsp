@@ -12,6 +12,10 @@
             <input type="hidden" id="hiddenUserLevel" name="hiddenUserLevel"/>
         </form>
         ${passwordMessage}
+        <br/><br/><br/><br/>
+        <form action="signOut" method="GET">
+            <input type="submit" value="Sign Out" />
+        </form>
     </div>
 </div>
 

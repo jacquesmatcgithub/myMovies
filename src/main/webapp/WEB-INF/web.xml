@@ -37,7 +37,7 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>myMovies</web-resource-name>
-      <url-pattern>/signed-in-user.jsp</url-pattern>
+      <url-pattern>/prepareUserPage</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>regular</role-name>

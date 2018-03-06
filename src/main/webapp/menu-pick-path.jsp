@@ -4,5 +4,5 @@
     <h3>Sign In:</h3>
     <a href="prepareAdminPage">Admin</a>
     <br />
-    <a href="signed-in-user.jsp">Collector</a>
+    <a href="prepareUserPage">Collector</a>
 </div>
