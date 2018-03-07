@@ -37,7 +37,4 @@ public class SignOut extends HttpServlet {
                 getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-
-
-
 }

@@ -21,6 +21,7 @@ class UserDaoTest {
     UserDao dao;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+
     /**
      * Sets up.
      */
@@ -31,6 +32,7 @@ class UserDaoTest {
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
     }
+
 
     /**
      * Gets all users success.
@@ -109,6 +111,8 @@ class UserDaoTest {
 
         assertEquals(newLastName, retrievedUser.getLastName());
     }
+
+
     /**
      * Verify successful get by property (equal match)
      */
@@ -118,6 +122,7 @@ class UserDaoTest {
         assertEquals(2, users.size());
     }
 
+
     /**
      * Verify successful get by boolean property (equal match)
      */
@@ -126,6 +131,8 @@ class UserDaoTest {
         List<User> users = dao.getByBooleanPropertyEqual("admin", TRUE);
         assertEquals(2, users.size());
     }
+
+
     /**
      * Verify successful get by property (like match)
      */

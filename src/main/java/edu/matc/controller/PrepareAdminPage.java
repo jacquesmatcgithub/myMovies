@@ -1,9 +1,5 @@
 package edu.matc.controller;
 
-import edu.matc.entity.MetadataTmdb;
-import edu.matc.entity.User;
-import edu.matc.persistence.MetadataTmdbDao;
-import edu.matc.persistence.UserDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * The ValidateSigninServlet validates the user and password. It also then routes the
@@ -44,8 +39,6 @@ public class PrepareAdminPage extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-//        String loginId = request.getParameter("loginId").trim();
-
         request.removeAttribute("signInMessage");
 
         logger.info("Setting up Admin Page");
@@ -64,8 +57,6 @@ public class PrepareAdminPage extends HttpServlet {
          */
 //        String loginId = request.getUserPrincipal().getName();  This also works
 //        loginId = request.getRemoteUser();
-
-
 
         session.setAttribute("currentUser", request.getRemoteUser());
 

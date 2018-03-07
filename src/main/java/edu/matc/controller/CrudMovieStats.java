@@ -149,8 +149,6 @@ public class CrudMovieStats extends HttpServlet {
         request.setAttribute("detailsUserId", formUserId);
         request.setAttribute("detailsFirstName", formFirstName);
         request.setAttribute("detailsLastName", formLastName);
-//TODO Must still populate the catalog name
-        request.setAttribute("detailsCatalogName", "catalog table not defined yet");
         request.setAttribute("detailsDateActive", formDateActive);
 
         if (formActiveUser) {

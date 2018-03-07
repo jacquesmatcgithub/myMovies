@@ -45,7 +45,6 @@ public class GenerateMovieGrid extends HttpServlet {
         }
 
         //TODO If the sortkey is numeric, use the entire sort key. Otherwise, use only the first least significant byte
-//        String holdSortLocation = movieList.get(0).getSortKey().substring(0,1);
         String holdSortLocation = movieList.get(0).getSortKey();
 
         if (!holdSortLocation.matches("[0-9]+")) {
@@ -53,13 +52,11 @@ public class GenerateMovieGrid extends HttpServlet {
         }
 
         out.print("<table>");
-//        out.print("<h2>" + holdSortLocation + "</h2>");
         out.print(holdSortLocation);
 
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-//            String sortLocation = thisMovie.getSortKey().substring(0, 1);
             String sortLocation = thisMovie.getSortKey();
 
             if (!sortLocation.matches("[0-9]+")) {
@@ -70,7 +67,6 @@ public class GenerateMovieGrid extends HttpServlet {
                 colCount = 1;
                 holdSortLocation = sortLocation;
                 out.print("</table>");
-//                out.print("<h2>" + holdSortLocation + "</h2>");
                 out.print("<br/>" + holdSortLocation);
                 out.print("<table>");
             }
