@@ -36,4 +36,5 @@ Date  | Hours | Notes
 03/10/2018 | 6.0 | Working on moving my project to AWS for checkpoint 3. Watched the Week 8 videos. 
 03/11/2018 | 9.0 | Working on moving my project to AWS for checkpiont 3. 
 03/12/2018 | 2.0 | Started watching the week 9 videos. Worked on the week 8 excercise.
-03/14/2018 | 5.0 | Worked on the week 8 excercise. I had a lot of issues getting logging to work.
+03/14/2018 | 5.0 | Worked on the week 8 excercise. I had a lot of issues getting logging to work. I had my "logger.file.name" set to "edu.matc" instead of "gov.noaa". I also ran into issues because last week I changed my mySQL password, but I did not update any of my "hibernate.cfg.xml" files.
+
