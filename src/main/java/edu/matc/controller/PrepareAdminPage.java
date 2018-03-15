@@ -14,10 +14,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * The ValidateSigninServlet validates the user and password. It also then routes the
- * user to either the admin page or the movie grid page depending on whether the user
- * is an admin user or a regular user.
- */
+ * The PrepareAdminPage class instantiates an AdminPage object and then invokes the
+ * signed-in-admin.jsp
+ * */
 @WebServlet (
         name = "PrepareAdminPage",
         urlPatterns = "/prepareAdminPage"
@@ -51,12 +50,9 @@ public class PrepareAdminPage extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-
-        /**
-         * Here are two ways to get the user id after authentication
-         */
-//        String loginId = request.getUserPrincipal().getName();  This also works
-//        loginId = request.getRemoteUser();
+//      Here are two ways to get the user id after authentication
+//      String loginId = request.getUserPrincipal().getName();  This also works
+//      loginId = request.getRemoteUser();
 
         session.setAttribute("currentUser", request.getRemoteUser());
 

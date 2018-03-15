@@ -29,25 +29,25 @@
         <br/>
         <form action="crudUser" method="GET">
             <table>
-                <tr><td align="right"><h2>Details</h2></td><td align="center"><b>${userDetailsMessage}</b></td></tr>
+                <tr><td align="right"><h2>Details</h2></td><td align="center"><b style="color:indianred">${userDetailsMessage}</b></td></tr>
                 <tr>
                     <td align="right">Login ID:</td>
-                    <td><input ${loginIdAutofocus} type="text" name="loginId" id="inputField" size="25" maxlength="45" value="${detailsLoginId}"/><br/></td>
+                    <td><input ${loginIdAutofocus} type="text" name="loginId" id="inputField" size="25" maxlength="45" value="${detailsLoginId}" /><br/></td>
                 </tr>
                 <tr></tr>
                 <tr>
                     <td align="right">First Name:</td>
-                    <td><input ${firstNameAutofocus} type="text" name="firstName" size="25" maxlength="45" value="${detailsFirstName}"/>
+                    <td><input ${firstNameAutofocus} type="text" name="firstName" size="25" maxlength="45" value="${detailsFirstName}" />
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Last Name:</td>
-                    <td><input ${lastNameAutofocus} type="text" name="lastName" size="25" maxlength="45" value="${detailsLastName}"/>
+                    <td><input ${lastNameAutofocus} type="text" name="lastName" size="25" maxlength="45" value="${detailsLastName}" />
                     </td>
                 </tr>
                 <tr>
                     <td align="right">Date Active:</td>
-                    <td><input ${dateActiveAutofocus} type="date" name="dateActive" size="25" maxlength="45" value="${detailsDateActive}"/></td>
+                    <td><input ${dateActiveAutofocus} type="date" name="dateActive" size="25" maxlength="45" value="${detailsDateActive}" /></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -58,7 +58,7 @@
                     <td></td>
                     <td><br/>
                         <input type="submit" name="adminPageButton" value="Add/Update" />
-                        <input type="button" name="adminPageButton" value="Delete" onClick="confirmDelete(this.form);"/>
+                        <input type="submit" name="adminPageButton" value="Delete" onClick="confirmDelete(this.form);"/>
                     </td>
                 </tr>
             </table>
@@ -81,7 +81,6 @@
 </div>
 
 <script type="text/javascript">
-
     function confirmDelete(form) {
         if (confirm("Are you sure you want to delete the user?")) {
             form.submit();

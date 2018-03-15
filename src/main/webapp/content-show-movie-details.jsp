@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td align="center"><img src="${publicRating}" width="100" class="post-img" title="Movie Rating"></td>
-                <td align="center"><img src="${yourRating}" width="100" class="post-img" title="Your Rating"></td>
+                <td align="center"><img href="clickedRating?ratingNumber=${ratingNumber}" src="${userRating}" width="100" class="post-img" title="Your Rating"></td>
             </tr>
         </table>
         <br/><br/>

@@ -26,7 +26,7 @@ public class AddNewMovie extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String url = "signed-in-user.jsp";
+        String url = "/signed-in-user.jsp";
 
         RequestDispatcher  dispatcher =
                 getServletContext().getRequestDispatcher(url);

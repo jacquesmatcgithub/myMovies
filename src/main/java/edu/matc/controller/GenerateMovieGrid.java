@@ -41,6 +41,7 @@ public class GenerateMovieGrid extends HttpServlet {
         List<Movie> movieList = movies.stream().collect(Collectors.toList());
 
         if (movieList.size() == 0) {
+
             return;
         }
 

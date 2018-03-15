@@ -40,6 +40,9 @@ public class ClickedThumb extends HttpServlet {
 
         String posterUri = movie.getPosterUri();
         String movieName = movie.getName();
+        int userRating = movie.getUserRating();
+        request.setAttribute("ratingNumber", Integer.toString(userRating));
+
 //TODO Get the movie description from the api
         String movieDescription = "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ";
 
@@ -47,11 +50,34 @@ public class ClickedThumb extends HttpServlet {
 
         request.setAttribute("posterUri", posterUri);
         request.setAttribute("movieName", movieName);
+//TODO Get the movie description from the api
         request.setAttribute("movieDescription", movieDescription);
+
 //TODO Get the movie rating from the api
         request.setAttribute("publicRating", "images/3-stars(15 percent).jpeg");
-//TODO Get the movie description from the api
-        request.setAttribute("yourRating", "images/5-stars(15 percent).jpeg");
+
+        String ratingImageName = "images/stars-0.jpeg";
+
+        switch (userRating) {
+            case 1:
+                ratingImageName = "images/stars-1.jpeg";
+                break;
+            case 2:
+                ratingImageName = "images/stars-2.jpeg";
+                break;
+            case 3:
+                ratingImageName = "images/stars-3.jpeg";
+                break;
+            case 4:
+                ratingImageName = "images/stars-4.jpeg";
+                break;
+            case 5:
+                ratingImageName = "images/stars-5.jpeg";
+                break;
+        }
+
+        request.setAttribute("userRating", ratingImageName);
+
 //TODO Get the movie cast from the api
         request.setAttribute("movieCast", movieDescription);
 //TODO Get the time wathed from the database

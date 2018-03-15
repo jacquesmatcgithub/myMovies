@@ -13,7 +13,7 @@
         </form>
         ${passwordMessage}
         <br/><br/><br/><br/>
-        <a href="signOut">Sign Out</a>
+        <b style="color:indianred"><a href="signOut">Sign Out</a></b>
     </div>
 </div>
 

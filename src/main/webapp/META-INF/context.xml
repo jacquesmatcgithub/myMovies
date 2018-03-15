@@ -1,7 +1,7 @@
 <Context docBase="myMovies" path="/myMovies" reloadable="true">
     <Realm className="org.apache.catalina.realm.JDBCRealm"
            driverName="com.mysql.jdbc.Driver"
-           connectionURL="jdbc:mysql://localhost:3306/myMovies?user=tomcat&amp;password=tomcat"
+           connectionURL="jdbc:mysql://localhost:3306/myMovies?user=tomcat&amp;password=MATCHeritage09"
            userTable="user" userNameCol="login_id" userCredCol="user_password"
            userRoleTable="role" roleNameCol="role_name" >
     </Realm>
