@@ -31,7 +31,9 @@ Date  | Hours | Notes
 03/03/2018 | 6.0 | Finished watching the week 7 videos and reading material. Added form based authentication to my week 1 project
 03/04/2018 | 9.0 | Added authentication to my project. Also re-worked the entire project layout because of all the problems I was having with loosing the css formatting. I basically moved all my jsp files into one place. It solved all my issues
 03/05/2018 | 3.0 | Worked on enhancing my indie project so the movie grid can handle movie titles that begin with numerics and that they get sorted correctly.  I'm there if the entire movie title is a numeric, but if you have a movie like 20,000 Leagues Under the Sea, then it still croaks
-03/07/2018 | 2.0 | Working on moving my project to AWS.
-03/09/2018 | 3.0 | Working on moving my project to AWS.
-03/10/2018 | 6.0 | Working on moving my project to AWS. Watched the Week 8 videos. 
-03/11/2018 | 9.0 | Working on moving my project to AWS. 
+03/07/2018 | 2.0 | Working on moving my project to AWS for checkpoint 3.
+03/09/2018 | 3.0 | Working on moving my project to AWS for checkpoint 3.
+03/10/2018 | 6.0 | Working on moving my project to AWS for checkpoint 3. Watched the Week 8 videos. 
+03/11/2018 | 9.0 | Working on moving my project to AWS for checkpiont 3. 
+03/12/2018 | 2.0 | Started watching the week 9 videos. Worked on the week 8 excercise.
+03/14/2018 | 5.0 | Worked on the week 8 excercise. I had a lot of issues getting logging to work.
