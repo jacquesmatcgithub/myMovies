@@ -37,7 +37,7 @@ class MovieDaoTest {
     @Test
     void getAllMoviesSuccess() {
         List<Movie> movies = dao.getAllMovies();
-        assertEquals(34, movies.size());
+        assertEquals(81, movies.size());
     }
 
     /**
@@ -46,7 +46,7 @@ class MovieDaoTest {
     @Test
     void getSomeMovies() {
         List<Movie> movies = dao.getSomeMovies("u");
-        assertEquals(1, movies.size());
+        assertEquals(2, movies.size());
 
     }
 
@@ -108,7 +108,7 @@ class MovieDaoTest {
     @Test
     void getAllSuccess() {
         List<Movie> movies = dao.getAll();
-        assertEquals(34, movies.size());
+        assertEquals(81, movies.size());
     }
 
     /**
@@ -144,6 +144,6 @@ class MovieDaoTest {
     @Test
     void getByPropertyLikeSuccess() {
         List<Movie> movies = dao.getByPropertyLike("name", "runner");
-        assertEquals(2, movies.size());
+        assertEquals(3, movies.size());
     }
 }

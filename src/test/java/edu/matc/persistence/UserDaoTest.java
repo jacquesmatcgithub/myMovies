@@ -40,7 +40,7 @@ class UserDaoTest {
     @Test
     void getAllUsersSuccess() {
         List<User> users = dao.getAllUsers();
-        assertEquals(5, users.size());
+        assertEquals(7, users.size());
     }
 
 
@@ -90,7 +90,7 @@ class UserDaoTest {
     @Test
     void getAllSuccess() {
         List<User> users = dao.getAll();
-        assertEquals(5, users.size());
+        assertEquals(7, users.size());
     }
 
 
@@ -129,7 +129,7 @@ class UserDaoTest {
     @Test
     void getByBooleanPropertyEqualSuccess() {
         List<User> users = dao.getByBooleanPropertyEqual("admin", TRUE);
-        assertEquals(2, users.size());
+        assertEquals(3, users.size());
     }
 
 
