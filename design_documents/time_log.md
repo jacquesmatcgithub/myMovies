@@ -40,5 +40,7 @@ Date  | Hours | Notes
 03/15/2018 | 4.0 | Worked on my week 8 exercise 2 & 3 & submitted them to Paula for review. Worked on my indie project checkpoint #3 & submitted it to Paula. Read some of the reading materials for week 9.
 03/17/2018 | 3.5 | Watched the week 9 videos and did the activities
 03/18/2018 | 4.0 | Worked on the week 9 exercise.
+03/23/2018 | 6.0 | Generated the json classes I'll need for accessing the movie database api. Also wrote junit methods for a number of the json classes.
+
 
 
