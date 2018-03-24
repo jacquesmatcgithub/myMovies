@@ -1,0 +1,93 @@
+{
+  "response": {
+    "version":"0.1",
+    "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+    "features": {
+      "conditions": 1
+    }
+  }
+,	"current_observation": {
+  "image": {
+    "url":"http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+    "title":"Weather Underground",
+    "link":"http://www.wunderground.com"
+  },
+  "display_location": {
+    "full":"Madison, WI",
+    "city":"Madison",
+    "state":"WI",
+    "state_name":"Wisconsin",
+    "country":"US",
+    "country_iso3166":"US",
+    "zip":"53701",
+    "magic":"1",
+    "wmo":"99999",
+    "latitude":"43.06999969",
+    "longitude":"-89.40000153",
+    "elevation":"270.1"
+  },
+  "observation_location": {
+    "full":"Atmospheric, Oceanic and Space Sciences Building, Madison, Wisconsin",
+    "city":"Atmospheric, Oceanic and Space Sciences Building, Madison",
+    "state":"Wisconsin",
+    "country":"US",
+    "country_iso3166":"US",
+    "latitude":"43.070847",
+    "longitude":"-89.406898",
+    "elevation":"896 ft"
+  },
+  "estimated": {
+  },
+  "station_id":"KWIMADIS52",
+  "observation_time":"Last Updated on March 24, 12:30 PM CDT",
+  "observation_time_rfc822":"Sat, 24 Mar 2018 12:30:03 -0500",
+  "observation_epoch":"1521912603",
+  "local_time_rfc822":"Sat, 24 Mar 2018 12:32:05 -0500",
+  "local_epoch":"1521912725",
+  "local_tz_short":"CDT",
+  "local_tz_long":"America/Chicago",
+  "local_tz_offset":"-0500",
+  "weather":"Partly Cloudy",
+  "temperature_string":"34.7 F (1.5 C)",
+  "temp_f":34.7,
+  "temp_c":1.5,
+  "relative_humidity":"47%",
+  "wind_string":"From the East at 17.8 MPH Gusting to 28.1 MPH",
+  "wind_dir":"East",
+  "wind_degrees":86,
+  "wind_mph":17.8,
+  "wind_gust_mph":"28.1",
+  "wind_kph":28.6,
+  "wind_gust_kph":"45.2",
+  "pressure_mb":"1024",
+  "pressure_in":"30.25",
+  "pressure_trend":"0",
+  "dewpoint_string":"17 F (-8 C)",
+  "dewpoint_f":17,
+  "dewpoint_c":-8,
+  "heat_index_string":"NA",
+  "heat_index_f":"NA",
+  "heat_index_c":"NA",
+  "windchill_string":"24 F (-4 C)",
+  "windchill_f":"24",
+  "windchill_c":"-4",
+  "feelslike_string":"24 F (-4 C)",
+  "feelslike_f":"24",
+  "feelslike_c":"-4",
+  "visibility_mi":"10.0",
+  "visibility_km":"16.1",
+  "solarradiation":"0",
+  "UV":"2","precip_1hr_string":"0.00 in ( 0 mm)",
+  "precip_1hr_in":"0.00",
+  "precip_1hr_metric":" 0",
+  "precip_today_string":"0.00 in (0 mm)",
+  "precip_today_in":"0.00",
+  "precip_today_metric":"0",
+  "icon":"partlycloudy",
+  "icon_url":"http://icons.wxug.com/i/c/k/partlycloudy.gif",
+  "forecast_url":"http://www.wunderground.com/US/WI/Madison.html",
+  "history_url":"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KWIMADIS52",
+  "ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=43.070847,-89.406898",
+  "nowcast":""
+}
+}

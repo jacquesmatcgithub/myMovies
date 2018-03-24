@@ -18,3 +18,8 @@ Contact email:
 jfourie@madisoncollege.edu
 
 
+
+
+Get current conditions in US City
+http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/CA/San_Francisco.json
+http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/WI/Madison.json

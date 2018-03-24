@@ -1,7 +1,5 @@
 package edu.matc.controller;
 
-import edu.matc.entity.MetadataTmdb;
-import edu.matc.persistence.MetadataTmdbDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -44,9 +42,7 @@ public class PrepareUserPage extends HttpServlet {
 
         logger.info("Setting up User Page");
 
-
         HttpSession session = request.getSession();
-
 
         /**
          * Here are two ways to get the user id after authentication
@@ -56,12 +52,8 @@ public class PrepareUserPage extends HttpServlet {
 
         session.setAttribute("currentUser", request.getRemoteUser());
 
-
-        MetadataTmdbDao metadataTmdbDao = new MetadataTmdbDao();
-        MetadataTmdb metadataTmdb = metadataTmdbDao.getById(1);
-        session.setAttribute("baseUrlTmdb", metadataTmdb.getBaseUrl());
-        session.setAttribute("logoSizeTmdb", metadataTmdb.getLogoSize());
-        session.setAttribute("backdropSizeTmdb", metadataTmdb.getBackdropSize());
+        // Load myMovies.properties, call the tmdb api and set session attributes for all
+        AppConfig appConfig = new AppConfig(request);
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-user.jsp");
         dispatcher.forward(request, response);
