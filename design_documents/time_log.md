@@ -41,6 +41,4 @@ Date  | Hours | Notes
 03/17/2018 | 3.5 | Watched the week 9 videos and did the activities
 03/18/2018 | 4.0 | Worked on the week 9 exercise.
 03/23/2018 | 6.0 | Generated the json classes I'll need for accessing the movie database api. Also wrote junit methods for a number of the json classes.
-
-
-
+03/24/2018 | 4.0 | Added code so my indie project accesses the tmdb api to get the configuration settings.
