@@ -51,6 +51,7 @@ public class PrepareUserPage extends HttpServlet {
 //        loginId = request.getRemoteUser();
 
         session.setAttribute("currentUser", request.getRemoteUser());
+        session.setAttribute("userLevel", "collector");
 
         // Load myMovies.properties, call the tmdb api and set session attributes for all
         AppConfig appConfig = new AppConfig(request);

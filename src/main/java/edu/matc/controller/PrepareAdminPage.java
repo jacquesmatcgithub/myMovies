@@ -55,6 +55,8 @@ public class PrepareAdminPage extends HttpServlet {
 //      loginId = request.getRemoteUser();
 
         session.setAttribute("currentUser", request.getRemoteUser());
+        session.setAttribute("userLevel", "admin");
+
 
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-admin.jsp");
         dispatcher.forward(request, response);

@@ -25,6 +25,9 @@ public class AddNewMovie extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        String currentUser = (String)session.getAttribute("currentUser");
+
+        String movieName = request.getParameter("movieName");
 
         String url = "/signed-in-user.jsp";
 

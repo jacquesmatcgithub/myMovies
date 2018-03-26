@@ -2,49 +2,23 @@
 <div id="sidebar">
     <h2>Actions</h2>
     <div class="box">
-        <ul>
-            <li>
-                <form action="addNewMovie" method="get">
-                    <a href="addNewMovie" onClick="enterMovieName(this.form);">Add Movie</a>
-                    <input type="hidden" id="hiddenMovieName" name="hiddenMovieName"/>
-                </form>
-            </li>
-            <b style="color:indianred"><a href="signOut">Sign Out</a></b>
-            <l1>${signInMessage}</l1>
-        </ul>
-        <br/><br/><br/><br/>
-        <br/><br/><br/><br/>
-        <br/><br/><br/><br/>
-        <br/><br/><br/><br/>
-        <br/><br/>
+        <form action="addNewMovie" method="GET">
+            Add New Movie:<br/>
+            <input type="text" name="movieName" size="12" maxlength="45"/> <br/>
+            <input type="submit" value="Go!" />
+        </form>
+        <br/><br><br><br/><br/><br/>
         <form action="newPassword" method="GET">
-            <input type="button" name="adminPageButton" value="New Password" onClick="passwordChange(this.form);"/>
-            <input type="hidden" id="hiddenPassword" name="hiddenPassword"/>
-            <input type="hidden" id="hiddenUserLevel" name="hiddenUserLevel"/>
+            Old Password:<br/>
+            <input type="password" name="currentPassword" size="12" maxlength="45"/> <br/>
+            New Password:<br/>
+            <input type="password" name="newPassword" size="12" maxlength="45"/>
+            <input type="submit" value="Go!" />
         </form>
         ${passwordMessage}
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        <b><a href="signOut" style="color:indianred">Sign Out</a></b>
+        <br/>
+        ${signInMessage}
     </div>
 </div>
-
-<script language="JavaScript">
-    function passwordChange(form) {
-        var password;
-        password = prompt('Enter New Password', ' ');
-        if (password != null) {
-            document.getElementById("hiddenPassword").value=password;
-            document.getElementById("hiddenUserLevel").value="regular";
-
-            form.submit();
-        }
-    }
-
-    function enterMovieName(form) {
-        var movieSearchName;
-        movieSearchName = prompt('Movie Title', ' ');
-        if (movieSearchName != null) {
-            document.getElementById("hiddenMovieName").value=movieSearchName;
-
-            form.submit();
-        }
-    }
-</script>

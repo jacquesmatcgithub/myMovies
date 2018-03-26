@@ -14,7 +14,8 @@ import javax.servlet.annotation.*;
 )
 public class NewPassword extends HttpServlet {
 
-    private static final String ADMIN_USER = "adminUser";
+    private static final String ADMIN = "admin";
+    private static final String COLLECTOR = "collector";
 
     /**
      *  Handles HTTP GET requests.
@@ -31,14 +32,18 @@ public class NewPassword extends HttpServlet {
 
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
-        String newPassword = request.getParameter("hiddenPassword");
-        String userLevel = request.getParameter("hiddenUserLevel");
+        String userLevel = (String)session.getAttribute("userLevel");
+
+        String currentPassword = request.getParameter("currentPassword");
+        String newPassword = request.getParameter("newPassword");
 
         String url;
-        if (userLevel.equals(ADMIN_USER)) {
+        if (userLevel.equals(ADMIN)) {
             url = "/signed-in-admin.jsp";
-        } else {
+        } else if (userLevel.equals(COLLECTOR)) {
             url = "/signed-in-user.jsp";
+        } else {
+            url = "/login-failed.jsp";
         }
 
         request.setAttribute("passwordMessage", "Success!");
