@@ -9,7 +9,7 @@
 <div id="wrap">
     <c:import url="header.jsp" />
 
-    <c:import url="menu-regular-user.jsp" />
+    <c:import url="menu-collector.jsp" />
 
     <c:import url="content-movie-grid.jsp" />
 

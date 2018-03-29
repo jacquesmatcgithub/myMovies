@@ -29,7 +29,7 @@ public class AddNewMovie extends HttpServlet {
 
         String movieName = request.getParameter("movieName");
 
-        String url = "/signed-in-user.jsp";
+        String url = "/signed-in-collector.jsp";
 
         RequestDispatcher  dispatcher =
                 getServletContext().getRequestDispatcher(url);

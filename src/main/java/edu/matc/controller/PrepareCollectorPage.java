@@ -18,10 +18,10 @@ import java.io.IOException;
  * is an admin user or a regular user.
  */
 @WebServlet (
-        name = "PrepareUserPage",
-        urlPatterns = "/prepareUserPage"
+        name = "PrepareCollectorPage",
+        urlPatterns = "/prepareCollectorPage"
 )
-public class PrepareUserPage extends HttpServlet {
+public class PrepareCollectorPage extends HttpServlet {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -40,7 +40,7 @@ public class PrepareUserPage extends HttpServlet {
 
         request.removeAttribute("signInMessage");
 
-        logger.info("Setting up User Page");
+        logger.info("Setting up Collector Page");
 
         HttpSession session = request.getSession();
 
@@ -56,7 +56,7 @@ public class PrepareUserPage extends HttpServlet {
         // Load myMovies.properties, call the tmdb api and set session attributes for all
         AppConfig appConfig = new AppConfig(request);
 
-        RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-user.jsp");
+        RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-collector.jsp");
         dispatcher.forward(request, response);
     }
 }

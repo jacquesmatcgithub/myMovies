@@ -112,6 +112,6 @@ public class ValidateSignInServlet extends HttpServlet {
         session.setAttribute("logoSizeTmdb", metadataTmdb.getLogoSize());
         session.setAttribute("backdropSizeTmdb", metadataTmdb.getBackdropSize());
 
-        return "/signed-in-user.jsp";
+        return "/signed-in-collector.jsp";
     }
 }

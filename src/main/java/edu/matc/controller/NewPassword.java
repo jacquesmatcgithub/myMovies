@@ -41,7 +41,7 @@ public class NewPassword extends HttpServlet {
         if (userLevel.equals(ADMIN)) {
             url = "/signed-in-admin.jsp";
         } else if (userLevel.equals(COLLECTOR)) {
-            url = "/signed-in-user.jsp";
+            url = "/signed-in-collector.jsp";
         } else {
             url = "/login-failed.jsp";
         }
