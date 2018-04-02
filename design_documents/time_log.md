@@ -45,6 +45,7 @@ Date  | Hours | Notes
 03/25/2018 | 6.0 | Worked on the week 9 exercise
 03/28/2018 | 4.5 | Went thru week 9 materials again. Got my week 9 exercise to work now. Also gave feedback for Brain Chase and Justin Laabs
 03/31/2018 | 6.0 | Worked on team project
-04/01/2018 | 4.0 | Watched week 11 videos and the Cave of Programming videos also.
+04/01/2018 | 7.0 | Watched week 11 videos and the Cave of Programming videos also. Worked on the team project.
+
 
 
