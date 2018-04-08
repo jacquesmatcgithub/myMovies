@@ -47,6 +47,11 @@ Date  | Hours | Notes
 03/31/2018 | 6.0 | Worked on team project
 04/01/2018 | 7.0 | Watched week 11 videos and the Cave of Programming videos also. Worked on the team project.
 04/02/2018 | 2.5 | Worked on the team project.
+04/04/2018 | 6.0 | Worked on the team project.
+04/05/2018 | 1.0 | Worked on the team project.
+04/08/2018 | 3.0 | Worked on my indie project. Added functionality to change your password.
+
+
 
 
 

@@ -15,7 +15,7 @@ select {color: #eee; font-size: 1.0em; padding: 0 0 0 20px; font-weight: 100;}
 #headerlinks {float: right; padding: 30px 20px 0 0;}
 #headerlinks a {color:#fff; padding: 0 10px;}
 #headerlinks a:hover {color:#fff;}
-#sidebar { width: 140px; float: right; background: #FFF; color: #666; margin-right: 20px; }
+#sidebar { width: 130px; float: right; background: #FFF; color: #666; margin-right: 20px; }
 #sidebar .box { margin-bottom: 10px; padding: 10px 3px; color: #666; }
 #sidebar h2 { font-size: 1.2em; font-weight: 100; padding: 3px; }
 #content { margin-left: 20px; margin-right: 250px; text-align: justify; color: #777;}
