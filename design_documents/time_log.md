@@ -50,6 +50,8 @@ Date  | Hours | Notes
 04/04/2018 | 6.0 | Worked on the team project.
 04/05/2018 | 1.0 | Worked on the team project.
 04/08/2018 | 3.0 | Worked on my indie project. Added functionality to change your password.
+04/11/2018 | 2.0 | Worked on my indie project. Fixed how the movie grid class sorts the movies, so the movie titles that starts with a numeric are grouped together at the top of the list.
+
 
 
 

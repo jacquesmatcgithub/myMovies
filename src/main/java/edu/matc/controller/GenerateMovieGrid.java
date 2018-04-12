@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+/**
+ * The type Generate movie grid.
+ */
 //TODO Structure this class better
 public class GenerateMovieGrid extends HttpServlet {
     /**
@@ -25,13 +29,12 @@ public class GenerateMovieGrid extends HttpServlet {
      *                              I/O exception
      */
     public static void generateGrid(JspWriter out, HttpServletRequest request)
-            throws ServletException, IOException {
+            throws IOException {
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
 
         String baseUrlTmdb = (String)session.getAttribute("baseUrlTmdb");
         String logoSizeTmdb = (String)session.getAttribute("logoSizeTmdb");
-        String backdropSizeTmdb = (String)session.getAttribute("backdropSizeTmdb");
 
         UserDao userDao = new UserDao();
 
@@ -41,16 +44,10 @@ public class GenerateMovieGrid extends HttpServlet {
         List<Movie> movieList = movies.stream().collect(Collectors.toList());
 
         if (movieList.size() == 0) {
-
             return;
         }
 
-        //TODO If the sortkey is numeric, use the entire sort key. Otherwise, use only the first least significant byte
-        String holdSortLocation = movieList.get(0).getSortKey();
-
-        if (!holdSortLocation.matches("[0-9]+")) {
-            holdSortLocation = holdSortLocation.substring(0,1);
-        }
+        String holdSortLocation = refinedHoldSortLocation(movieList.get(0).getSortKey());
 
         out.print("<table>");
         out.print(holdSortLocation);
@@ -58,11 +55,7 @@ public class GenerateMovieGrid extends HttpServlet {
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-            String sortLocation = thisMovie.getSortKey();
-
-            if (!sortLocation.matches("[0-9]+")) {
-                sortLocation = sortLocation.substring(0,1);
-            }
+            String sortLocation = refinedHoldSortLocation(thisMovie.getSortKey());
 
             if (!sortLocation.equals(holdSortLocation)) {
                 colCount = 1;
@@ -92,6 +85,23 @@ public class GenerateMovieGrid extends HttpServlet {
             out.print("</tr>");
         }
         out.print("</table>");
+    }
+
+    /**
+     * The refinedHoldSortLocation method will return an all-numeric hold location string if the holdLocation
+     * string passed into it starts with a numeric. If it doesn't, then only the first character of the
+     * holdLocation will be returned.
+     * @param holdSortLocation
+     * @return
+     */
+    private static String refinedHoldSortLocation(String holdSortLocation) {
+
+        // The first byte is not numeric
+        if (!holdSortLocation.substring(0,1).matches("[0-9]+")) {
+            return holdSortLocation.substring(0,1);
+        } else {
+            return "0-9";
+        }
     }
 }
 
