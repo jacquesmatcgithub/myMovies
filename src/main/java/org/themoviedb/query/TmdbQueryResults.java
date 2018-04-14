@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Response{
+public class TmdbQueryResults {
 
 	@JsonProperty("original_language")
 	private String originalLanguage;
@@ -26,13 +26,13 @@ public class Response{
 	private int revenue;
 
 	@JsonProperty("genres")
-	private List<GenresItem> genres;
+	private List<TmdbQueryGenresItem> genres;
 
 	@JsonProperty("popularity")
 	private double popularity;
 
 	@JsonProperty("production_countries")
-	private List<ProductionCountriesItem> productionCountries;
+	private List<TmdbQueryProductionCountriesItem> productionCountries;
 
 	@JsonProperty("id")
 	private int id;
@@ -56,10 +56,10 @@ public class Response{
 	private String posterPath;
 
 	@JsonProperty("spoken_languages")
-	private List<SpokenLanguagesItem> spokenLanguages;
+	private List<TmdbQuerySpokenLanguagesItem> spokenLanguages;
 
 	@JsonProperty("production_companies")
-	private List<ProductionCompaniesItem> productionCompanies;
+	private List<TmdbQueryProductionCompaniesItem> productionCompanies;
 
 	@JsonProperty("release_date")
 	private String releaseDate;
@@ -68,7 +68,7 @@ public class Response{
 	private double voteAverage;
 
 	@JsonProperty("belongs_to_collection")
-	private BelongsToCollection belongsToCollection;
+	private TmdbQueryBelongsToCollection tmdbQueryBelongsToCollection;
 
 	@JsonProperty("tagline")
 	private String tagline;
@@ -130,11 +130,11 @@ public class Response{
 		return revenue;
 	}
 
-	public void setGenres(List<GenresItem> genres){
+	public void setGenres(List<TmdbQueryGenresItem> genres){
 		this.genres = genres;
 	}
 
-	public List<GenresItem> getGenres(){
+	public List<TmdbQueryGenresItem> getGenres(){
 		return genres;
 	}
 
@@ -146,11 +146,11 @@ public class Response{
 		return popularity;
 	}
 
-	public void setProductionCountries(List<ProductionCountriesItem> productionCountries){
+	public void setProductionCountries(List<TmdbQueryProductionCountriesItem> productionCountries){
 		this.productionCountries = productionCountries;
 	}
 
-	public List<ProductionCountriesItem> getProductionCountries(){
+	public List<TmdbQueryProductionCountriesItem> getProductionCountries(){
 		return productionCountries;
 	}
 
@@ -210,19 +210,19 @@ public class Response{
 		return posterPath;
 	}
 
-	public void setSpokenLanguages(List<SpokenLanguagesItem> spokenLanguages){
+	public void setSpokenLanguages(List<TmdbQuerySpokenLanguagesItem> spokenLanguages){
 		this.spokenLanguages = spokenLanguages;
 	}
 
-	public List<SpokenLanguagesItem> getSpokenLanguages(){
+	public List<TmdbQuerySpokenLanguagesItem> getSpokenLanguages(){
 		return spokenLanguages;
 	}
 
-	public void setProductionCompanies(List<ProductionCompaniesItem> productionCompanies){
+	public void setProductionCompanies(List<TmdbQueryProductionCompaniesItem> productionCompanies){
 		this.productionCompanies = productionCompanies;
 	}
 
-	public List<ProductionCompaniesItem> getProductionCompanies(){
+	public List<TmdbQueryProductionCompaniesItem> getProductionCompanies(){
 		return productionCompanies;
 	}
 
@@ -242,12 +242,12 @@ public class Response{
 		return voteAverage;
 	}
 
-	public void setBelongsToCollection(BelongsToCollection belongsToCollection){
-		this.belongsToCollection = belongsToCollection;
+	public void setTmdbQueryBelongsToCollection(TmdbQueryBelongsToCollection tmdbQueryBelongsToCollection){
+		this.tmdbQueryBelongsToCollection = tmdbQueryBelongsToCollection;
 	}
 
-	public BelongsToCollection getBelongsToCollection(){
-		return belongsToCollection;
+	public TmdbQueryBelongsToCollection getTmdbQueryBelongsToCollection(){
+		return tmdbQueryBelongsToCollection;
 	}
 
 	public void setTagline(String tagline){
@@ -285,7 +285,7 @@ public class Response{
 	@Override
  	public String toString(){
 		return 
-			"Response{" + 
+			"TmdbQueryResults{" +
 			"original_language = '" + originalLanguage + '\'' + 
 			",imdb_id = '" + imdbId + '\'' + 
 			",video = '" + video + '\'' + 
@@ -306,7 +306,7 @@ public class Response{
 			",production_companies = '" + productionCompanies + '\'' + 
 			",release_date = '" + releaseDate + '\'' + 
 			",vote_average = '" + voteAverage + '\'' + 
-			",belongs_to_collection = '" + belongsToCollection + '\'' + 
+			",belongs_to_collection = '" + tmdbQueryBelongsToCollection + '\'' +
 			",tagline = '" + tagline + '\'' + 
 			",adult = '" + adult + '\'' + 
 			",homepage = '" + homepage + '\'' + 

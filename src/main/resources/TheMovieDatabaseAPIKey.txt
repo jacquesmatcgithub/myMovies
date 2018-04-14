@@ -29,7 +29,9 @@ Steps to get movie info:
 
              https://image.tmdb.org/t/p/w92/38bmEXmuJuInLs9dwfgOGCHmZ7l.jpg
 
-
+4.  To get the cast:
+    https://api.themoviedb.org/3/movie/{movie id}/credits?api_key={api_key}
+    https://api.themoviedb.org/3/movie/75780/credits?api_key=25da234db00ce6d226e5bc0072b39a02
 
 
 

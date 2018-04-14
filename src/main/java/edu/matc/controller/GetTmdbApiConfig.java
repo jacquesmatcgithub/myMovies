@@ -3,9 +3,8 @@ package edu.matc.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.themoviedb.config.Config;
+import org.themoviedb.config.TmdbConfigConfig;
 
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -23,15 +22,17 @@ public class GetTmdbApiConfig {
     }
 
     public String getTmdbApiBaseUrl(String tmdbConfigUrl, String tmdbApiKey) {
+        logger.debug("tmdbConfigUrl:" + tmdbConfigUrl);
+        logger.debug("tmdbApiKey:" + tmdbApiKey);
+
         Client client = ClientBuilder.newClient();
-//        WebTarget target = client.target("https://api.themoviedb.org/3/configuration?api_key=" + tmdbApiKey);
         WebTarget target = client.target(tmdbConfigUrl + tmdbApiKey);
         String response = target.request(MediaType.APPLICATION_JSON).get(String.class);
         ObjectMapper mapper = new ObjectMapper();
 
         try {
-            Config config = mapper.readValue(response, Config.class);
-            return config.getImages().getBaseUrl();
+            TmdbConfigConfig tmdbConfigConfig = mapper.readValue(response, TmdbConfigConfig.class);
+            return tmdbConfigConfig.getTmdbConfigImages().getBaseUrl();
         } catch (IOException e) {
             return "Service Down";
         }

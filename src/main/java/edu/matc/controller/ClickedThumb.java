@@ -2,8 +2,13 @@ package edu.matc.controller;
 
 import edu.matc.persistence.*;
 import edu.matc.entity.*;
+import org.themoviedb.credits.Cast;
+import org.themoviedb.credits.CastItem;
+import org.themoviedb.credits.CrewItem;
+import org.themoviedb.query.TmdbQueryResults;
 
 import java.io.*;
+import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -27,13 +32,13 @@ public class ClickedThumb extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+        String tmdbApiKey = (String)session.getAttribute("tmdb.api.key");
+        String tmdbQueryUrl = (String)session.getAttribute("tmdb.query.url");
         String currentUser = (String)session.getAttribute("currentUser");
         String baseUrlTmdb = (String)session.getAttribute("baseUrlTmdb");
         String logoSizeTmdb = (String)session.getAttribute("logoSizeTmdb");
         String backdropSizeTmdb = (String)session.getAttribute("backdropSizeTmdb");
-
         int thumbId = Integer.parseInt(request.getParameter("id"));
-
 
         MovieDao movieDao = new MovieDao();
         Movie movie = movieDao.getById(thumbId);
@@ -43,15 +48,19 @@ public class ClickedThumb extends HttpServlet {
         int userRating = movie.getUserRating();
         request.setAttribute("ratingNumber", Integer.toString(userRating));
 
-//TODO Get the movie description from the api
-        String movieDescription = "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ";
+        int movieId = movie.getTmdbId();
+
+        // Go get the movie details
+        QueryTmdb queryTmdb = new QueryTmdb();
+        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbQueryUrl, movieId);
+
+        String movieDescription = tmdbQueryResults.getOverview();
+        request.setAttribute("movieDescription", movieDescription);
 
         posterUri = baseUrlTmdb + backdropSizeTmdb + "/" + posterUri;
 
         request.setAttribute("posterUri", posterUri);
         request.setAttribute("movieName", movieName);
-//TODO Get the movie description from the api
-        request.setAttribute("movieDescription", movieDescription);
 
 //TODO Get the movie rating from the api
         request.setAttribute("publicRating", "images/3-stars(15 percent).jpeg");
@@ -79,8 +88,21 @@ public class ClickedThumb extends HttpServlet {
         request.setAttribute("userRating", ratingImageName);
 
 //TODO Get the movie cast from the api
-        request.setAttribute("movieCast", movieDescription);
-//TODO Get the time wathed from the database
+
+//        Cast cast = new Cast();
+        CreditsTmdb creditsTmdb = new CreditsTmdb();
+        Cast cast = creditsTmdb.findCredits(tmdbApiKey, tmdbQueryUrl, movieId);
+
+        List<CastItem> movieCast = cast.getCast();
+        request.setAttribute("movieCast", movieCast);
+
+        List<CrewItem> movieCrew = cast.getCrew();
+        request.setAttribute("movieCrew", movieCrew);
+
+
+
+
+//TODO Get the time watched from the database
         request.setAttribute("lastTimeWatched", "Saturday, January 2 2018");
 //TODO Get the season from the database
         request.setAttribute("seasonOfYear", "Winter");

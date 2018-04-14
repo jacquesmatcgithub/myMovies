@@ -4,8 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import org.themoviedb.config.Config;
-import org.themoviedb.config.Images;
+import org.themoviedb.config.TmdbConfigConfig;
 
 import javax.ws.rs.client.*;
 import javax.ws.rs.core.MediaType;
@@ -19,23 +18,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * This tester class tests the org.themoviedb.config classes
  */
-public class TestTmdbConfig {
+public class TestTmdbTmdbConfigConfig {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Test
     public void testTmdbConfigGetBaseUrl() throws Exception {
-        Config config = getJsonResponse();
+        TmdbConfigConfig tmdbConfigConfig = getJsonResponse();
 
-        String baseUrl = config.getImages().getBaseUrl();
+        String baseUrl = tmdbConfigConfig.getTmdbConfigImages().getBaseUrl();
 
         assertEquals("http://image.tmdb.org/t/p/", baseUrl);
     }
 
     @Test
     public void testTmdbConfigGetSecureBaseUrl() throws Exception {
-        Config config = getJsonResponse();
+        TmdbConfigConfig tmdbConfigConfig = getJsonResponse();
 
-        String secureBaseUrl = config.getImages().getSecureBaseUrl();
+        String secureBaseUrl = tmdbConfigConfig.getTmdbConfigImages().getSecureBaseUrl();
 
         assertEquals("https://image.tmdb.org/t/p/", secureBaseUrl);
     }
@@ -43,9 +42,9 @@ public class TestTmdbConfig {
 
     @Test
     public void testTmdbGetPosterSizes() throws Exception {
-        Config config = getJsonResponse();
+        TmdbConfigConfig tmdbConfigConfig = getJsonResponse();
 
-        List<String> posterSizes = config.getImages().getPosterSizes();
+        List<String> posterSizes = tmdbConfigConfig.getTmdbConfigImages().getPosterSizes();
 
         String allPosterSizes = "Number of posterSize array = " + posterSizes.size() + " :";
         for (String posterSize : posterSizes) {
@@ -65,7 +64,7 @@ public class TestTmdbConfig {
 
 
 
-    private Config getJsonResponse() throws IOException {
+    private TmdbConfigConfig getJsonResponse() throws IOException {
         Client client = ClientBuilder.newClient();
         WebTarget target =
                 client.target("https://api.themoviedb.org/3/configuration?api_key=25da234db00ce6d226e5bc0072b39a02");
@@ -73,7 +72,7 @@ public class TestTmdbConfig {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        return mapper.readValue(response, Config.class);
+        return mapper.readValue(response, TmdbConfigConfig.class);
 
     }
 }

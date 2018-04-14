@@ -1,5 +1,10 @@
 package edu.matc.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.themoviedb.query.TmdbQueryResults;
+import org.themoviedb.search.TmdbSearchResults;
+
 import java.io.*;
 
 import javax.servlet.*;
@@ -11,6 +16,9 @@ import javax.servlet.annotation.*;
         urlPatterns = "/addNewMovie"
 )
 public class AddNewMovie extends HttpServlet {
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+
     /**
      *  Handles HTTP GET requests.
      *
@@ -28,7 +36,33 @@ public class AddNewMovie extends HttpServlet {
         String currentUser = (String)session.getAttribute("currentUser");
 
         String movieName = request.getParameter("movieName");
+        String tmdbSearchUrl = (String)session.getAttribute("tmdb.search.url");
+        String tmdbApiKey = (String)session.getAttribute("tmdb.api.key");
 
+/*
+        QueryTmdb queryTmdb = new QueryTmdb();
+        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbSearchUrl, movieName);
+
+        tmdbQueryResults.getOriginalTitle();
+
+
+        SearchTmdb searchTmdb = new SearchTmdb();
+        TmdbSearchResults tmdbSearchResults = searchTmdb.findMovie(tmdbApiKey, tmdbSearchUrl, movieName);
+
+        switch (tmdbSearchResults.getTotalResults()) {
+            case 0:
+                session.setAttribute("addNewMovieMessage", "Nothing found");
+                break;
+
+            case 1:
+                foundOneMovie(tmdbSearchResults);
+                break;
+
+            default:
+                foundMultipleMovies(tmdbSearchResults);
+                break;
+        }
+*/
         String url = "/signed-in-collector.jsp";
 
         RequestDispatcher  dispatcher =
@@ -38,4 +72,22 @@ public class AddNewMovie extends HttpServlet {
 
 
 
+    /**
+     * If one movie was found, then display the single movie found page.
+     *
+     * @param tmdbSearchResults
+     */
+    private void foundOneMovie(TmdbSearchResults tmdbSearchResults) {
+
+    }
+
+
+    /**
+     * If multiple movies were found, then display the multi-movie found page
+     *
+     * @param tmdbSearchResults
+     */
+    private void foundMultipleMovies(TmdbSearchResults tmdbSearchResults) {
+
+    }
 }

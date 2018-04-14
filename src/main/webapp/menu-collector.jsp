@@ -6,6 +6,7 @@
             Add New Movie:<br/>
             <input type="text" name="movieName" size="12" maxlength="45"/> <br/>
             <input type="submit" value="Go!" />
+            ${addNewMovieMessage}
         </form>
         <br/><br><br><br/><br/><br/>
         <form action="newPassword" method="GET">

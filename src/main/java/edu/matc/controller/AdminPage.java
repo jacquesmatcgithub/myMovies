@@ -64,7 +64,7 @@ public class AdminPage {
 
 
     /**
-     * The populate method populates the four areas on the Admin Page.
+     * The populate method populates the four areas on the Admin TmdbSearchPage.
      * @param request
      * @param userDao
      * @param loginId

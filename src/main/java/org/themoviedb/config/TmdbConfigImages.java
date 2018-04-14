@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Images{
+public class TmdbConfigImages {
 
 	@JsonProperty("poster_sizes")
 	private List<String> posterSizes;
@@ -87,7 +87,7 @@ public class Images{
 	@Override
  	public String toString(){
 		return 
-			"Images{" + 
+			"TmdbConfigImages{" +
 			"poster_sizes = '" + posterSizes + '\'' + 
 			",secure_base_url = '" + secureBaseUrl + '\'' + 
 			",backdrop_sizes = '" + backdropSizes + '\'' + 

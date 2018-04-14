@@ -21,7 +21,8 @@ public class AppConfig {
     private String tmdbApiKey;
     private String tmdbConfigUrl;
     private String tmdbSearchUrl;
-    private String tmdbGetMovieInfoUrl;
+    private String tmdbQueryUrl;
+    private String tmdbCreditsUrl;
 
     private Properties properties;
 
@@ -34,6 +35,8 @@ public class AppConfig {
 
     /**
      * Instantiates a new App config.
+     *
+     * @param request the request
      */
     public AppConfig(HttpServletRequest request) {
         HttpSession session = request.getSession();
@@ -41,19 +44,20 @@ public class AppConfig {
         loadProperties(session);
         loadMetaData(session);
     }
+
     /**
      * Instantiates a new App config.
      *
-     * @param tmdbApiKey           the tmdb api key
-     * @param tmdbConfigUrl        the tmdb configuration url
-     * @param tmdbSearchUrl        the tmdb search url
-     * @param tmdbGetMovieInfoUrl  the tmdb get movie info url
+     * @param tmdbApiKey    the tmdb api key
+     * @param tmdbConfigUrl the tmdb configuration url
+     * @param tmdbSearchUrl the tmdb search url
+     * @param tmdbQueryUrl  the tmdb get movie info url
      */
-    public AppConfig(String tmdbApiKey, String tmdbConfigUrl, String tmdbSearchUrl, String tmdbGetMovieInfoUrl) {
+    public AppConfig(String tmdbApiKey, String tmdbConfigUrl, String tmdbSearchUrl, String tmdbQueryUrl) {
         this.tmdbApiKey = tmdbApiKey;
         this.tmdbConfigUrl = tmdbConfigUrl;
         this.tmdbSearchUrl = tmdbSearchUrl;
-        this.tmdbGetMovieInfoUrl = tmdbGetMovieInfoUrl;
+        this.tmdbQueryUrl = tmdbQueryUrl;
     }
 
     /**
@@ -115,18 +119,39 @@ public class AppConfig {
      *
      * @return the tmdb get movie info url
      */
-    public String getTmdbGetMovieInfoUrl() {
-        return tmdbGetMovieInfoUrl;
+    public String getTmdbQueryUrl() {
+        return tmdbQueryUrl;
     }
 
     /**
      * Sets tmdb get movie info url.
      *
-     * @param tmdbGetMovieInfoUrl the tmdb get movie info url
+     * @param tmdbQueryUrl the tmdb get movie info url
      */
-    public void setTmdbGetMovieInfoUrl(String tmdbGetMovieInfoUrl) {
-        this.tmdbGetMovieInfoUrl = tmdbGetMovieInfoUrl;
+    public void setTmdbQueryUrl(String tmdbQueryUrl) {
+        this.tmdbQueryUrl = tmdbQueryUrl;
     }
+
+
+    /**
+     * Gets tmdb credits url.
+     *
+     * @return the tmdb credits url
+     */
+    public String getTmdbCreditsUrl() {
+        return tmdbCreditsUrl;
+    }
+
+    /**
+     * Sets tmdb credits url.
+     *
+     * @param tmdbCreditsUrl the tmdb credits url
+     */
+    public void setTmdbCreditsUrl(String tmdbCreditsUrl) {
+        this.tmdbCreditsUrl = tmdbCreditsUrl;
+    }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -136,13 +161,13 @@ public class AppConfig {
         return Objects.equals(tmdbApiKey, appConfig.tmdbApiKey) &&
                 Objects.equals(tmdbConfigUrl, appConfig.tmdbConfigUrl) &&
                 Objects.equals(tmdbSearchUrl, appConfig.tmdbSearchUrl) &&
-                Objects.equals(tmdbGetMovieInfoUrl, appConfig.tmdbGetMovieInfoUrl);
+                Objects.equals(tmdbQueryUrl, appConfig.tmdbQueryUrl);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(tmdbApiKey, tmdbConfigUrl, tmdbSearchUrl, tmdbGetMovieInfoUrl);
+        return Objects.hash(tmdbApiKey, tmdbConfigUrl, tmdbSearchUrl, tmdbQueryUrl);
     }
 
     /**
@@ -158,22 +183,26 @@ public class AppConfig {
             String tmdbApiKey = properties.getProperty("tmdb.api.key");
             String tmdbConfigUrl = properties.getProperty("tmdb.config.url");
             String tmdbSearchUrl = properties.getProperty("tmdb.search.url");
-            String tmdbGetMovieInfoUrl = properties.getProperty("tmdb.get.movie.info.url");
+            String tmdbQueryUrl = properties.getProperty("tmdb.query.url");
+            String tmdbCreditsUrl = properties.getProperty("tmdb.credits.url");
 
             setTmdbApiKey(tmdbApiKey);
             setTmdbConfigUrl(tmdbConfigUrl);
             setTmdbSearchUrl(tmdbSearchUrl);
-            setTmdbGetMovieInfoUrl(tmdbGetMovieInfoUrl);
+            setTmdbQueryUrl(tmdbQueryUrl);
+            setTmdbCreditsUrl(tmdbCreditsUrl);
 
             logger.debug("tmdbApiKey:" + getTmdbApiKey());
             logger.debug("tmdbConfigUrl:" + getTmdbConfigUrl());
             logger.debug("tmdbSearchUrl:" + getTmdbSearchUrl());
-            logger.debug("tmdbGetMovieInfoUrl:" + getTmdbGetMovieInfoUrl());
+            logger.debug("tmdbQueryUrl:" + getTmdbQueryUrl());
+            logger.debug("tmdbCreditsUrl:" + getTmdbCreditsUrl());
 
             session.setAttribute("tmdb.api.key", tmdbApiKey);
             session.setAttribute("tmdb.config.url", tmdbConfigUrl);
             session.setAttribute("tmdb.search.url", tmdbSearchUrl);
-            session.setAttribute("tmdb.get.movie.info.url", tmdbGetMovieInfoUrl);
+            session.setAttribute("tmdb.query.url", tmdbQueryUrl);
+            session.setAttribute("tmdb.credits.url", tmdbCreditsUrl);
 
         } catch (IOException ioe) {
             logger.error("AppConfig.loadProperties()...Cannot load the properties file", ioe);
@@ -193,8 +222,10 @@ public class AppConfig {
     private void loadMetaData(HttpSession session) {
         // Get the latest configuration by caling the tmdb api
         GetTmdbApiConfig getTmdbConfig = new GetTmdbApiConfig();
-        String apiBaseUrlTmdb  = getTmdbConfig.getTmdbApiBaseUrl((String)session.getAttribute("tmdb.config.url"),
-                                                                 (String)session.getAttribute("tmdb.api.key"));
+        String apiBaseUrlTmdb  = getTmdbConfig.getTmdbApiBaseUrl(
+                (String)session.getAttribute("tmdb.config.url"),
+                (String)session.getAttribute("tmdb.api.key"));
+
 //TODO What if the movie database api is down?
 //        if (apiBaseUrlTmdb.equals(SERVICE_DOWN)) {
 //            baseUrlTmdb = metadataTmdb.getBaseUrl();
@@ -204,8 +235,8 @@ public class AppConfig {
 
 
         // Get the configuration data currently stored on the metadata_tmdb table
-        MetadataTmdbDao metadataTmdbDao = new MetadataTmdbDao();
-        MetadataTmdb metadataTmdb = metadataTmdbDao.getById(1); // There is always only 1 row on this table
+        MetadataTmdbDao metadataMetadataTmdbDao = new MetadataTmdbDao();
+        MetadataTmdb metadataTmdb = metadataMetadataTmdbDao.getById(1); // There is always only 1 row on this table
         String storedBaseUrlTmdb = metadataTmdb.getBaseUrl();
 
         // If the api and stored base urls are the same, or the api is down, set the session attribute
@@ -215,7 +246,7 @@ public class AppConfig {
             session.setAttribute("baseUrlTmdb", storedBaseUrlTmdb);
         } else {
             metadataTmdb.setBaseUrl(apiBaseUrlTmdb);
-            metadataTmdbDao.saveOrUpdate(metadataTmdb);
+            metadataMetadataTmdbDao.saveOrUpdate(metadataTmdb);
         }
 
         session.setAttribute("logoSizeTmdb", metadataTmdb.getLogoSize());

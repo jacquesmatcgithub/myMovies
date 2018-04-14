@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Page{
+public class TmdbSearchPage {
 
 	@JsonProperty("page")
 	private int page;
@@ -14,7 +14,7 @@ public class Page{
 	private int totalPages;
 
 	@JsonProperty("results")
-	private List<ResultsItem> results;
+	private List<TmdbSearchResultsItem> results;
 
 	@JsonProperty("total_results")
 	private int totalResults;
@@ -35,11 +35,11 @@ public class Page{
 		return totalPages;
 	}
 
-	public void setResults(List<ResultsItem> results){
+	public void setResults(List<TmdbSearchResultsItem> results){
 		this.results = results;
 	}
 
-	public List<ResultsItem> getResults(){
+	public List<TmdbSearchResultsItem> getResults(){
 		return results;
 	}
 
@@ -54,7 +54,7 @@ public class Page{
 	@Override
  	public String toString(){
 		return 
-			"Page{" + 
+			"TmdbSearchPage{" +
 			"page = '" + page + '\'' + 
 			",total_pages = '" + totalPages + '\'' + 
 			",results = '" + results + '\'' + 

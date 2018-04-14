@@ -5,20 +5,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class Config{
+public class TmdbConfigConfig {
 
 	@JsonProperty("images")
-	private Images images;
+	private TmdbConfigImages tmdbConfigImages;
 
 	@JsonProperty("change_keys")
 	private List<String> changeKeys;
 
-	public void setImages(Images images){
-		this.images = images;
+	public void setTmdbConfigImages(TmdbConfigImages tmdbConfigImages){
+		this.tmdbConfigImages = tmdbConfigImages;
 	}
 
-	public Images getImages(){
-		return images;
+	public TmdbConfigImages getTmdbConfigImages(){
+		return tmdbConfigImages;
 	}
 
 	public void setChangeKeys(List<String> changeKeys){
@@ -32,8 +32,8 @@ public class Config{
 	@Override
  	public String toString(){
 		return 
-			"Config{" + 
-			"images = '" + images + '\'' + 
+			"TmdbConfigConfig{" +
+			"tmdbConfigImages = '" + tmdbConfigImages + '\'' +
 			",change_keys = '" + changeKeys + '\'' + 
 			"}";
 		}

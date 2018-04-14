@@ -4,21 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class ProductionCountriesItem{
-
-	@JsonProperty("iso_3166_1")
-	private String iso31661;
+public class TmdbQuerySpokenLanguagesItem {
 
 	@JsonProperty("name")
 	private String name;
 
-	public void setIso31661(String iso31661){
-		this.iso31661 = iso31661;
-	}
-
-	public String getIso31661(){
-		return iso31661;
-	}
+	@JsonProperty("iso_639_1")
+	private String iso6391;
 
 	public void setName(String name){
 		this.name = name;
@@ -28,12 +20,20 @@ public class ProductionCountriesItem{
 		return name;
 	}
 
+	public void setIso6391(String iso6391){
+		this.iso6391 = iso6391;
+	}
+
+	public String getIso6391(){
+		return iso6391;
+	}
+
 	@Override
  	public String toString(){
 		return 
-			"ProductionCountriesItem{" + 
-			"iso_3166_1 = '" + iso31661 + '\'' + 
-			",name = '" + name + '\'' + 
+			"TmdbQuerySpokenLanguagesItem{" +
+			"name = '" + name + '\'' + 
+			",iso_639_1 = '" + iso6391 + '\'' + 
 			"}";
 		}
 }

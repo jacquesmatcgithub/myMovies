@@ -40,7 +40,7 @@ public class PrepareAdminPage extends HttpServlet {
 
         request.removeAttribute("signInMessage");
 
-        logger.info("Setting up Admin Page");
+        logger.info("Setting up Admin TmdbSearchPage");
 
         AdminPage adminPage = new AdminPage();
         adminPage.load(request);

@@ -2,6 +2,7 @@ package edu.matc.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * The type Movie.
@@ -38,6 +39,9 @@ public class Movie {
 
     @Column(name = "login_id")
     private String loginId;
+
+    @Column(name = "tmdb_id")
+    private int tmdbId;
 
     @ManyToOne
     private User user;
@@ -256,6 +260,25 @@ public class Movie {
         this.loginId = loginId;
     }
 
+    /**
+     * Gets tmdb id.
+     *
+     * @return the tmdb id
+     */
+    public int getTmdbId() {
+        return tmdbId;
+    }
+
+    /**
+     * Sets tmdb id.
+     *
+     * @param tmdbId the tmdb id
+     */
+    public void setTmdbId(int tmdbId) {
+        this.tmdbId = tmdbId;
+    }
+
+
     @Override
     public String toString() {
         return "Movie{" +
@@ -267,8 +290,34 @@ public class Movie {
                 ", ratingUri='" + ratingUri + '\'' +
                 ", userRating=" + userRating +
                 ", sortKey='" + sortKey + '\'' +
-                ", loginId=" + loginId +
+                ", loginId='" + loginId + '\'' +
+                ", tmdbId=" + tmdbId +
                 ", user=" + user +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movie movie = (Movie) o;
+        return id == movie.id &&
+                userRating == movie.userRating &&
+                tmdbId == movie.tmdbId &&
+                Objects.equals(name, movie.name) &&
+                Objects.equals(posterUri, movie.posterUri) &&
+                Objects.equals(thumbUri, movie.thumbUri) &&
+                Objects.equals(descUri, movie.descUri) &&
+                Objects.equals(ratingUri, movie.ratingUri) &&
+                Objects.equals(sortKey, movie.sortKey) &&
+                Objects.equals(loginId, movie.loginId) &&
+                Objects.equals(user, movie.user);
+    }
+
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name, posterUri, thumbUri, descUri, ratingUri, userRating, sortKey, loginId, tmdbId, user);
     }
 }

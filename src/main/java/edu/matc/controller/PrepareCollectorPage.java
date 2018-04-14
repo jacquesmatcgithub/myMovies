@@ -40,7 +40,7 @@ public class PrepareCollectorPage extends HttpServlet {
 
         request.removeAttribute("signInMessage");
 
-        logger.info("Setting up Collector Page");
+        logger.info("Setting up Collector TmdbSearchPage");
 
         HttpSession session = request.getSession();
 

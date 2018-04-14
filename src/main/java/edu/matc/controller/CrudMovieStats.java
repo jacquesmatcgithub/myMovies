@@ -25,7 +25,7 @@ public class CrudMovieStats extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
-     * The BUTTON_PRESSED constant is the name of every button on the Admin Page.
+     * The BUTTON_PRESSED constant is the name of every button on the Admin TmdbSearchPage.
      */
     private static final String BUTTON_PRESSED = "adminPageButton";
 
@@ -56,7 +56,7 @@ public class CrudMovieStats extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        // Find which button was pressed on the Admin Page
+        // Find which button was pressed on the Admin TmdbSearchPage
         String buttonPressed = request.getParameter(BUTTON_PRESSED);
 
 

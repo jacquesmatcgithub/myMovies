@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.annotation.Generated;
 
 @Generated("com.robohorse.robopojogenerator")
-public class BelongsToCollection{
+public class TmdbQueryProductionCompaniesItem {
 
-	@JsonProperty("backdrop_path")
-	private String backdropPath;
+	@JsonProperty("logo_path")
+	private String logoPath;
 
 	@JsonProperty("name")
 	private String name;
@@ -15,15 +15,15 @@ public class BelongsToCollection{
 	@JsonProperty("id")
 	private int id;
 
-	@JsonProperty("poster_path")
-	private String posterPath;
+	@JsonProperty("origin_country")
+	private String originCountry;
 
-	public void setBackdropPath(String backdropPath){
-		this.backdropPath = backdropPath;
+	public void setLogoPath(String logoPath){
+		this.logoPath = logoPath;
 	}
 
-	public String getBackdropPath(){
-		return backdropPath;
+	public String getLogoPath(){
+		return logoPath;
 	}
 
 	public void setName(String name){
@@ -42,22 +42,22 @@ public class BelongsToCollection{
 		return id;
 	}
 
-	public void setPosterPath(String posterPath){
-		this.posterPath = posterPath;
+	public void setOriginCountry(String originCountry){
+		this.originCountry = originCountry;
 	}
 
-	public String getPosterPath(){
-		return posterPath;
+	public String getOriginCountry(){
+		return originCountry;
 	}
 
 	@Override
  	public String toString(){
 		return 
-			"BelongsToCollection{" + 
-			"backdrop_path = '" + backdropPath + '\'' + 
+			"TmdbQueryProductionCompaniesItem{" +
+			"logo_path = '" + logoPath + '\'' + 
 			",name = '" + name + '\'' + 
 			",id = '" + id + '\'' + 
-			",poster_path = '" + posterPath + '\'' + 
+			",origin_country = '" + originCountry + '\'' + 
 			"}";
 		}
 }

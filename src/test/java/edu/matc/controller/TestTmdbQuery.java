@@ -4,15 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import org.themoviedb.config.Config;
-import org.themoviedb.query.Results;
+import org.themoviedb.query.TmdbQueryResults;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,18 +19,18 @@ public class TestTmdbQuery {
 
     @Test
     public void testGetOriginalLanguage() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        String title = results.getTitle();
+        String title = tmdbQueryResults.getTitle();
 
         assertEquals("Jack Reacher", title);
     }
 
     @Test
     public void testGetBackdropPath() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        String title = results.getBackdropPath();
+        String title = tmdbQueryResults.getBackdropPath();
 
         assertEquals("/ezXodpP429qK0Av89pVNlaXWJkQ.jpg", title);
     }
@@ -40,9 +38,9 @@ public class TestTmdbQuery {
 
     @Test
     public void testgetPopularity() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        Double actual = results.getPopularity();
+        Double actual = tmdbQueryResults.getPopularity();
         Double expected = actual;  // I'm doing this because the popularity changes over time, causing the compile to fail
 
         assertEquals(expected, actual);
@@ -53,18 +51,18 @@ public class TestTmdbQuery {
 
     @Test
     public void testGetId() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        int id = results.getId();
+        int id = tmdbQueryResults.getId();
 
         assertEquals( 75780, id);
     }
 
     @Test
     public void testGetVoteCount() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        int actual = results.getVoteCount();
+        int actual = tmdbQueryResults.getVoteCount();
         int expected = actual;  // I'm doing this because the vote count changes over time, causing the compile to fail
 
         assertEquals( expected, actual);
@@ -73,18 +71,18 @@ public class TestTmdbQuery {
 
     @Test
     public void testGetRunTime() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        int runTime = results.getRuntime();
+        int runTime = tmdbQueryResults.getRuntime();
 
         assertEquals( 130, runTime);
     }
 
     @Test
     public void testGetTitle() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        String title = results.getTitle();
+        String title = tmdbQueryResults.getTitle();
 
         logger.info("Title: " + title);
 
@@ -94,10 +92,10 @@ public class TestTmdbQuery {
 
     @Test
     public void testGetOverview() throws Exception {
-        Results results = getJsonResponse();
+        TmdbQueryResults tmdbQueryResults = getJsonResponse();
 
-        String expectedOverview = results.getOverview();
-        String actualOverview = results.getOverview();
+        String expectedOverview = tmdbQueryResults.getOverview();
+        String actualOverview = tmdbQueryResults.getOverview();
 
         logger.info("Overview: " + actualOverview);
 
@@ -107,7 +105,7 @@ public class TestTmdbQuery {
 
 
 
-    private Results getJsonResponse() throws IOException {
+    private TmdbQueryResults getJsonResponse() throws IOException {
         Client client = ClientBuilder.newClient();
         WebTarget target =
                 client.target("https://api.themoviedb.org/3/movie/75780?api_key=25da234db00ce6d226e5bc0072b39a02");
@@ -115,7 +113,7 @@ public class TestTmdbQuery {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        return mapper.readValue(response, Results.class);
+        return mapper.readValue(response, TmdbQueryResults.class);
 
     }
 }

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * The type MetadataTmdb dao test.
  */
-class MetadataTmdbDaoTest {
+class MetadataMetadataTmdbDaoTest {
 
     MetadataTmdbDao dao;
     private final Logger logger = LogManager.getLogger(this.getClass());

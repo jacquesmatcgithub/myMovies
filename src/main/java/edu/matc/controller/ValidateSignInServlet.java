@@ -75,7 +75,7 @@ public class ValidateSignInServlet extends HttpServlet {
             throws ServletException, IOException {
         request.removeAttribute("signInMessage");
 
-        logger.info("Setting up Admin Page");
+        logger.info("Setting up Admin TmdbSearchPage");
 
         AdminPage adminPage = new AdminPage();
         adminPage.load(request);
@@ -101,11 +101,11 @@ public class ValidateSignInServlet extends HttpServlet {
 
         request.removeAttribute("signInMessage");
 
-        logger.info("Setting up Admin Page");
+        logger.info("Setting up Admin TmdbSearchPage");
 
-        MetadataTmdbDao metadataTmdbDao = new MetadataTmdbDao();
+        MetadataTmdbDao metadataMetadataTmdbDao = new MetadataTmdbDao();
 
-        MetadataTmdb metadataTmdb = metadataTmdbDao.getById(1);
+        MetadataTmdb metadataTmdb = metadataMetadataTmdbDao.getById(1);
 
         HttpSession session = request.getSession();
         session.setAttribute("baseUrlTmdb", metadataTmdb.getBaseUrl());
