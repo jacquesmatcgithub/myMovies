@@ -19,6 +19,7 @@
         <mapping class="edu.matc.entity.User"/>
         <mapping class="edu.matc.entity.Movie"/>
         <mapping class="edu.matc.entity.MetadataTmdb"/>
+        <mapping class="edu.matc.entity.ViewingHabit"/>
 
     </session-factory>
 

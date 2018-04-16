@@ -1231,23 +1231,29 @@
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="294" parent="241" name="viewing_habit_id_uindex">
+    <column id="294" parent="241" name="user_id">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="295" parent="241" name="viewing_habit_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="295" parent="241" name="viewing_habit_movie_id_fk">
+    <index id="296" parent="241" name="viewing_habit_movie_id_fk">
       <ColNames>movie_id</ColNames>
     </index>
-    <key id="296" parent="241" name="PRIMARY">
+    <key id="297" parent="241" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="297" parent="241" name="viewing_habit_id_uindex">
+    <key id="298" parent="241" name="viewing_habit_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>viewing_habit_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="298" parent="241" name="viewing_habit_movie_id_fk">
+    <foreign-key id="299" parent="241" name="viewing_habit_movie_id_fk">
       <ColNames>movie_id</ColNames>
       <RefSchemaName>test_mymovies</RefSchemaName>
       <RefTableName>movie</RefTableName>
@@ -1255,28 +1261,28 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="299" parent="242" name="id">
+    <column id="300" parent="242" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="300" parent="242" name="desc">
+    <column id="301" parent="242" name="desc">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="301" parent="242" name="weather_id_uindex">
+    <index id="302" parent="242" name="weather_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="302" parent="242" name="PRIMARY">
+    <key id="303" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="303" parent="242" name="weather_id_uindex">
+    <key id="304" parent="242" name="weather_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>weather_id_uindex</UnderlyingIndexName>
     </key>

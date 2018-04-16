@@ -1,8 +1,12 @@
 package edu.matc.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OrderBy;
+
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * The type Movie.
@@ -46,29 +50,13 @@ public class Movie {
     @ManyToOne
     private User user;
 
-
     /**
      * Instantiates a new Movie.
      */
     public Movie() {
     }
 
-    /**
-     * Instantiates a new Movie.
-     *
-     * @param name       the name
-     * @param posterUri  the poster uri
-     * @param thumbUri   the thumb uri
-     * @param descUri    the desc uri
-     * @param ratingUri  the rating uri
-     * @param userRating the user rating
-     * @param sortKey    the sort key
-     * @param loginId    the login id
-     * @param user       the user
-     */
-    public Movie(String name, String posterUri, String thumbUri, String descUri,
-                 String ratingUri, int userRating, String sortKey, String loginId,
-                 User user) {
+    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, int tmdbId, User user) {
         this.name = name;
         this.posterUri = posterUri;
         this.thumbUri = thumbUri;
@@ -77,6 +65,7 @@ public class Movie {
         this.userRating = userRating;
         this.sortKey = sortKey;
         this.loginId = loginId;
+        this.tmdbId = tmdbId;
         this.user = user;
     }
 
@@ -280,23 +269,6 @@ public class Movie {
 
 
     @Override
-    public String toString() {
-        return "Movie{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", posterUri='" + posterUri + '\'' +
-                ", thumbUri='" + thumbUri + '\'' +
-                ", descUri='" + descUri + '\'' +
-                ", ratingUri='" + ratingUri + '\'' +
-                ", userRating=" + userRating +
-                ", sortKey='" + sortKey + '\'' +
-                ", loginId='" + loginId + '\'' +
-                ", tmdbId=" + tmdbId +
-                ", user=" + user +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -314,10 +286,26 @@ public class Movie {
                 Objects.equals(user, movie.user);
     }
 
-
     @Override
     public int hashCode() {
 
         return Objects.hash(id, name, posterUri, thumbUri, descUri, ratingUri, userRating, sortKey, loginId, tmdbId, user);
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", posterUri='" + posterUri + '\'' +
+                ", thumbUri='" + thumbUri + '\'' +
+                ", descUri='" + descUri + '\'' +
+                ", ratingUri='" + ratingUri + '\'' +
+                ", userRating=" + userRating +
+                ", sortKey='" + sortKey + '\'' +
+                ", loginId='" + loginId + '\'' +
+                ", tmdbId=" + tmdbId +
+                ", user=" + user +
+                '}';
     }
 }

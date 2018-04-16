@@ -3,12 +3,17 @@ package edu.matc.persistence;
 // import edu.matc.entity.Order;
 import edu.matc.entity.Movie;
 import edu.matc.entity.User;
+import edu.matc.entity.ViewingHabit;
 import edu.matc.test.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -72,6 +77,9 @@ class MovieDaoTest {
         UserDao userDao = new UserDao();
         User user = userDao.getById(1);
 
+//        List<ViewingHabit> viewingHabitList = new ArrayList<>();
+//        Set<ViewingHabit> viewingHabits = new HashSet<>(viewingHabitList);
+
         Movie newMovie = new Movie(
                 "After Hours",
                 "s5XkBqUMwE0wQv9NY0XERs64cgs.jpg",
@@ -81,7 +89,9 @@ class MovieDaoTest {
                 2,
                 "afterhours",
                 "jfourie",
+                9999,
                 user);
+
 
         int id = dao.insert(newMovie);
         assertNotEquals(0,id);
@@ -136,6 +146,14 @@ class MovieDaoTest {
         List<Movie> movies = dao.getByPropertyEqual("sortKey", "bladerunner2048");
         assertEquals(1, movies.size());
         assertEquals(3, movies.get(0).getId());
+
+//        Set<ViewingHabit> viewingHabits = movies.get(0).getViewingHabits();
+//        List<ViewingHabit> viewingHabitList = new ArrayList<>(viewingHabits);
+
+//        if (viewingHabitList.size() > 0) {
+//            logger.info(viewingHabitList.get(0).getDateWatched());
+//        }
+
     }
 
     /**
