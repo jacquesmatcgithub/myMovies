@@ -54,6 +54,8 @@ Date  | Hours | Notes
 04/14/2018 | 7.0 | Worked on my indie project. I now have the page that displays the movie details consuming the movie database webservice in order to display the movie description and the cast & crew list.
 04/15/2018 | 4.0 | Watched the week 13 videos and did the exercise.
 04/15/2018 | 3.5 | Worked on my indie project.
+04/16/2018 | 3.0 | Worked on my indie project. Finally got the one-to-many issue fixed between my movie and viewinghabit tables.
+
 
 
 
