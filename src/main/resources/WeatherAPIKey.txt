@@ -18,8 +18,13 @@ Contact email:
 jfourie@madisoncollege.edu
 
 
+Use /geolookup to find current location of ip address
+------------------------------------------------------
+http://api.wunderground.com/api/Your_Key/geolookup/q/autoip.json
+http://api.wunderground.com/api/bbb31fc503e799ce/geolookup/q/autoip.json
 
-
-Get current conditions in US City
-http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/CA/San_Francisco.json
+Then use the city & state to get current conditions in US City
 http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/WI/Madison.json
+
+Store the weather condition gif location in the viewing habits table
+use the weather: json element
