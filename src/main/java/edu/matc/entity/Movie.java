@@ -50,6 +50,7 @@ public class Movie {
     @ManyToOne
     private User user;
 
+
     /**
      * Instantiates a new Movie.
      */

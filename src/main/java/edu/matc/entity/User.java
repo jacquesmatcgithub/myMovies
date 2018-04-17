@@ -14,7 +14,6 @@ import java.util.Set;
  *
  * @author Jacques Fourie
  */
-
 @Entity(name = "User")
 @Table(name = "user")  // The @Table tag is case sensitive REMEMBER THAT!!!  Example: ="user"  vs  "=User"
 public class User {
@@ -49,12 +48,26 @@ public class User {
     @OrderBy(clause = "sort_key ASC")
     private Set<Movie> movies = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<ViewingHabit> viewingHabits = new HashSet<>();
+
     /**
      * Instantiates a new User.
      */
     public User() {
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param loginId    the login id
+     * @param password   the password
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param admin      the admin
+     * @param active     the active
+     * @param dateActive the date active
+     */
     public User(String loginId, String password, String firstName, String lastName, boolean admin, boolean active, LocalDate dateActive) {
         this.loginId = loginId;
         this.userPassword = password;
@@ -265,6 +278,45 @@ public class User {
         movies.remove(movie);
         movie.setUser(null);
     }
+
+    /**
+     * Gets viewing habits.
+     *
+     * @return the viewing habits
+     */
+    public Set<ViewingHabit> getViewingHabits() {
+        return viewingHabits;
+    }
+
+    /**
+     * Sets viewing habits.
+     *
+     * @param viewingHabits the viewing habits
+     */
+    public void setViewingHabits(Set<ViewingHabit> viewingHabits) {
+        this.viewingHabits = viewingHabits;
+    }
+
+    /**
+     * Add viewing habit.
+     *
+     * @param viewingHabit the viewing habit
+     */
+    public void addViewingHabit(ViewingHabit viewingHabit) {
+        viewingHabits.add(viewingHabit);
+        viewingHabit.setUser(this);
+    }
+
+    /**
+     * Remove viewing habit.
+     *
+     * @param viewingHabit the viewing habit
+     */
+    public void removeViewingHabit(ViewingHabit viewingHabit) {
+        viewingHabits.remove(viewingHabit);
+        viewingHabit.setUser(null);
+    }
+
 
     @Override
     public String toString() {

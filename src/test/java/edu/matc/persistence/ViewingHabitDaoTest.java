@@ -1,5 +1,7 @@
 package edu.matc.persistence;
 
+import edu.matc.entity.Movie;
+import edu.matc.entity.User;
 import edu.matc.entity.ViewingHabit;
 import edu.matc.test.util.Database;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,8 +45,20 @@ class ViewingHabitDaoTest {
 
     @Test
     void saveOrUpdateTest() {
-        ViewingHabit viewingHabit = new ViewingHabit(4,
-                LocalDate.parse("2018-01-21"), 1, 1, 4);
+        UserDao userDao = new UserDao();
+        User user = userDao.getById(3);
+
+        ViewingHabit viewingHabit = new ViewingHabit(
+                2,
+                LocalDate.parse("2017-01-01"),
+                68,
+                true,
+                 true,
+                 true,
+                 true,
+                 true,
+                 true,
+                 user);
         dao.saveOrUpdate(viewingHabit);
     }
 
