@@ -26,4 +26,6 @@ select {color: #eee; font-size: 1.0em; padding: 0 0 0 20px; font-weight: 100;}
 
 .post-span {color:#ccc; font-size:12px;}
 .post-img{margin-top:10px;}
+.movieThumbBorder {margin-top:10px; border: 4px solid red;}
+
 

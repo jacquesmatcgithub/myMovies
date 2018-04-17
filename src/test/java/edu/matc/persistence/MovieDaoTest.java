@@ -90,6 +90,7 @@ class MovieDaoTest {
                 "afterhours",
                 "jfourie",
                 9999,
+                false,
                 user);
 
 

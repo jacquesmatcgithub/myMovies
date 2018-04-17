@@ -62,7 +62,7 @@ class ViewingHabitDaoTest {
         dao.saveOrUpdate(viewingHabit);
     }
 
-
+/*
     @Test
     void getByIntPropertyEqualTest1() {
         List<ViewingHabit> habits = dao.getByIntPropertyEqual("movieId", 1);
@@ -85,4 +85,5 @@ class ViewingHabitDaoTest {
         assertEquals(expectedValue, actualValue);
 
     }
+*/
 }

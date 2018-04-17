@@ -47,6 +47,9 @@ public class Movie {
     @Column(name = "tmdb_id")
     private int tmdbId;
 
+    @Column(name = "temp")
+    private boolean temp;
+
     @ManyToOne
     private User user;
 
@@ -57,7 +60,22 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, int tmdbId, User user) {
+    /**
+     * Instantiates a new Movie.
+     *
+     * @param name       the name
+     * @param posterUri  the poster uri
+     * @param thumbUri   the thumb uri
+     * @param descUri    the desc uri
+     * @param ratingUri  the rating uri
+     * @param userRating the user rating
+     * @param sortKey    the sort key
+     * @param loginId    the login id
+     * @param tmdbId     the tmdb id
+     * @param temp       the temp
+     * @param user       the user
+     */
+    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, int tmdbId, boolean temp, User user) {
         this.name = name;
         this.posterUri = posterUri;
         this.thumbUri = thumbUri;
@@ -67,6 +85,7 @@ public class Movie {
         this.sortKey = sortKey;
         this.loginId = loginId;
         this.tmdbId = tmdbId;
+        this.temp = temp;
         this.user = user;
     }
 
@@ -268,6 +287,23 @@ public class Movie {
         this.tmdbId = tmdbId;
     }
 
+    /**
+     * Is temp boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isTemp() {
+        return temp;
+    }
+
+    /**
+     * Sets temp.
+     *
+     * @param temp the temp
+     */
+    public void setTemp(boolean temp) {
+        this.temp = temp;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -277,6 +313,7 @@ public class Movie {
         return id == movie.id &&
                 userRating == movie.userRating &&
                 tmdbId == movie.tmdbId &&
+                temp == movie.temp &&
                 Objects.equals(name, movie.name) &&
                 Objects.equals(posterUri, movie.posterUri) &&
                 Objects.equals(thumbUri, movie.thumbUri) &&
@@ -290,7 +327,7 @@ public class Movie {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, posterUri, thumbUri, descUri, ratingUri, userRating, sortKey, loginId, tmdbId, user);
+        return Objects.hash(id, name, posterUri, thumbUri, descUri, ratingUri, userRating, sortKey, loginId, tmdbId, temp, user);
     }
 
     @Override
@@ -306,6 +343,7 @@ public class Movie {
                 ", sortKey='" + sortKey + '\'' +
                 ", loginId='" + loginId + '\'' +
                 ", tmdbId=" + tmdbId +
+                ", temp=" + temp +
                 ", user=" + user +
                 '}';
     }

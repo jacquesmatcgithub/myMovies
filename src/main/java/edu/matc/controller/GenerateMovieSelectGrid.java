@@ -16,9 +16,25 @@ import java.util.stream.Collectors;
 
 /**
  * The type Generate movie grid.
+ *
+ *
+ *
+ * This class will generate a movie grid based on what a search of the tmdb webservice
+ * returned.
+ * When the user adds a movie, a call is made to tmdb.  If more than one movie is returned,
+ * they are stored in the user's movie table with a flag of some sorts to show these are
+ * the results of a search.  This page will only display movies with that flag set. The
+ * GenerateMovieGrid class on the other hand will only display movies where that flag is not
+ * set.
+ *
+ *
+ *
+ *
+ *
+ *
  */
 //TODO Structure this class better
-public class GenerateMovieGrid extends HttpServlet {
+public class GenerateMovieSelectGrid extends HttpServlet {
     /**
      *  Handles HTTP GET requests.
      *
@@ -28,7 +44,7 @@ public class GenerateMovieGrid extends HttpServlet {
      *@exception  IOException       if there is a general
      *                              I/O exception
      */
-    public static void generateGrid(JspWriter out, HttpServletRequest request)
+    public static void generateSelectGrid(JspWriter out, HttpServletRequest request)
             throws IOException {
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
@@ -55,9 +71,9 @@ public class GenerateMovieGrid extends HttpServlet {
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-            // If the movie is flagged as temporary then it will not appear
+            // If the movie is not flagged as temporary then it will not appear
             // on this movie grid.
-            if (thisMovie.isTemp()) {
+            if (!thisMovie.isTemp()) {
                 continue;
             }
 
@@ -75,10 +91,11 @@ public class GenerateMovieGrid extends HttpServlet {
                 out.print("<tr>");
             }
 
-            out.print("<td><a href=\"clickedThumb?id=" + thisMovie.getId() + "\"" +
+            out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +
                     "><img src=\"" + baseUrlTmdb + logoSizeTmdb + "/" +
                     thisMovie.getPosterUri() + "\"" +
-                    " class=\"post-img\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
+                    " class=\"movieThumbBorder\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
+//                  " class=\"post-img\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
 
             colCount += 1;
 
