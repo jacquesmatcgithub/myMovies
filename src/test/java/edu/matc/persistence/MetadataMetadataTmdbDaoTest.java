@@ -1,6 +1,6 @@
 package edu.matc.persistence;
 
-import edu.matc.test.util.Database;
+import edu.matc.util.Database;
 import edu.matc.entity.MetadataTmdb;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

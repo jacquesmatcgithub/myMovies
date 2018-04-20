@@ -1,20 +1,12 @@
 package edu.matc.persistence;
-
-// import edu.matc.entity.Order;
+import edu.matc.util.Database;
 import edu.matc.entity.Movie;
 import edu.matc.entity.User;
-import edu.matc.entity.ViewingHabit;
-import edu.matc.test.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -31,6 +23,7 @@ class MovieDaoTest {
     @BeforeEach
     void setUp() {
         dao = new MovieDao();
+
 
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
@@ -90,7 +83,7 @@ class MovieDaoTest {
                 "afterhours",
                 "jfourie",
                 9999,
-                false,
+                "IC",
                 user);
 
 

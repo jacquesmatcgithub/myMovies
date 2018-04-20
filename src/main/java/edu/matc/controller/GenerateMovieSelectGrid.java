@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
  */
 //TODO Structure this class better
 public class GenerateMovieSelectGrid extends HttpServlet {
+
     /**
      *  Handles HTTP GET requests.
      *
@@ -46,6 +47,7 @@ public class GenerateMovieSelectGrid extends HttpServlet {
      */
     public static void generateSelectGrid(JspWriter out, HttpServletRequest request)
             throws IOException {
+
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
 
@@ -63,39 +65,39 @@ public class GenerateMovieSelectGrid extends HttpServlet {
             return;
         }
 
-        String holdSortLocation = refinedHoldSortLocation(movieList.get(0).getSortKey());
 
         out.print("<table>");
-        out.print(holdSortLocation);
 
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-            // If the movie is not flagged as temporary then it will not appear
+            // If the movie is in the user's collection it will not show
             // on this movie grid.
-            if (!thisMovie.isTemp()) {
+            if (thisMovie.getState().equals("IC")) {
                 continue;
             }
 
-            String sortLocation = refinedHoldSortLocation(thisMovie.getSortKey());
-
-            if (!sortLocation.equals(holdSortLocation)) {
-                colCount = 1;
-                holdSortLocation = sortLocation;
-                out.print("</table>");
-                out.print("<br/>" + holdSortLocation);
-                out.print("<table>");
-            }
 
             if (colCount == 1) {
                 out.print("<tr>");
             }
 
-            out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +
-                    "><img src=\"" + baseUrlTmdb + logoSizeTmdb + "/" +
-                    thisMovie.getPosterUri() + "\"" +
-                    " class=\"movieThumbBorder\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
-//                  " class=\"post-img\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
+            String movieState = thisMovie.getState();
+
+            if (movieState.equals("SR")) {
+                out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +
+                        "><img src=\"" + baseUrlTmdb + logoSizeTmdb +
+                        thisMovie.getPosterUri() + "\"" +
+                        " class=\"movieThumbBorder\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
+
+            } else if (movieState.equals("SC")) {
+                out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +
+                        "><img src=\"" + baseUrlTmdb + logoSizeTmdb +
+                        thisMovie.getPosterUri() + "\"" +
+                        " class=\"movieThumbBorderSet\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
+
+            }
+
 
             colCount += 1;
 

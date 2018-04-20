@@ -1046,9 +1046,9 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="237" name="temp">
+    <column id="259" parent="237" name="state">
       <Position>12</Position>
-      <DataType>tinyint(1)|0</DataType>
+      <DataType>varchar(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <index id="260" parent="237" name="movie_id_uindex">

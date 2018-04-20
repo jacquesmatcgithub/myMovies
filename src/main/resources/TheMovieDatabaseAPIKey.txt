@@ -15,7 +15,7 @@ Steps to get movie info:
 
 2.  Do a Search:
     https://api.themoviedb.org/3/search/movie?api_key={api_key}&query={movie name}&include_adult=false
-    Example: https://api.themoviedb.org/3/search/movie?api_key=25da234db00ce6d226e5bc0072b39a02&query=Jack+Reacher
+    Example: https://api.themoviedb.org/3/search/movie?api_key=25da234db00ce6d226e5bc0072b39a02&query=Jack+Reacher&include_adult=false
 
 3.  With the movie id from from the /search, do a query for the details:
     https://api.themoviedb.org/3/movie/{movie id}?api_key={api_key}

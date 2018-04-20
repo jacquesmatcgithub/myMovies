@@ -1,14 +1,13 @@
 package edu.matc.persistence;
 
 import edu.matc.entity.ViewingHabit;
-import edu.matc.test.util.Database;
+import edu.matc.util.Database;
 import edu.matc.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.text.View;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

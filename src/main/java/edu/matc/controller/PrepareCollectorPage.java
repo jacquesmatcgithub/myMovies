@@ -1,5 +1,7 @@
 package edu.matc.controller;
 
+import edu.matc.entity.Movie;
+import edu.matc.persistence.MovieDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * The ValidateSigninServlet validates the user and password. It also then routes the
@@ -56,7 +59,22 @@ public class PrepareCollectorPage extends HttpServlet {
         // Load myMovies.properties, call the tmdb api and set session attributes for all
         AppConfig appConfig = new AppConfig(request);
 
+        cleanupUserMovies(request.getRemoteUser());
+
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-collector.jsp");
         dispatcher.forward(request, response);
+    }
+
+    /**
+     * The cleanupUserMovies method deleted all movies from the user's movie table
+     * where the state of the move is not IC (in collection).
+     * The reason for this is, there may be temporary movies in the user's table
+     * from doing a movie search in a previous session.
+     * @param currentUser
+     */
+    private void cleanupUserMovies(String currentUser) {
+
+        CleanupUserMovieCatalog cleanup = new CleanupUserMovieCatalog();
+        cleanup.deleteNonCatalogMovies(currentUser);
     }
 }

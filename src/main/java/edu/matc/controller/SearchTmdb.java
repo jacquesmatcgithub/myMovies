@@ -65,8 +65,10 @@ public class SearchTmdb {
                                              String tmdbSearchUrl,
                                              String movieName) throws IOException {
 
-        String tmdbUrl = tmdbSearchUrl + "?api_key=" +
-                tmdbApiKey + "&query=" + URLEncoder.encode(movieName, "UTF-8");
+        String tmdbUrl = tmdbSearchUrl +
+                "?api_key=" + tmdbApiKey +
+                "&query=" + URLEncoder.encode(movieName, "UTF-8") +
+                "&include_adult=false";
 
         logger.debug("tmdbUrl:" + tmdbUrl);
 

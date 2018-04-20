@@ -17,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTmdbSearch {
+
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     @Test
@@ -27,6 +28,7 @@ public class TestTmdbSearch {
 
         assertEquals(1, page);
     }
+
 
     @Test
     public void testGetTotalPages() throws Exception {

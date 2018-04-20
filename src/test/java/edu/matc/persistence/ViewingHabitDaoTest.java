@@ -1,9 +1,8 @@
 package edu.matc.persistence;
 
-import edu.matc.entity.Movie;
 import edu.matc.entity.User;
 import edu.matc.entity.ViewingHabit;
-import edu.matc.test.util.Database;
+import edu.matc.util.Database;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +19,7 @@ class ViewingHabitDaoTest {
     void setUp() {
         dao = new ViewingHabitDao();
 
-        edu.matc.test.util.Database database = Database.getInstance();
+        Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
     }
 

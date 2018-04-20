@@ -1,11 +1,17 @@
 package edu.matc.controller;
 
+import edu.matc.entity.Movie;
+import edu.matc.entity.User;
+import edu.matc.persistence.MovieDao;
+import edu.matc.persistence.UserDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.themoviedb.query.TmdbQueryResults;
 import org.themoviedb.search.TmdbSearchResults;
+import org.themoviedb.search.TmdbSearchResultsItem;
 
 import java.io.*;
+import java.util.List;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -31,6 +37,7 @@ public class AddNewMovie extends HttpServlet {
      */
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = "";
 
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
@@ -39,31 +46,20 @@ public class AddNewMovie extends HttpServlet {
         String tmdbSearchUrl = (String)session.getAttribute("tmdb.search.url");
         String tmdbApiKey = (String)session.getAttribute("tmdb.api.key");
 
-/*
-        QueryTmdb queryTmdb = new QueryTmdb();
-        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbSearchUrl, movieName);
-
-        tmdbQueryResults.getOriginalTitle();
-
-
         SearchTmdb searchTmdb = new SearchTmdb();
         TmdbSearchResults tmdbSearchResults = searchTmdb.findMovie(tmdbApiKey, tmdbSearchUrl, movieName);
 
-        switch (tmdbSearchResults.getTotalResults()) {
-            case 0:
-                session.setAttribute("addNewMovieMessage", "Nothing found");
-                break;
+        if (tmdbSearchResults.getTotalResults() == 0) {
+            session.setAttribute("addNewMovieMessage", "Nothing found");
+            url = "/signed-in-collector.jsp";
+        } else {
+            loadMovieTable(currentUser, movieName, tmdbSearchResults);
 
-            case 1:
-                foundOneMovie(tmdbSearchResults);
-                break;
-
-            default:
-                foundMultipleMovies(tmdbSearchResults);
-                break;
+            if (tmdbSearchResults.getTotalResults() == 1)
+                url = "/signed-in-collector-search-results.jsp";
+            else
+                url = "/signed-in-collector-search-results.jsp";
         }
-*/
-        String url = "/signed-in-collector.jsp";
 
         RequestDispatcher  dispatcher =
                 getServletContext().getRequestDispatcher(url);
@@ -71,23 +67,45 @@ public class AddNewMovie extends HttpServlet {
     }
 
 
+    private void loadMovieTable(String currentUser, String movieName, TmdbSearchResults tmdbSearchResults) {
 
-    /**
-     * If one movie was found, then display the single movie found page.
-     *
-     * @param tmdbSearchResults
-     */
-    private void foundOneMovie(TmdbSearchResults tmdbSearchResults) {
+        int moviesLoaded = 0;
 
+        UserDao userDao = new UserDao();
+        List<User> users = userDao.getByPropertyEqual("loginId", currentUser);
+        User user = users.get(0);
+
+        MovieDao movieDao = new MovieDao();
+
+        List<TmdbSearchResultsItem> tmdbSearchResultsItems = tmdbSearchResults.getResults();
+
+        for (TmdbSearchResultsItem item : tmdbSearchResultsItems) {
+            logger.debug("id:" + item.getId() + "   Title:" + item.getTitle());
+
+            String movieTitle = generateMovieSortKey(item.getTitle());
+
+            Movie movie = new Movie(
+                    item.getTitle(),
+                    item.getPosterPath(),
+                    "test",
+                    "test",
+                    "test",
+                    0,
+                    movieTitle,
+                    currentUser,
+                    item.getId(),
+                    "SR",
+                    user);
+
+            movieDao.saveOrUpdate(movie);
+
+        }
     }
 
 
-    /**
-     * If multiple movies were found, then display the multi-movie found page
-     *
-     * @param tmdbSearchResults
-     */
-    private void foundMultipleMovies(TmdbSearchResults tmdbSearchResults) {
 
+    private String generateMovieSortKey(String movieTitle) {
+        return movieTitle.toLowerCase().replaceAll("\\s+", "");
     }
+
 }

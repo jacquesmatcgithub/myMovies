@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
  */
 //TODO Structure this class better
 public class GenerateMovieGrid extends HttpServlet {
+
+
     /**
      *  Handles HTTP GET requests.
      *
@@ -55,9 +57,12 @@ public class GenerateMovieGrid extends HttpServlet {
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-            // If the movie is flagged as temporary then it will not appear
+            // If the movie is not in the user's collection it will not show
             // on this movie grid.
-            if (thisMovie.isTemp()) {
+            String movieState = thisMovie.getState();
+
+//            if (!thisMovie.getState().equals(thisMovie.isMovieInCollection())) {
+            if (!movieState.equals("IC")) {
                 continue;
             }
 
@@ -76,7 +81,7 @@ public class GenerateMovieGrid extends HttpServlet {
             }
 
             out.print("<td><a href=\"clickedThumb?id=" + thisMovie.getId() + "\"" +
-                    "><img src=\"" + baseUrlTmdb + logoSizeTmdb + "/" +
+                    "><img src=\"" + baseUrlTmdb + logoSizeTmdb +
                     thisMovie.getPosterUri() + "\"" +
                     " class=\"post-img\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
 

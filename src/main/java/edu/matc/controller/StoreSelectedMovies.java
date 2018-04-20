@@ -1,5 +1,14 @@
 package edu.matc.controller;
 
+import edu.matc.entity.Movie;
+import edu.matc.entity.User;
+import edu.matc.persistence.MovieDao;
+import edu.matc.persistence.UserDao;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.themoviedb.search.TmdbSearchResults;
+import org.themoviedb.search.TmdbSearchResultsItem;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet (
-        name = "SignOut",
-        urlPatterns = "/signOut"
+        name = "StoreSelectedMovies",
+        urlPatterns = "/storeSelectedMovies"
 )
-public class SignOut extends HttpServlet {
+public class StoreSelectedMovies extends HttpServlet {
+    private final Logger logger = LogManager.getLogger(this.getClass());
+
+
     /**
      *  Handles HTTP GET requests.
      *
@@ -28,19 +41,20 @@ public class SignOut extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-
         String currentUser = (String)session.getAttribute("currentUser");
 
-        CleanupUserMovieCatalog cleanup = new CleanupUserMovieCatalog();
-        cleanup.deleteNonCatalogMovies(currentUser);
+        MovieDao movieDao = new MovieDao();
 
-        session.removeAttribute("currentUser");
-        session.invalidate();
+        List<Movie> movies = movieDao.getByPropertyEqual("loginId", currentUser);
 
-        String url = "/index.jsp";
+        for (Movie movie : movies) {
+            if (movie.getState().equals("SC")) {
+                movie.setState("IC");
+                movieDao.saveOrUpdate(movie);
+            }
+        }
 
-        RequestDispatcher  dispatcher =
-                getServletContext().getRequestDispatcher(url);
+        RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-collector.jsp");
         dispatcher.forward(request, response);
     }
 }

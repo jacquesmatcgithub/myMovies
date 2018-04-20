@@ -148,7 +148,7 @@ CREATE TABLE `viewing_habit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `movie_id` int(11) DEFAULT NULL,
   `date_watched` date DEFAULT NULL,
-  `temp` int(11) DEFAULT NULL,
+  `state` int(11) DEFAULT NULL,
   `weather_sunny` tinyint(1) DEFAULT NULL,
   `weather_rainy` tinyint(1) DEFAULT NULL,
   `weather_foggy` tinyint(1) DEFAULT NULL,
