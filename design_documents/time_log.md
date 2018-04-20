@@ -55,6 +55,8 @@ Date  | Hours | Notes
 04/15/2018 | 4.0 | Watched the week 13 videos and did the exercise.
 04/15/2018 | 3.5 | Worked on my indie project.
 04/16/2018 | 3.0 | Worked on my indie project. Finally got the one-to-many issue fixed between my movie and viewinghabit tables.
+04/19/2018 | 4.0 | Added the movie select grid, adding multiple movies to the user's catalog, and cleaning up the user database.
+
 
 
 
