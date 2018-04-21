@@ -44,7 +44,7 @@ public class UserData {
     private User createUserFromResults(ResultSet results) throws SQLException {
         User user = new User();
         user.setLoginId(results.getString("login_id"));
-        user.setPassword(results.getString("password"));
+        user.setUserPassword(results.getString("password"));
         user.setLastName(results.getString("last_name"));
         user.setFirstName(results.getString("first_name"));
         user.setAdmin(results.getBoolean("admin"));

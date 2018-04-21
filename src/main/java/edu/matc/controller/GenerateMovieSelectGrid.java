@@ -73,7 +73,7 @@ public class GenerateMovieSelectGrid extends HttpServlet {
         for (Movie thisMovie : movieList) {
             // If the movie is in the user's collection it will not show
             // on this movie grid.
-            if (thisMovie.getState().equals("IC")) {
+            if (thisMovie.getMovieState().equals("IC")) {
                 continue;
             }
 
@@ -82,7 +82,7 @@ public class GenerateMovieSelectGrid extends HttpServlet {
                 out.print("<tr>");
             }
 
-            String movieState = thisMovie.getState();
+            String movieState = thisMovie.getMovieState();
 
             if (movieState.equals("SR")) {
                 out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +

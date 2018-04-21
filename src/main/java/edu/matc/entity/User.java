@@ -44,6 +44,12 @@ public class User {
     @Column(name = "date_active")
     private LocalDate dateActive;
 
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "state")
+    private String state;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OrderBy(clause = "sort_key ASC")
     private Set<Movie> movies = new HashSet<>();
@@ -67,8 +73,19 @@ public class User {
      * @param admin      the admin
      * @param active     the active
      * @param dateActive the date active
+     * @param city       the city
+     * @param state      the state
      */
-    public User(String loginId, String password, String firstName, String lastName, boolean admin, boolean active, LocalDate dateActive) {
+    public User(String loginId,
+                String password,
+                String firstName,
+                String lastName,
+                boolean admin,
+                boolean active,
+                LocalDate dateActive,
+                String city,
+                String state) {
+
         this.loginId = loginId;
         this.userPassword = password;
         this.firstName = firstName;
@@ -76,6 +93,8 @@ public class User {
         this.admin = admin;
         this.active = active;
         this.dateActive = dateActive;
+        this.city = city;
+        this.state = state;
     }
 
     /**
@@ -101,7 +120,7 @@ public class User {
      *
      * @return the password
      */
-    public String getPassword() {
+    public String getUserPassword() {
         return userPassword;
     }
 
@@ -110,7 +129,7 @@ public class User {
      *
      * @param password the password
      */
-    public void setPassword(String password) {
+    public void setUserPassword(String password) {
         this.userPassword = password;
     }
 
@@ -242,6 +261,42 @@ public class User {
 
 
     /**
+     * Gets city.
+     *
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * Sets city.
+     *
+     * @param city the city
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * Gets state.
+     *
+     * @return the state
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * Sets state.
+     *
+     * @param state the state
+     */
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    /**
      * Gets movies.
      *
      * @return the movies
@@ -319,19 +374,6 @@ public class User {
 
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", loginId='" + loginId + '\'' +
-                ", password='" + userPassword + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", admin=" + admin +
-                ", active=" + active +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -343,12 +385,30 @@ public class User {
                 Objects.equals(userPassword, user.userPassword) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
-                Objects.equals(dateActive, user.dateActive);
+                Objects.equals(dateActive, user.dateActive) &&
+                Objects.equals(city, user.city) &&
+                Objects.equals(state, user.state);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, loginId, userPassword, firstName, lastName, admin, active, dateActive);
+        return Objects.hash(id, loginId, userPassword, firstName, lastName, admin, active, dateActive, city, state);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", loginId='" + loginId + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", admin=" + admin +
+                ", active=" + active +
+                ", dateActive=" + dateActive +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                '}';
     }
 }

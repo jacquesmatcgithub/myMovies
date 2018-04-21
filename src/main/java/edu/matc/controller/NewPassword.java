@@ -75,11 +75,11 @@ public class NewPassword extends HttpServlet {
             return INVALID_PASSWORD_MSG;
         }
 
-        if (!currentPassword.equals(users.get(0).getPassword())) {
+        if (!currentPassword.equals(users.get(0).getUserPassword())) {
             return INVALID_PASSWORD_MSG;
         }
 
-        users.get(0).setPassword(newPassword);
+        users.get(0).setUserPassword(newPassword);
 
         dao.saveOrUpdate(users.get(0));
 

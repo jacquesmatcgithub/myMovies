@@ -31,6 +31,8 @@ public class AdminPage {
                 users.get(0).getFirstName(),
                 users.get(0).getLastName(),
                 users.get(0).getDateActive(),
+                users.get(0).getCity(),
+                users.get(0).getState(),
                 users.get(0).getAdmin(),
                 users.get(0).getActive(),
                 users,
@@ -56,6 +58,8 @@ public class AdminPage {
                 users.get(0).getFirstName(),
                 users.get(0).getLastName(),
                 users.get(0).getDateActive(),
+                users.get(0).getCity(),
+                users.get(0).getState(),
                 users.get(0).getAdmin(),
                 users.get(0).getActive(),
                 userDao.getAllUsers(),
@@ -82,6 +86,8 @@ public class AdminPage {
                           String firstName,
                           String lastName,
                           LocalDate dateActive,
+                          String city,
+                          String state,
                           boolean adminUser,
                           boolean activeUser,
                           List<User> users,
@@ -98,6 +104,8 @@ public class AdminPage {
         request.setAttribute("detailsFirstName", firstName);
         request.setAttribute("detailsLastName", lastName);
         request.setAttribute("detailsDateActive", dateActive);
+        request.setAttribute("detailsCity", city);
+        request.setAttribute("detailsState", state);
 
         if (activeUser) {
             request.setAttribute("userDetailsActiveCheckBox", "checked");

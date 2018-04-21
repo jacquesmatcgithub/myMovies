@@ -59,7 +59,7 @@ public class GenerateMovieGrid extends HttpServlet {
         for (Movie thisMovie : movieList) {
             // If the movie is not in the user's collection it will not show
             // on this movie grid.
-            String movieState = thisMovie.getState();
+            String movieState = thisMovie.getMovieState();
 
 //            if (!thisMovie.getState().equals(thisMovie.isMovieInCollection())) {
             if (!movieState.equals("IC")) {

@@ -48,8 +48,8 @@ public class StoreSelectedMovies extends HttpServlet {
         List<Movie> movies = movieDao.getByPropertyEqual("loginId", currentUser);
 
         for (Movie movie : movies) {
-            if (movie.getState().equals("SC")) {
-                movie.setState("IC");
+            if (movie.getMovieState().equals("SC")) {
+                movie.setMovieState("IC");
                 movieDao.saveOrUpdate(movie);
             }
         }

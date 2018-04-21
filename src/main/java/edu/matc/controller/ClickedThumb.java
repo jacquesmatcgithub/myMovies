@@ -48,6 +48,7 @@ public class ClickedThumb extends HttpServlet {
         int userRating = movie.getUserRating();
         request.setAttribute("ratingNumber", Integer.toString(userRating));
 
+
         int movieId = movie.getTmdbId();
 
         // Go get the movie details
@@ -98,6 +99,7 @@ public class ClickedThumb extends HttpServlet {
 
         List<CrewItem> movieCrew = cast.getCrew();
         request.setAttribute("movieCrew", movieCrew);
+
 
 
 

@@ -45,7 +45,7 @@ public class ValidateSignInServlet extends HttpServlet {
 
         List<User> users = userDao.getByPropertyEqual("loginId", loginId);
         
-        if (users.size() == 0 || !users.get(0).getPassword().equals(password)) {
+        if (users.size() == 0 || !users.get(0).getUserPassword().equals(password)) {
             url = "/sign-in.jsp";
             request.setAttribute("signInMessage", "Invalid Sign In");
         } else if (users.get(0).getAdmin()) {

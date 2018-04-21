@@ -1046,7 +1046,7 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="259" parent="237" name="state">
+    <column id="259" parent="237" name="movie_state">
       <Position>12</Position>
       <DataType>varchar(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
@@ -1173,86 +1173,71 @@
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="282" parent="239" name="PRIMARY">
+    <column id="282" parent="239" name="city">
+      <Position>9</Position>
+      <DataType>varchar(30)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="283" parent="239" name="state">
+      <Position>10</Position>
+      <DataType>varchar(2)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="284" parent="239" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="283" parent="240" name="id">
+    <column id="285" parent="240" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="240" name="movie_id">
+    <column id="286" parent="240" name="movie_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="285" parent="240" name="date_watched">
+    <column id="287" parent="240" name="date_watched">
       <Position>3</Position>
       <DataType>date|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="240" name="temp">
+    <column id="288" parent="240" name="temp">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="240" name="weather_sunny">
+    <column id="289" parent="240" name="weather_conditions">
       <Position>5</Position>
-      <DataType>tinyint(1)|0</DataType>
+      <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="288" parent="240" name="weather_rainy">
+    <column id="290" parent="240" name="user_id">
       <Position>6</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="289" parent="240" name="weather_foggy">
-      <Position>7</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="290" parent="240" name="weather_snowy">
-      <Position>8</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="291" parent="240" name="weather_hail">
-      <Position>9</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="292" parent="240" name="weather_thunder">
-      <Position>10</Position>
-      <DataType>tinyint(1)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="293" parent="240" name="user_id">
-      <Position>11</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="294" parent="240" name="viewing_habit_id_uindex">
+    <index id="291" parent="240" name="viewing_habit_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="295" parent="240" name="viewing_habit_user_id_fk">
+    <index id="292" parent="240" name="viewing_habit_user_id_fk">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="296" parent="240" name="PRIMARY">
+    <key id="293" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="297" parent="240" name="viewing_habit_id_uindex">
+    <key id="294" parent="240" name="viewing_habit_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>viewing_habit_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="298" parent="240" name="viewing_habit_user_id_fk">
+    <foreign-key id="295" parent="240" name="viewing_habit_user_id_fk">
       <ColNames>user_id</ColNames>
       <RefSchemaName>test_mymovies</RefSchemaName>
       <RefTableName>user</RefTableName>

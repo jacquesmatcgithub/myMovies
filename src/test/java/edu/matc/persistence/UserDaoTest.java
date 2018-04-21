@@ -1,5 +1,6 @@
 package edu.matc.persistence;
 
+import edu.matc.entity.Movie;
 import edu.matc.entity.ViewingHabit;
 import edu.matc.util.Database;
 import edu.matc.entity.User;
@@ -85,7 +86,9 @@ class UserDaoTest {
                 "Pan",
                 TRUE,
                 TRUE,
-                LocalDate.parse("2018-01-20"));
+                LocalDate.parse("2018-01-20"),
+                "Grand Rapids",
+                "MI");
 
         int id = dao.insert(newUser);
 
@@ -179,21 +182,33 @@ class UserDaoTest {
                 "Bond",
                 TRUE,
                 TRUE,
-                LocalDate.parse("2018-04-16"));
+                LocalDate.parse("2018-04-16"),
+                "Birmingham",
+                "AL");
+
+        Movie newMovie = new Movie(
+                "After Hours",
+                "/s5XkBqUMwE0wQv9NY0XERs64cgs.jpg",
+                "test",
+                "test",
+                "test",
+                2,
+                "afterhours",
+                "jfourie",
+                9999,
+                "IC",
+                newUser);
 
         ViewingHabit newViewingHabit = new ViewingHabit(
                 12,
                 LocalDate.parse("2018-04-16"),
                 55,
-                true,
-                true,
-                true,
-                true,
-                true,
-                true,
-                newUser);
+                "Clear",
+                newUser,
+                newMovie);
 
         newUser.addViewingHabit(newViewingHabit);
+        newUser.addMovie(newMovie);
 
         int id = dao.insert(newUser);
 

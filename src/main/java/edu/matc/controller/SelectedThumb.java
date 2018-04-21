@@ -42,10 +42,10 @@ public class SelectedThumb extends HttpServlet {
         MovieDao movieDao = new MovieDao();
         Movie movie = movieDao.getById(thumbId);
 
-        if (movie.getState().equals("SR")) {
-            movie.setState("SC");
+        if (movie.getMovieState().equals("SR")) {
+            movie.setMovieState("SC");
         } else {
-            movie.setState("SR");
+            movie.setMovieState("SR");
         }
 
         movieDao.saveOrUpdate(movie);

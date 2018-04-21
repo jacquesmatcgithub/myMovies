@@ -18,7 +18,7 @@ public class ViewingHabit {
     @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
-    @Column(name = "movie_id")
+    @Column(name = "movie_id", updatable = false, insertable = false)
     private int movieId;
 
     @Column(name = "date_watched")
@@ -27,26 +27,14 @@ public class ViewingHabit {
     @Column(name = "temp")
     private int temp;
 
-    @Column(name = "weather_sunny")
-    private boolean weatherSunny;
-
-    @Column(name = "weather_rainy")
-    private boolean weatherRainy;
-
-    @Column(name = "weather_foggy")
-    private boolean weatherFoggy;
-
-    @Column(name = "weather_snowy")
-    private boolean weatherSnowy;
-
-    @Column(name = "weather_hail")
-    private boolean weatherHail;
-
-    @Column(name = "weather_thunder")
-    private boolean weatherThunder;
+    @Column(name = "weather_conditions")
+    private String weatherConditions;
 
     @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Movie movie;
 
     /**
      * Instantiates a new Viewing habit.
@@ -60,25 +48,21 @@ public class ViewingHabit {
      * @param movieId        the movie id
      * @param dateWatched    the date watched
      * @param temp           the temp
-     * @param weatherSunny   the weather sunny
-     * @param weatherRainy   the weather rainy
-     * @param weatherFoggy   the weather foggy
-     * @param weatherSnowy   the weather snowy
-     * @param weatherHail    the weather hail
-     * @param weatherThunder the weather thunder
+     * @param weatherConditions the weather conditions
      * @param user           the user
      */
-    public ViewingHabit(int movieId, LocalDate dateWatched, int temp, boolean weatherSunny, boolean weatherRainy, boolean weatherFoggy, boolean weatherSnowy, boolean weatherHail, boolean weatherThunder, User user) {
+    public ViewingHabit(int movieId,
+                        LocalDate dateWatched,
+                        int temp,
+                        String weatherConditions,
+                        User user,
+                        Movie movie) {
         this.movieId = movieId;
         this.dateWatched = dateWatched;
         this.temp = temp;
-        this.weatherSunny = weatherSunny;
-        this.weatherRainy = weatherRainy;
-        this.weatherFoggy = weatherFoggy;
-        this.weatherSnowy = weatherSnowy;
-        this.weatherHail = weatherHail;
-        this.weatherThunder = weatherThunder;
+        this.weatherConditions = weatherConditions;
         this.user = user;
+        this.movie = movie;
     }
 
     /**
@@ -154,112 +138,12 @@ public class ViewingHabit {
         this.temp = temp;
     }
 
-    /**
-     * Is weather sunny boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isWeatherSunny() {
-        return weatherSunny;
+    public String getWeatherConditions() {
+        return weatherConditions;
     }
 
-    /**
-     * Sets weather sunny.
-     *
-     * @param weatherSunny the weather sunny
-     */
-    public void setWeatherSunny(boolean weatherSunny) {
-        this.weatherSunny = weatherSunny;
-    }
-
-    /**
-     * Is weather rainy boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isWeatherRainy() {
-        return weatherRainy;
-    }
-
-    /**
-     * Sets weather rainy.
-     *
-     * @param weatherRainy the weather rainy
-     */
-    public void setWeatherRainy(boolean weatherRainy) {
-        this.weatherRainy = weatherRainy;
-    }
-
-    /**
-     * Is weather foggy boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isWeatherFoggy() {
-        return weatherFoggy;
-    }
-
-    /**
-     * Sets weather foggy.
-     *
-     * @param weatherFoggy the weather foggy
-     */
-    public void setWeatherFoggy(boolean weatherFoggy) {
-        this.weatherFoggy = weatherFoggy;
-    }
-
-    /**
-     * Is weather snowy boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isWeatherSnowy() {
-        return weatherSnowy;
-    }
-
-    /**
-     * Sets weather snowy.
-     *
-     * @param weatherSnowy the weather snowy
-     */
-    public void setWeatherSnowy(boolean weatherSnowy) {
-        this.weatherSnowy = weatherSnowy;
-    }
-
-    /**
-     * Is weather hail boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isWeatherHail() {
-        return weatherHail;
-    }
-
-    /**
-     * Sets weather hail.
-     *
-     * @param weatherHail the weather hail
-     */
-    public void setWeatherHail(boolean weatherHail) {
-        this.weatherHail = weatherHail;
-    }
-
-    /**
-     * Is weather thunder boolean.
-     *
-     * @return the boolean
-     */
-    public boolean isWeatherThunder() {
-        return weatherThunder;
-    }
-
-    /**
-     * Sets weather thunder.
-     *
-     * @param weatherThunder the weather thunder
-     */
-    public void setWeatherThunder(boolean weatherThunder) {
-        this.weatherThunder = weatherThunder;
+    public void setWeatherConditions(String weatherConditions) {
+        this.weatherConditions = weatherConditions;
     }
 
     /**
@@ -280,6 +164,25 @@ public class ViewingHabit {
         this.user = user;
     }
 
+    /**
+     * Gets movie.
+     *
+     * @return the movie
+     */
+    public Movie getMovie() {
+        return movie;
+    }
+
+    /**
+     * Sets movie.
+     *
+     * @param movie the movie
+     */
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -288,20 +191,16 @@ public class ViewingHabit {
         return id == that.id &&
                 movieId == that.movieId &&
                 temp == that.temp &&
-                weatherSunny == that.weatherSunny &&
-                weatherRainy == that.weatherRainy &&
-                weatherFoggy == that.weatherFoggy &&
-                weatherSnowy == that.weatherSnowy &&
-                weatherHail == that.weatherHail &&
-                weatherThunder == that.weatherThunder &&
                 Objects.equals(dateWatched, that.dateWatched) &&
-                Objects.equals(user, that.user);
+                Objects.equals(weatherConditions, that.weatherConditions) &&
+                Objects.equals(user, that.user) &&
+                Objects.equals(movie, that.movie);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, movieId, dateWatched, temp, weatherSunny, weatherRainy, weatherFoggy, weatherSnowy, weatherHail, weatherThunder, user);
+        return Objects.hash(id, movieId, dateWatched, temp, weatherConditions, user, movie);
     }
 
     @Override
@@ -311,12 +210,7 @@ public class ViewingHabit {
                 ", movieId=" + movieId +
                 ", dateWatched=" + dateWatched +
                 ", temp=" + temp +
-                ", weatherSunny=" + weatherSunny +
-                ", weatherRainy=" + weatherRainy +
-                ", weatherFoggy=" + weatherFoggy +
-                ", weatherSnowy=" + weatherSnowy +
-                ", weatherHail=" + weatherHail +
-                ", weatherThunder=" + weatherThunder +
+                ", weatherConditions=" + weatherConditions +
                 '}';
     }
 }

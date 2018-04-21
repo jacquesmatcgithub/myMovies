@@ -3,7 +3,9 @@ package edu.matc.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * The type Movie.
@@ -47,11 +49,14 @@ public class Movie {
     @Column(name = "tmdb_id")
     private int tmdbId;
 
-    @Column(name = "state")
-    private String state;
+    @Column(name = "movie_state")
+    private String movieState;
 
     @ManyToOne
     private User user;
+
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<ViewingHabit> viewingHabits = new HashSet<>();
 
 
     /**
@@ -72,10 +77,10 @@ public class Movie {
      * @param sortKey    the sort key
      * @param loginId    the login id
      * @param tmdbId     the tmdb id
-     * @param state      the state of the movie
+     * @param movieState  the state of the movie
      * @param user       the user
      */
-    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, int tmdbId, String state, User user) {
+    public Movie(String name, String posterUri, String thumbUri, String descUri, String ratingUri, int userRating, String sortKey, String loginId, int tmdbId, String movieState, User user) {
         this.name = name;
         this.posterUri = posterUri;
         this.thumbUri = thumbUri;
@@ -85,7 +90,7 @@ public class Movie {
         this.sortKey = sortKey;
         this.loginId = loginId;
         this.tmdbId = tmdbId;
-        this.state = state;
+        this.movieState = movieState;
         this.user = user;
     }
 
@@ -287,22 +292,17 @@ public class Movie {
         this.tmdbId = tmdbId;
     }
 
-    /**
-     * Is state boolean.
-     *
-     * @return the boolean
-     */
-    public String getState() {
-        return state;
+    public String getMovieState() {
+        return movieState;
     }
 
     /**
      * Sets state.
      *
-     * @param state the state
+     * @param movieState the state
      */
-    public void setState(String state) {
-        this.state = state;
+    public void setMovieState(String movieState) {
+        this.movieState = movieState;
     }
 
     /**
@@ -311,7 +311,7 @@ public class Movie {
      * @return the boolean
      */
     public boolean isMovieInCollection() {
-        if (getState().equals(MOVIE_STATE_IN_COLLECTION)) {
+        if (getMovieState().equals(MOVIE_STATE_IN_COLLECTION)) {
             return true;
         } else {
             return false;
@@ -324,7 +324,7 @@ public class Movie {
      * @return the boolean
      */
     public boolean isMovieSelected() {
-        if (getState().equals(MOVIE_STATE_SEARCH_RESULTS_CLICKED)) {
+        if (getMovieState().equals(MOVIE_STATE_SEARCH_RESULTS_CLICKED)) {
             return true;
         } else {
             return false;
@@ -337,13 +337,31 @@ public class Movie {
      * @return the boolean
      */
     public boolean isMovieInSearchResults() {
-        if (getState().equals(MOVIE_STATE_SEARCH_RESULTS)) {
+        if (getMovieState().equals(MOVIE_STATE_SEARCH_RESULTS)) {
             return true;
         } else {
             return false;
         }
     }
 
+
+    /**
+     * Gets viewing habits.
+     *
+     * @return the viewing habits
+     */
+    public Set<ViewingHabit> getViewingHabits() {
+        return viewingHabits;
+    }
+
+    /**
+     * Sets viewing habits.
+     *
+     * @param viewingHabits the viewing habits
+     */
+    public void setViewingHabits(Set<ViewingHabit> viewingHabits) {
+        this.viewingHabits = viewingHabits;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -360,14 +378,14 @@ public class Movie {
                 Objects.equals(ratingUri, movie.ratingUri) &&
                 Objects.equals(sortKey, movie.sortKey) &&
                 Objects.equals(loginId, movie.loginId) &&
-                Objects.equals(state, movie.state) &&
+                Objects.equals(movieState, movie.movieState) &&
                 Objects.equals(user, movie.user);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, posterUri, thumbUri, descUri, ratingUri, userRating, sortKey, loginId, tmdbId, state, user);
+        return Objects.hash(id, name, posterUri, thumbUri, descUri, ratingUri, userRating, sortKey, loginId, tmdbId, movieState, user);
     }
 
     @Override
@@ -383,7 +401,7 @@ public class Movie {
                 ", sortKey='" + sortKey + '\'' +
                 ", loginId='" + loginId + '\'' +
                 ", tmdbId=" + tmdbId +
-                ", state=" + state +
+                ", movieState=" + movieState +
                 ", user=" + user +
                 '}';
     }

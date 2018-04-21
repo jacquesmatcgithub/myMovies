@@ -28,3 +28,14 @@ http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/WI/Madison.json
 
 Store the weather condition gif location in the viewing habits table
 use the weather: json element
+
+
+http://api.wunderground.com/api/bbb31fc503e799ce/hourly10day/q/CA/San_Francisco.json
+
+
+http://api.wunderground.com/api/bbb31fc503e799ce/forecast10day/q/CA/San_Francisco.json
+
+
+
+http://api.wunderground.com/api/bbb31fc503e799ce/history_20180418/q/WI/Madison.json
+

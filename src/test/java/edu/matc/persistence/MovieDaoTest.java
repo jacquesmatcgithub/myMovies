@@ -75,7 +75,7 @@ class MovieDaoTest {
 
         Movie newMovie = new Movie(
                 "After Hours",
-                "s5XkBqUMwE0wQv9NY0XERs64cgs.jpg",
+                "/s5XkBqUMwE0wQv9NY0XERs64cgs.jpg",
                 "test",
                 "test",
                 "test",

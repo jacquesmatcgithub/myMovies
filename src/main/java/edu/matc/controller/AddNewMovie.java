@@ -82,18 +82,26 @@ public class AddNewMovie extends HttpServlet {
         for (TmdbSearchResultsItem item : tmdbSearchResultsItems) {
             logger.debug("id:" + item.getId() + "   Title:" + item.getTitle());
 
-            String movieTitle = generateMovieSortKey(item.getTitle());
+            String movieTitle = item.getTitle();
+            String movieSortKey = generateMovieSortKey(movieTitle);
+            int movieTmdbId = item.getId();
+            String posterPath = item.getPosterPath();
+
+            if (movieTitle == null || posterPath == null) {
+                continue;
+            }
+
 
             Movie movie = new Movie(
-                    item.getTitle(),
-                    item.getPosterPath(),
+                    movieTitle,
+                    posterPath,
                     "test",
                     "test",
                     "test",
                     0,
-                    movieTitle,
+                    movieSortKey,
                     currentUser,
-                    item.getId(),
+                    movieTmdbId,
                     "SR",
                     user);
 

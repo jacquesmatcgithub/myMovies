@@ -12,6 +12,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 //*TODO Update the javadoc
+
 /**
  * The type Crud user.
  */
@@ -39,6 +40,8 @@ public class CrudUser extends HttpServlet {
     private static final int FORM_FIELD_FIRSTNAME_EMPTY = 2;
     private static final int FORM_FIELD_LASTNAME_EMPTY = 3;
     private static final int FORM_FIELD_DATEACTIVE_EMPTY = 4;
+    private static final int FORM_FIELD_CITY_EMPTY = 5;
+    private static final int FORM_FIELD_STATE_EMPTY = 6;
     private static final int FORM_FIELD_NONE_EMPTY = 99;
 
 
@@ -73,6 +76,8 @@ public class CrudUser extends HttpServlet {
         String formFirstName = request.getParameter("firstName");
         String formLastName = request.getParameter("lastName");
         LocalDate formDateActive = LocalDate.parse(request.getParameter("dateActive"));
+        String formCity = request.getParameter("city");
+        String formState = request.getParameter("state");
 
         boolean formAdminUser = false;
 
@@ -90,8 +95,17 @@ public class CrudUser extends HttpServlet {
         // Act on which button was pressed
         switch (buttonPressed) {
             case BUTTON_ADD_UPDATE_USER:
-                userDetailsMessage = addUpdateUser(request, userDao, formLoginId, formFirstName, formLastName,
-                        formDateActive, formAdminUser, formActiveUser);
+                userDetailsMessage = addUpdateUser(
+                        request,
+                        userDao,
+                        formLoginId,
+                        formFirstName,
+                        formLastName,
+                        formDateActive,
+                        formAdminUser,
+                        formActiveUser,
+                        formCity,
+                        formState);
                 break;
             case BUTTON_DELETE_USER:
                 userDetailsMessage = deleteUser(request, userDao);
@@ -118,13 +132,21 @@ public class CrudUser extends HttpServlet {
      * @param formDateActive
      * @param formAdminUser
      * @param formActiveUser
+     * @param formCity
+     * @param formState
      * @return
      */
     private String addUpdateUser(HttpServletRequest request, UserDao userDao,  String formLoginId, String formFirstName,
                               String formLastName, LocalDate formDateActive, boolean formAdminUser,
-                              boolean formActiveUser) {
+                              boolean formActiveUser, String formCity, String formState) {
 
-        int emptyField = findFirstEmptyField(request, formLoginId, formFirstName, formLastName, formDateActive);
+        int emptyField = findFirstEmptyField(request,
+                formLoginId,
+                formFirstName,
+                formLastName,
+                formDateActive,
+                formCity,
+                formState);
 
         if (emptyField != FORM_FIELD_NONE_EMPTY) {
             return MSG_ENTER_FIELD;
@@ -134,7 +156,16 @@ public class CrudUser extends HttpServlet {
         List<User> users = userDao.getByPropertyEqual("loginId", formLoginId);
 
         if (users.size() == 0) {
-            User newUser = new User(formLoginId, "temp", formFirstName, formLastName, formAdminUser, formActiveUser, formDateActive);
+            User newUser = new User(
+                    formLoginId, "temp",
+                    formFirstName,
+                    formLastName,
+                    formAdminUser,
+                    formActiveUser,
+                    formDateActive,
+                    formCity,
+                    formState);
+
             int id = userDao.insert(newUser);
         } else {
             User userToUpdate = users.get(0);
@@ -170,16 +201,21 @@ public class CrudUser extends HttpServlet {
      * @param formFirstName
      * @param formLastName
      * @param formDateActive
+     * @param formCity
+     * @param formState
      * @return
      */
     private int findFirstEmptyField(HttpServletRequest request, String formLoginId, String formFirstName,
-                                    String formLastName, LocalDate formDateActive) {
+                                    String formLastName, LocalDate formDateActive,
+                                    String formCity, String formState) {
         
         request.removeAttribute("loginIdAutofocus");
         request.removeAttribute("firstNameAutofocus");
         request.removeAttribute("lastNameAutofocus");
         request.removeAttribute("dateActiveAutofocus");
-        
+        request.removeAttribute("cityAutofocus");
+        request.removeAttribute("stateAutofocus");
+
         if (formLoginId.isEmpty()) {
             request.setAttribute("loginIdAutofocus", "autofocus");
             return FORM_FIELD_LOGINID_EMPTY;
@@ -192,6 +228,12 @@ public class CrudUser extends HttpServlet {
         } else if (formDateActive.toString().isEmpty()) {
             request.setAttribute("dateActiveAutofocus", "autofocus");
             return FORM_FIELD_DATEACTIVE_EMPTY;
+        } else if (formCity.isEmpty()) {
+            request.setAttribute("cityAutofocus", "autofocus");
+            return FORM_FIELD_CITY_EMPTY;
+        } else if (formState.isEmpty()) {
+            request.setAttribute("stateAutofocus", "autofocus");
+            return FORM_FIELD_STATE_EMPTY;
         } else {
             return FORM_FIELD_NONE_EMPTY;
         }

@@ -1,5 +1,6 @@
 package edu.matc.persistence;
 
+import edu.matc.entity.Movie;
 import edu.matc.entity.User;
 import edu.matc.entity.ViewingHabit;
 import edu.matc.util.Database;
@@ -7,7 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,43 +49,18 @@ class ViewingHabitDaoTest {
     void saveOrUpdateTest() {
         UserDao userDao = new UserDao();
         User user = userDao.getById(3);
+        Set<Movie> movies = user.getMovies();
+        List<Movie> movieList = new ArrayList<>(movies);
+        Movie movie = movieList.get(0);
 
         ViewingHabit viewingHabit = new ViewingHabit(
                 2,
                 LocalDate.parse("2017-01-01"),
                 68,
-                true,
-                 true,
-                 true,
-                 true,
-                 true,
-                 true,
-                 user);
+                "Light Snow",
+                 user,
+                movie);
         dao.saveOrUpdate(viewingHabit);
     }
 
-/*
-    @Test
-    void getByIntPropertyEqualTest1() {
-        List<ViewingHabit> habits = dao.getByIntPropertyEqual("movieId", 1);
-
-        int expectedValue = 2;
-        int actualValue = habits.size();
-
-        assertEquals(expectedValue, actualValue);
-
-    }
-
-
-    @Test
-    void getByIntPropertyEqualTest2() {
-        List<ViewingHabit> habits = dao.getByIntPropertyEqual("userId", 3);
-
-        int expectedValue = 2;
-        int actualValue = habits.size();
-
-        assertEquals(expectedValue, actualValue);
-
-    }
-*/
 }
