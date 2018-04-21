@@ -43,8 +43,8 @@ INSERT INTO `role` VALUES (4,'regular','lfoxy',4);
 INSERT INTO `role` VALUES (5,'regular','baduser',5);
 INSERT INTO `role` VALUES (6,'regular','pwaite',6);
 INSERT INTO `role` VALUES (7,'admin','pwaiteadmin',7);
-INSERT INTO `viewing_habit` VALUES (1,1,'2018-01-01',28,'Clear',3);
-INSERT INTO `viewing_habit` VALUES (2,1,'2018-02-01',28,'Light Snow',3);
-INSERT INTO `viewing_habit` VALUES (3,2,'2018-03-01',28,'Overcast',4);
-INSERT INTO `viewing_habit` VALUES (4,3,'2018-04-01',28,'Partly Cloudy',4);
+INSERT INTO `viewing_habit` VALUES (1,1,'2018-01-01',28,'Clear','mostlycloudy',3);
+INSERT INTO `viewing_habit` VALUES (2,1,'2018-02-01',28,'Light Snow','mostlycloudy',3);
+INSERT INTO `viewing_habit` VALUES (3,2,'2018-03-01',28,'Overcast','mostlycloudy',4);
+INSERT INTO `viewing_habit` VALUES (4,3,'2018-04-01',28,'Partly Cloudy','mostlycloudy',4);
 

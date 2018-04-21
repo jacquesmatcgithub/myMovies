@@ -204,6 +204,7 @@ class UserDaoTest {
                 LocalDate.parse("2018-04-16"),
                 55,
                 "Clear",
+                "mostlycloudy",
                 newUser,
                 newMovie);
 

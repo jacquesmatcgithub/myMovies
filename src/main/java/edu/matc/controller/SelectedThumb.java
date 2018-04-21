@@ -37,7 +37,7 @@ public class SelectedThumb extends HttpServlet {
 
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
-        int thumbId = Integer.parseInt(request.getParameter("id"));
+        int thumbId = Integer.parseInt(request.getParameter("thumbId"));
 
         MovieDao movieDao = new MovieDao();
         Movie movie = movieDao.getById(thumbId);

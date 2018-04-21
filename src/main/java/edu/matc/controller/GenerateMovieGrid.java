@@ -80,7 +80,7 @@ public class GenerateMovieGrid extends HttpServlet {
                 out.print("<tr>");
             }
 
-            out.print("<td><a href=\"clickedThumb?id=" + thisMovie.getId() + "\"" +
+            out.print("<td><a href=\"clickedThumb?thumbId=" + thisMovie.getId() + "\"" +
                     "><img src=\"" + baseUrlTmdb + logoSizeTmdb +
                     thisMovie.getPosterUri() + "\"" +
                     " class=\"post-img\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");

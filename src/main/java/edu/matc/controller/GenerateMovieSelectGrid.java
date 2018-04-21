@@ -85,13 +85,13 @@ public class GenerateMovieSelectGrid extends HttpServlet {
             String movieState = thisMovie.getMovieState();
 
             if (movieState.equals("SR")) {
-                out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +
+                out.print("<td><a href=\"selectedThumb?thumbId=" + thisMovie.getId() + "\"" +
                         "><img src=\"" + baseUrlTmdb + logoSizeTmdb +
                         thisMovie.getPosterUri() + "\"" +
                         " class=\"movieThumbBorder\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");
 
             } else if (movieState.equals("SC")) {
-                out.print("<td><a href=\"selectedThumb?id=" + thisMovie.getId() + "\"" +
+                out.print("<td><a href=\"selectedThumb?thumbId=" + thisMovie.getId() + "\"" +
                         "><img src=\"" + baseUrlTmdb + logoSizeTmdb +
                         thisMovie.getPosterUri() + "\"" +
                         " class=\"movieThumbBorderSet\"" + " title=\"" + thisMovie.getName() + "\"></a></td>");

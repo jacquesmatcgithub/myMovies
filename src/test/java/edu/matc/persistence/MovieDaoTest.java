@@ -141,13 +141,6 @@ class MovieDaoTest {
         assertEquals(1, movies.size());
         assertEquals(3, movies.get(0).getId());
 
-//        Set<ViewingHabit> viewingHabits = movies.get(0).getViewingHabits();
-//        List<ViewingHabit> viewingHabitList = new ArrayList<>(viewingHabits);
-
-//        if (viewingHabitList.size() > 0) {
-//            logger.info(viewingHabitList.get(0).getDateWatched());
-//        }
-
     }
 
     /**

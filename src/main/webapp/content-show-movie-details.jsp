@@ -32,10 +32,10 @@
                 <td align="center"><img src="${publicRating}" width="100" class="post-img" title="Movie Rating"></td>
                 <td align="center"><img href="clickedRating?ratingNumber=${ratingNumber}" src="${userRating}" width="100" class="post-img" title="Your Rating"></td>
             </tr>
-            <tr><td align="right"><br/><br/><br/><br/>Last Watched:<br/><br/></td><td><br/><br/><br/><br/>${lastTimeWatched}<br/><br/></td></tr>
-            <tr><td align="right">Season:<br/><br/></td><td>${seasonOfYear}<br/><br/></td></tr>
-            <tr><td align="right">Conditions:<br/><br/></td><td>${weatherConditions}<br/><br/></td></tr>
-            <tr><td align="right">Temperature:<br/><br/></td><td>${temperature}<br/><br/></td></tr>
+            <tr><td align="right"><br/><br/><br/><br/>Last Watched : <br/><br/></td><td><br/><br/><br/><br/>${lastWatched}<br/><br/></td></tr>
+            <tr><td align="right">Conditions : <br/><br/></td><td>${weatherConditions}<br/><br/></td></tr>
+            <tr><td align="right">Temperature : <br/><br/></td><td>${temperature}<br/><br/></td></tr>
+            <tr><td align="right">Viewings : <br/><br/></td><td>${viewings}<br/><br/></td></tr>
         </table>
     </div>
 </div>

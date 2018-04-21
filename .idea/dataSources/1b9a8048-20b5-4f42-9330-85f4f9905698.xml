@@ -1215,29 +1215,34 @@
       <DataType>varchar(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="290" parent="240" name="user_id">
+    <column id="290" parent="240" name="icon_name">
       <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="291" parent="240" name="user_id">
+      <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="291" parent="240" name="viewing_habit_id_uindex">
+    <index id="292" parent="240" name="viewing_habit_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="292" parent="240" name="viewing_habit_user_id_fk">
+    <index id="293" parent="240" name="viewing_habit_user_id_fk">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="293" parent="240" name="PRIMARY">
+    <key id="294" parent="240" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="294" parent="240" name="viewing_habit_id_uindex">
+    <key id="295" parent="240" name="viewing_habit_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>viewing_habit_id_uindex</UnderlyingIndexName>
     </key>
-    <foreign-key id="295" parent="240" name="viewing_habit_user_id_fk">
+    <foreign-key id="296" parent="240" name="viewing_habit_user_id_fk">
       <ColNames>user_id</ColNames>
       <RefSchemaName>test_mymovies</RefSchemaName>
       <RefTableName>user</RefTableName>

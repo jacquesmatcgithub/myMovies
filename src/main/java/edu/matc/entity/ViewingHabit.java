@@ -30,6 +30,9 @@ public class ViewingHabit {
     @Column(name = "weather_conditions")
     private String weatherConditions;
 
+    @Column(name = "icon_name")
+    private String iconName;
+
     @ManyToOne
     private User user;
 
@@ -45,22 +48,26 @@ public class ViewingHabit {
     /**
      * Instantiates a new Viewing habit.
      *
-     * @param movieId        the movie id
-     * @param dateWatched    the date watched
-     * @param temp           the temp
+     * @param movieId           the movie id
+     * @param dateWatched       the date watched
+     * @param temp              the temp
      * @param weatherConditions the weather conditions
-     * @param user           the user
+     * @param iconName       the gif location
+     * @param user              the user
+     * @param movie             the movie
      */
     public ViewingHabit(int movieId,
                         LocalDate dateWatched,
                         int temp,
                         String weatherConditions,
+                        String iconName,
                         User user,
                         Movie movie) {
         this.movieId = movieId;
         this.dateWatched = dateWatched;
         this.temp = temp;
         this.weatherConditions = weatherConditions;
+        this.iconName = iconName;
         this.user = user;
         this.movie = movie;
     }
@@ -138,12 +145,40 @@ public class ViewingHabit {
         this.temp = temp;
     }
 
+    /**
+     * Gets weather conditions.
+     *
+     * @return the weather conditions
+     */
     public String getWeatherConditions() {
         return weatherConditions;
     }
 
+    /**
+     * Sets weather conditions.
+     *
+     * @param weatherConditions the weather conditions
+     */
     public void setWeatherConditions(String weatherConditions) {
         this.weatherConditions = weatherConditions;
+    }
+
+    /**
+     * Gets gif location.
+     *
+     * @return the gif location
+     */
+    public String geticonName() {
+        return iconName;
+    }
+
+    /**
+     * Sets gif location.
+     *
+     * @param iconName the gif location
+     */
+    public void seticonName(String iconName) {
+        this.iconName = iconName;
     }
 
     /**
@@ -193,6 +228,7 @@ public class ViewingHabit {
                 temp == that.temp &&
                 Objects.equals(dateWatched, that.dateWatched) &&
                 Objects.equals(weatherConditions, that.weatherConditions) &&
+                Objects.equals(iconName, that.iconName) &&
                 Objects.equals(user, that.user) &&
                 Objects.equals(movie, that.movie);
     }
@@ -200,7 +236,7 @@ public class ViewingHabit {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, movieId, dateWatched, temp, weatherConditions, user, movie);
+        return Objects.hash(id, movieId, dateWatched, temp, weatherConditions, iconName, user, movie);
     }
 
     @Override
@@ -211,6 +247,7 @@ public class ViewingHabit {
                 ", dateWatched=" + dateWatched +
                 ", temp=" + temp +
                 ", weatherConditions=" + weatherConditions +
+                ", iconName=" + iconName +
                 '}';
     }
 }

@@ -1,6 +1,7 @@
 package edu.matc.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.OrderBy;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -56,6 +57,7 @@ public class Movie {
     private User user;
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OrderBy(clause = "date_watched DESC")
     private Set<ViewingHabit> viewingHabits = new HashSet<>();
 
 

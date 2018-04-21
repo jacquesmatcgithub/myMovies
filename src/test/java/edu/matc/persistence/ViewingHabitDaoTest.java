@@ -58,6 +58,7 @@ class ViewingHabitDaoTest {
                 LocalDate.parse("2017-01-01"),
                 68,
                 "Light Snow",
+                 "mostlycloudy",
                  user,
                 movie);
         dao.saveOrUpdate(viewingHabit);
