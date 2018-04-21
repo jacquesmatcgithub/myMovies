@@ -175,6 +175,8 @@ public class CrudUser extends HttpServlet {
             userToUpdate.setDateActive(formDateActive);
             userToUpdate.setAdmin(formAdminUser);
             userToUpdate.setActive(formActiveUser);
+            userToUpdate.setCity(formCity);
+            userToUpdate.setState(formState);
 
             userDao.saveOrUpdate(userToUpdate);
         }
