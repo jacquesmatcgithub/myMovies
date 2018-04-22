@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td align="center"><img src="${publicRating}" width="100" class="post-img" title="Movie Rating"></td>
-                <td align="center"><img href="clickedRating?ratingNumber=${ratingNumber}" src="${userRating}" width="100" class="post-img" title="Your Rating"></td>
+                <td align="center"><a href="clickedRating?ratingNumber=${ratingNumber}"><img src="${userRating}" width="100" class="post-img" title="Your Rating"></td>
             </tr>
             <tr><td align="right"><br/><br/><br/><br/>Last Watched : <br/><br/></td><td><br/><br/><br/><br/>${lastWatched}<br/><br/></td></tr>
             <tr><td align="right">Conditions : <br/><br/></td><td>${weatherConditions}<br/><br/></td></tr>
@@ -39,3 +39,5 @@
         </table>
     </div>
 </div>
+
+                                              <!-- <a href="https://www.themoviedb.org"><img src="images/408x161-powered-by-rectangle-green.png" width="120"></a>  -->

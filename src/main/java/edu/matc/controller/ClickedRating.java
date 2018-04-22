@@ -32,12 +32,15 @@ public class ClickedRating extends HttpServlet {
 
         HttpSession session = request.getSession();
         String currentUser = (String)session.getAttribute("currentUser");
+        int movieId = (Integer) session.getAttribute("movieId");
 
         int ratingNumber = Integer.parseInt(request.getParameter("ratingNumber")) + 1;
 
         if (ratingNumber > 5) {
             ratingNumber = 1;
         }
+        request.setAttribute("ratingNumber", Integer.toString(ratingNumber));
+
 
         String ratingImageName = "images/stars-0.jpeg";
 
@@ -61,7 +64,16 @@ public class ClickedRating extends HttpServlet {
 
         request.setAttribute("userRating", ratingImageName);
 
+        MovieDao movieDao = new MovieDao();
+        Movie movie = movieDao.getById(movieId);
+        movie.setUserRating(ratingNumber);
+        movieDao.saveOrUpdate(movie);
 
+
+
+        // Rebuild the 'show movie details' page
+        ShowMovieDetails showMovieDetails = new ShowMovieDetails();
+        showMovieDetails.show(request, session);
 
         String url = "/show-movie-details.jsp";
 
