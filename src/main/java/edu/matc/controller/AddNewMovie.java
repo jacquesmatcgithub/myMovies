@@ -54,11 +54,7 @@ public class AddNewMovie extends HttpServlet {
             url = "/signed-in-collector.jsp";
         } else {
             loadMovieTable(currentUser, movieName, tmdbSearchResults);
-
-            if (tmdbSearchResults.getTotalResults() == 1)
-                url = "/signed-in-collector-search-results.jsp";
-            else
-                url = "/signed-in-collector-search-results.jsp";
+            url = "/signed-in-collector-search-results.jsp";
         }
 
         RequestDispatcher  dispatcher =
@@ -113,7 +109,18 @@ public class AddNewMovie extends HttpServlet {
 
 
     private String generateMovieSortKey(String movieTitle) {
-        return movieTitle.toLowerCase().replaceAll("\\s+", "");
+        movieTitle = movieTitle.toLowerCase().trim();
+
+        if (movieTitle.startsWith("the ")) {
+            movieTitle = movieTitle.substring(4);
+        } else if (movieTitle.startsWith("a ")) {
+            movieTitle = movieTitle.substring(3);
+        } else if (movieTitle.startsWith("an ")) {
+            movieTitle = movieTitle.substring(4);
+        }
+
+
+        return movieTitle.replaceAll("\\s+", "");
     }
 
 }

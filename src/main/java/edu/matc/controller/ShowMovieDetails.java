@@ -1,8 +1,10 @@
 package edu.matc.controller;
 
 import edu.matc.entity.Movie;
+import edu.matc.entity.User;
 import edu.matc.entity.ViewingHabit;
 import edu.matc.persistence.MovieDao;
+import org.hibernate.Session;
 import org.themoviedb.credits.Cast;
 import org.themoviedb.credits.CastItem;
 import org.themoviedb.credits.CrewItem;
@@ -180,11 +182,25 @@ public class ShowMovieDetails {
     private void showViewingHabit(HttpServletRequest request,
                                   Movie movie) {
 
+        HttpSession session = request.getSession();
+
+        request.removeAttribute("forecastUrl");
+        request.removeAttribute("weatherConditions");
+        request.removeAttribute("temperature");
+        request.removeAttribute("lastWatched");
+        request.removeAttribute("viewings");
+        request.removeAttribute("weatherIcon");
+
+
         String weatherConditions = "~";
         int temp = 0;
         String temperature = "~";
         String lastWatched = "~";
         String viewings = "~";
+        String wundergroundIconPath = (String)session.getAttribute("wunderground.icon.url");
+        String wundergroundForecastUrl = (String)session.getAttribute("wunderground.forecast.url");
+        String weatherIconName = "";
+
 
         Set<ViewingHabit> viewingHabits = movie.getViewingHabits();
         List<ViewingHabit> habitList = new ArrayList<>(viewingHabits);
@@ -197,13 +213,27 @@ public class ShowMovieDetails {
             lastWatched = habitList.get(0).getDateWatched().format(formatter);
 
             viewings = Integer.toString(habitList.size());
+
+            weatherIconName = habitList.get(0).geticonName();
+
+            wundergroundIconPath = wundergroundIconPath.replace("{iconName}", weatherIconName);
+            request.setAttribute("weatherIcon", wundergroundIconPath);
+
+
+            User user = movie.getUser();
+            String city = user.getCity();
+            String state = user.getState();
+
+            wundergroundForecastUrl = wundergroundForecastUrl.replace("{city}", city);
+            wundergroundForecastUrl = wundergroundForecastUrl.replace("{state}", state);
+
+            request.setAttribute("forecastUrl", wundergroundForecastUrl);
         }
 
         request.setAttribute("weatherConditions", weatherConditions);
         request.setAttribute("temperature", temperature);
         request.setAttribute("lastWatched", lastWatched);
         request.setAttribute("viewings", viewings);
-
     }
 
 

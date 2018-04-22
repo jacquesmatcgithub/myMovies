@@ -8,6 +8,9 @@
             <br/>
             <li><a href="performMovieActions?movieDetailAction=clearStats">Clear Stats</a></li>
             <l1>${signInMessage}</l1>
+            <br/><br/><br/><br/><br/>
+            <a href="prepareCollectorPage"><img src="images/back-button-1-small.png"></a>
+
         </ul>
     </div>
 </div>

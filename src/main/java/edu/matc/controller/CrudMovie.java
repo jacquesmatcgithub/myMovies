@@ -12,7 +12,9 @@ import edu.matc.persistence.ViewingHabitDao;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * The type Crud movie.
@@ -67,6 +69,13 @@ public class CrudMovie {
      * @param request the request
      */
     public void deleteMovieFromCollection(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String currentUser = (String)session.getAttribute("currentUser");
+        int movieId = (Integer)session.getAttribute("movieId");
+
+        MovieDao movieDao = new MovieDao();
+        Movie movie = movieDao.getById(movieId);
+        movieDao.delete(movie);
 
     }
 
@@ -76,8 +85,21 @@ public class CrudMovie {
      * @param request the request
      */
     public void clearMovieStats(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        String currentUser = (String)session.getAttribute("currentUser");
+        int movieId = (Integer)session.getAttribute("movieId");
 
+        MovieDao movieDao = new MovieDao();
+        Movie movie = movieDao.getById(movieId);
+        Set<ViewingHabit> viewingHabits = movie.getViewingHabits();
+        List<ViewingHabit> habitList = new ArrayList<>(viewingHabits);
+
+        ViewingHabitDao viewingHabitDao = new ViewingHabitDao();
+
+
+        for (ViewingHabit habit : habitList) {
+            viewingHabitDao.delete(habit);
+        }
     }
-
 
 }

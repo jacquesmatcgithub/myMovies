@@ -54,6 +54,10 @@ public class StoreSelectedMovies extends HttpServlet {
             }
         }
 
+        // Now delete all temporary movies from the user's catalog
+        CleanupUserMovieCatalog cleanup = new CleanupUserMovieCatalog();
+        cleanup.deleteNonCatalogMovies(currentUser);
+
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher("/signed-in-collector.jsp");
         dispatcher.forward(request, response);
     }

@@ -17,19 +17,6 @@ public class AppConfig {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private final static String SERVICE_DOWN = "Service Down";
 
-    private String tmdbApiKey;
-    private String tmdbConfigUrl;
-    private String tmdbSearchUrl;
-    private String tmdbQueryUrl;
-    private String tmdbCreditsUrl;
-    private String wundergroundApiKey;
-    private String wundergroundConditionsUrl;
-    private String wundergroundIconPath;
-
-
-    private Properties properties;
-
-
     /**
      * Instantiates a new App config.
      */
@@ -48,179 +35,25 @@ public class AppConfig {
         loadMetaData(session);
     }
 
-
-    /**
-     * Gets tmdb api key.
-     *
-     * @return the tmdb api key
-     */
-    public String getTmdbApiKey() {
-        return tmdbApiKey;
-    }
-
-    /**
-     * Sets tmdb api key.
-     *
-     * @param tmdbApiKey the tmdb api key
-     */
-    public void setTmdbApiKey(String tmdbApiKey) {
-        this.tmdbApiKey = tmdbApiKey;
-    }
-
-    /**
-     * Gets tmdb configuration url.
-     *
-     * @return the tmdb configuration url
-     */
-    public String getTmdbConfigUrl() {
-        return tmdbConfigUrl;
-    }
-
-    /**
-     * Sets tmdb configuration url.
-     *
-     * @param tmdbConfigUrl the tmdb configuration url
-     */
-    public void setTmdbConfigUrl(String tmdbConfigUrl) {
-        this.tmdbConfigUrl = tmdbConfigUrl;
-    }
-
-    /**
-     * Gets tmdb search url.
-     *
-     * @return the tmdb search url
-     */
-    public String getTmdbSearchUrl() {
-        return tmdbSearchUrl;
-    }
-
-    /**
-     * Sets tmdb search url.
-     *
-     * @param tmdbSearchUrl the tmdb search url
-     */
-    public void setTmdbSearchUrl(String tmdbSearchUrl) {
-        this.tmdbSearchUrl = tmdbSearchUrl;
-    }
-
-    /**
-     * Gets tmdb get movie info url.
-     *
-     * @return the tmdb get movie info url
-     */
-    public String getTmdbQueryUrl() {
-        return tmdbQueryUrl;
-    }
-
-    /**
-     * Sets tmdb get movie info url.
-     *
-     * @param tmdbQueryUrl the tmdb get movie info url
-     */
-    public void setTmdbQueryUrl(String tmdbQueryUrl) {
-        this.tmdbQueryUrl = tmdbQueryUrl;
-    }
-
-
-    /**
-     * Gets tmdb credits url.
-     *
-     * @return the tmdb credits url
-     */
-    public String getTmdbCreditsUrl() {
-        return tmdbCreditsUrl;
-    }
-
-    /**
-     * Sets tmdb credits url.
-     *
-     * @param tmdbCreditsUrl the tmdb credits url
-     */
-    public void setTmdbCreditsUrl(String tmdbCreditsUrl) {
-        this.tmdbCreditsUrl = tmdbCreditsUrl;
-    }
-
-
-    /**
-     * Gets wunderground api key.
-     *
-     * @return the wunderground api key
-     */
-    public String getWundergroundApiKey() {
-        return wundergroundApiKey;
-    }
-
-    /**
-     * Sets wunderground api key.
-     *
-     * @param wundergroundApiKey the wunderground api key
-     */
-    public void setWundergroundApiKey(String wundergroundApiKey) {
-        this.wundergroundApiKey = wundergroundApiKey;
-    }
-
-    /**
-     * Gets wunderground conditions url.
-     *
-     * @return the wunderground conditions url
-     */
-    public String getWundergroundConditionsUrl() {
-        return wundergroundConditionsUrl;
-    }
-
-    /**
-     * Sets wunderground conditions url.
-     *
-     * @param wundergroundConditionsUrl the wunderground conditions url
-     */
-    public void setWundergroundConditionsUrl(String wundergroundConditionsUrl) {
-        this.wundergroundConditionsUrl = wundergroundConditionsUrl;
-    }
-
-    /**
-     * Gets wunderground icon path.
-     *
-     * @return the wunderground icon path
-     */
-    public String getWundergroundIconPath() {
-        return wundergroundIconPath;
-    }
-
-    /**
-     * Sets wunderground icon path.
-     *
-     * @param wundergroundIconPath the wunderground icon path
-     */
-    public void setWundergroundIconPath(String wundergroundIconPath) {
-        this.wundergroundIconPath = wundergroundIconPath;
-    }
-
-
     /**
      * The loadProperties method loads myMovies.properties into session attributes
      * @param session
      */
     private void loadProperties(HttpSession session) {
+        Properties properties;
+
         properties = new Properties();
         try {
             properties.load (this.getClass().getResourceAsStream("/myMovies.properties"));
 
             //TODO What if some of the configuration elements are null?
+
+            // Load The Movie Database properties
             String tmdbApiKey = properties.getProperty("tmdb.api.key");
             String tmdbConfigUrl = properties.getProperty("tmdb.config.url");
             String tmdbSearchUrl = properties.getProperty("tmdb.search.url");
             String tmdbQueryUrl = properties.getProperty("tmdb.query.url");
             String tmdbCreditsUrl = properties.getProperty("tmdb.credits.url");
-
-            String wundergroundApiKey = properties.getProperty("wunderground.api.key");
-            String wundergroundConditionsUrl = properties.getProperty("wunderground.conditions.url");
-            String wundergroundIconPath = properties.getProperty("wunderground.icon.path");
-
-            setTmdbApiKey(tmdbApiKey);
-            setTmdbConfigUrl(tmdbConfigUrl);
-            setTmdbSearchUrl(tmdbSearchUrl);
-            setTmdbQueryUrl(tmdbQueryUrl);
-            setTmdbCreditsUrl(tmdbCreditsUrl);
 
             session.setAttribute("tmdb.api.key", tmdbApiKey);
             session.setAttribute("tmdb.config.url", tmdbConfigUrl);
@@ -228,9 +61,18 @@ public class AppConfig {
             session.setAttribute("tmdb.query.url", tmdbQueryUrl);
             session.setAttribute("tmdb.credits.url", tmdbCreditsUrl);
 
+
+
+            // Load The Weather Underground properties
+            String wundergroundApiKey = properties.getProperty("wunderground.api.key");
+            String wundergroundConditionsUrl = properties.getProperty("wunderground.conditions.url");
+            String wundergroundIconUrl = properties.getProperty("wunderground.icon.url");
+            String wundergroundForecastUrl = properties.getProperty("wunderground.forecast.url");
+
             session.setAttribute("wunderground.api.key", wundergroundApiKey);
             session.setAttribute("wunderground.conditions.url", wundergroundConditionsUrl);
-            session.setAttribute("wunderground.icon.path", wundergroundIconPath);
+            session.setAttribute("wunderground.icon.url", wundergroundIconUrl);
+            session.setAttribute("wunderground.forecast.url", wundergroundForecastUrl);
 
         } catch (IOException ioe) {
             logger.error("AppConfig.loadProperties()...Cannot load the properties file", ioe);
