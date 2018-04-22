@@ -57,7 +57,8 @@ Date  | Hours | Notes
 04/16/2018 | 3.0 | Worked on my indie project. Finally got the one-to-many issue fixed between my movie and viewinghabit tables.
 04/19/2018 | 4.0 | Added the movie select grid, adding multiple movies to the user's catalog, and cleaning up the user database.
 04/20/2018 | 4.0 | Did a whole lot of work on my project. Got the foreign keys to work. Fixed a bug in the CrudUser class. Added city and state to the user entitiy.
-04/21/2018 | 9.0 | Added consumption of wunderground webservice. Added 'watched it' functionality. Created a wunderground class. Moved the code that populates the movie details page to a class.
+04/21/2018 | 11.0 | Added consumption of wunderground webservice. Added 'watched it' functionality. Created a wunderground class. Moved the code that populates the movie details page to a class. Added functionality for user to rate a movie by clicking on the rating stars.
+
 
 
 
