@@ -58,7 +58,7 @@ Date  | Hours | Notes
 04/19/2018 | 4.0 | Added the movie select grid, adding multiple movies to the user's catalog, and cleaning up the user database.
 04/20/2018 | 4.0 | Did a whole lot of work on my project. Got the foreign keys to work. Fixed a bug in the CrudUser class. Added city and state to the user entitiy.
 04/21/2018 | 11.0 | Added consumption of wunderground webservice. Added 'watched it' functionality. Created a wunderground class. Moved the code that populates the movie details page to a class. Added functionality for user to rate a movie by clicking on the rating stars.
-04/22/2018 | 5.0 | Adding 'delete movie', 'rate movie', 'clear stats', 'wunderground icon' functionality.
+04/22/2018 | 9.5 | Adding 'delete movie', 'rate movie', 'clear stats', 'wunderground icon' functionality. Upgrading the movie rating functionality. Also impoved the wunderground icon that gets displayed to be in line with the time of day.
 
 
 
