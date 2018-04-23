@@ -205,6 +205,7 @@ class UserDaoTest {
                 55,
                 "Clear",
                 "mostlycloudy",
+                "http://icons.wxug.com/i/c/k/nt_mostlycloudy.gif",
                 newUser,
                 newMovie);
 

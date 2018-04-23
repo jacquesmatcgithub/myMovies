@@ -33,6 +33,9 @@ public class ViewingHabit {
     @Column(name = "icon_name")
     private String iconName;
 
+    @Column(name = "icon_url")
+    private String iconUrl;
+
     @ManyToOne
     private User user;
 
@@ -45,22 +48,12 @@ public class ViewingHabit {
     public ViewingHabit() {
     }
 
-    /**
-     * Instantiates a new Viewing habit.
-     *
-     * @param movieId           the movie id
-     * @param dateWatched       the date watched
-     * @param temp              the temp
-     * @param weatherConditions the weather conditions
-     * @param iconName       the gif location
-     * @param user              the user
-     * @param movie             the movie
-     */
     public ViewingHabit(int movieId,
                         LocalDate dateWatched,
                         int temp,
                         String weatherConditions,
                         String iconName,
+                        String iconUrl,
                         User user,
                         Movie movie) {
         this.movieId = movieId;
@@ -68,6 +61,7 @@ public class ViewingHabit {
         this.temp = temp;
         this.weatherConditions = weatherConditions;
         this.iconName = iconName;
+        this.iconUrl = iconUrl;
         this.user = user;
         this.movie = movie;
     }
@@ -181,6 +175,15 @@ public class ViewingHabit {
         this.iconName = iconName;
     }
 
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
+    }
+
     /**
      * Gets user.
      *
@@ -229,14 +232,13 @@ public class ViewingHabit {
                 Objects.equals(dateWatched, that.dateWatched) &&
                 Objects.equals(weatherConditions, that.weatherConditions) &&
                 Objects.equals(iconName, that.iconName) &&
-                Objects.equals(user, that.user) &&
-                Objects.equals(movie, that.movie);
+                Objects.equals(iconUrl, that.iconUrl);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, movieId, dateWatched, temp, weatherConditions, iconName, user, movie);
+        return Objects.hash(id, movieId, dateWatched, temp, weatherConditions, iconName, iconUrl);
     }
 
     @Override
@@ -246,8 +248,9 @@ public class ViewingHabit {
                 ", movieId=" + movieId +
                 ", dateWatched=" + dateWatched +
                 ", temp=" + temp +
-                ", weatherConditions=" + weatherConditions +
-                ", iconName=" + iconName +
+                ", weatherConditions='" + weatherConditions + '\'' +
+                ", iconName='" + iconName + '\'' +
+                ", iconUrl='" + iconUrl + '\'' +
                 '}';
     }
 }

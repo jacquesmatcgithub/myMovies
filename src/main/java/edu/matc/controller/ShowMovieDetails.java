@@ -118,33 +118,23 @@ public class ShowMovieDetails {
      */
     private void showMovieRatings(HttpServletRequest request, Movie movie) {
 
+        int count = 0;
+
         //TODO Get the movie rating from the api
-        request.setAttribute("publicRating", "images/3-stars(15 percent).jpeg");
-
-        int userRating = movie.getUserRating();
-        request.setAttribute("ratingNumber", Integer.toString(userRating));
-
-        String ratingImageName = "images/stars-0.jpeg";
-
-        switch (userRating) {
-            case 1:
-                ratingImageName = "images/stars-1.jpeg";
-                break;
-            case 2:
-                ratingImageName = "images/stars-2.jpeg";
-                break;
-            case 3:
-                ratingImageName = "images/stars-3.jpeg";
-                break;
-            case 4:
-                ratingImageName = "images/stars-4.jpeg";
-                break;
-            case 5:
-                ratingImageName = "images/stars-5.jpeg";
-                break;
+        for (count = 1; count < 6; count++) {
+            request.setAttribute("publicRating" + count, "images/star-no-80.jpeg");
         }
 
-        request.setAttribute("userRating", ratingImageName);
+        int userRating = movie.getUserRating();
+
+        for (count = 1; count < 6; count++) {
+            request.setAttribute("ratingNumber" + count, count);
+            if (count <= userRating) {
+                request.setAttribute("userRating" + count, "images/star-yes-80.jpeg");
+            } else {
+                request.setAttribute("userRating" + count, "images/star-no-80.jpeg");
+            }
+        }
     }
 
 
@@ -200,6 +190,7 @@ public class ShowMovieDetails {
         String wundergroundIconPath = (String)session.getAttribute("wunderground.icon.url");
         String wundergroundForecastUrl = (String)session.getAttribute("wunderground.forecast.url");
         String weatherIconName = "";
+        String weatherIconUtl = "";
 
 
         Set<ViewingHabit> viewingHabits = movie.getViewingHabits();
@@ -207,7 +198,7 @@ public class ShowMovieDetails {
 
         if (habitList.size() > 0) {
             weatherConditions = habitList.get(0).getWeatherConditions();
-            temperature = Integer.toString(habitList.get(0).getTemp());
+            temperature = Integer.toString(habitList.get(0).getTemp()) + "F";
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
             lastWatched = habitList.get(0).getDateWatched().format(formatter);
@@ -215,8 +206,11 @@ public class ShowMovieDetails {
             viewings = Integer.toString(habitList.size());
 
             weatherIconName = habitList.get(0).geticonName();
+            weatherIconUtl = habitList.get(0).getIconUrl();
 
-            wundergroundIconPath = wundergroundIconPath.replace("{iconName}", weatherIconName);
+
+//            wundergroundIconPath = wundergroundIconPath.replace("{iconName}", weatherIconName);
+            wundergroundIconPath = weatherIconUtl;
             request.setAttribute("weatherIcon", wundergroundIconPath);
 
 

@@ -59,6 +59,7 @@ class ViewingHabitDaoTest {
                 68,
                 "Light Snow",
                  "mostlycloudy",
+                 "http://icons.wxug.com/i/c/k/nt_mostlycloudy.gif",
                  user,
                 movie);
         dao.saveOrUpdate(viewingHabit);

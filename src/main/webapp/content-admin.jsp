@@ -36,27 +36,27 @@
                 </tr>
                 <tr></tr>
                 <tr>
-                    <td align="right">First Name:</td>
+                    <td align="right">First Name : </td>
                     <td><input ${firstNameAutofocus} type="text" name="firstName" size="25" maxlength="45" value="${detailsFirstName}" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="right">Last Name:</td>
+                    <td align="right">Last Name : </td>
                     <td><input ${lastNameAutofocus} type="text" name="lastName" size="25" maxlength="45" value="${detailsLastName}" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="right">Last Name:</td>
+                    <td align="right">City : </td>
                     <td><input ${cityAutofocus} type="text" name="city" size="25" maxlength="45" value="${detailsCity}" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="right">Last Name:</td>
+                    <td align="right">State : </td>
                     <td><input ${stateAutofocus} type="text" name="state" size="2" maxlength="2" value="${detailsState}" />
                     </td>
                 </tr>
                 <tr>
-                    <td align="right">Date Active:</td>
+                    <td align="right">Date Active : </td>
                     <td><input ${dateActiveAutofocus} type="date" name="dateActive" size="25" maxlength="45" value="${detailsDateActive}" /></td>
                 </tr>
                 <tr>

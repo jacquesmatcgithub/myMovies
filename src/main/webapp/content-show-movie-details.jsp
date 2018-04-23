@@ -24,17 +24,37 @@
     </div>
 
     <div style="width:260px; float:left; padding-left: 10px;">
+        <table class="ratingTable" >
+            <tr>
+                <td align="center"><h2><br/>Public Rating</h2></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <img src="${publicRating1}" title="Movie Rating1">
+                    <img src="${publicRating2}" title="Movie Rating2">
+                    <img src="${publicRating3}" title="Movie Rating3">
+                    <img src="${publicRating4}" title="Movie Rating4">
+                    <img src="${publicRating5}" title="Movie Rating5">
+                </td>
+            </tr>
+            <tr>
+                <td align="center"><h2><br/><br/>Your Rating</h2></td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <a href="clickedRating?ratingNumber=${ratingNumber1}"><img src="${userRating1}" title="1 star"></a>
+                    <a href="clickedRating?ratingNumber=${ratingNumber2}"><img src="${userRating2}" title="2 stars"></a>
+                    <a href="clickedRating?ratingNumber=${ratingNumber3}"><img src="${userRating3}" title="3 stars"></a>
+                    <a href="clickedRating?ratingNumber=${ratingNumber4}"><img src="${userRating4}" title="4 stars"></a>
+                    <a href="clickedRating?ratingNumber=${ratingNumber5}"><img src="${userRating5}" title="5 stars"></a>
+                </td>
+            </tr>
+        </table>
         <table>
+
             <tr>
-                <td align="center"><h2>Rating</h2></td><td align="center"><h2>Your Rating</h2></td>
-            </tr>
-            <tr>
-                <td align="center"><img src="${publicRating}" width="100" class="post-img" title="Movie Rating"></td>
-                <td align="center"><a href="clickedRating?ratingNumber=${ratingNumber}"><img src="${userRating}" width="100" class="post-img" title="Your Rating"></a></td>
-            </tr>
-            <tr>
-                <td class="weatherCondition" align="right"><br/><br/><br/><br/>Last Watched : <br/><br/></td>
-                <td><br/><br/><br/><br/>${lastWatched}<br/><br/></td>
+                <td class="weatherCondition" align="right"><br/><br/><br/><br/>Last Watched : <br/></td>
+                <td><br/><br/><br/><br/>${lastWatched}<br/></td>
             </tr>
             <tr>
                 <td class="weatherCondition" align="right">Conditions :</td>

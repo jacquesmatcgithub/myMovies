@@ -5,7 +5,7 @@
         Admin Users:<br/>${adminUserCount}<br/><br/>
         Regular Users:<br/>${regularUserCount}<br/><br/>
         Total Movies:<br/>${totalNumberOfMovies}<br/><br/>
-        <br/><br><br><br/>
+        <br/><br/><br/><br/><br/><br/>
         <form action="newPassword" method="GET">
             Old Password:<br/>
             <input type="password" name="currentPassword" size="12" maxlength="45"/> <br/>
@@ -14,9 +14,7 @@
             <input type="submit" value="Go!" />
         </form>
         ${passwordMessage}
-        <br/><br/><br/><br/>
+        <br/><br/>
         <b><a href="signOut" style="color:indianred">Sign Out</a></b>
-        <br/>
-        ${signInMessage}
     </div>
 </div>

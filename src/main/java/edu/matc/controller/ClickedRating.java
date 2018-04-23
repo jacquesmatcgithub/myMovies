@@ -31,45 +31,14 @@ public class ClickedRating extends HttpServlet {
             throws ServletException, IOException {
 
         HttpSession session = request.getSession();
-        String currentUser = (String)session.getAttribute("currentUser");
         int movieId = (Integer) session.getAttribute("movieId");
 
-        int ratingNumber = Integer.parseInt(request.getParameter("ratingNumber")) + 1;
-
-        if (ratingNumber > 5) {
-            ratingNumber = 1;
-        }
-        request.setAttribute("ratingNumber", Integer.toString(ratingNumber));
-
-
-        String ratingImageName = "images/stars-0.jpeg";
-
-        switch (ratingNumber) {
-            case 1:
-                ratingImageName = "images/stars-1.jpeg";
-                break;
-            case 2:
-                ratingImageName = "images/stars-2.jpeg";
-                break;
-            case 3:
-                ratingImageName = "images/stars-3.jpeg";
-                break;
-            case 4:
-                ratingImageName = "images/stars-4.jpeg";
-                break;
-            case 5:
-                ratingImageName = "images/stars-5.jpeg";
-                break;
-        }
-
-        request.setAttribute("userRating", ratingImageName);
+        int ratingNumber = Integer.parseInt(request.getParameter("ratingNumber"));
 
         MovieDao movieDao = new MovieDao();
         Movie movie = movieDao.getById(movieId);
         movie.setUserRating(ratingNumber);
         movieDao.saveOrUpdate(movie);
-
-
 
         // Rebuild the 'show movie details' page
         ShowMovieDetails showMovieDetails = new ShowMovieDetails();
@@ -80,6 +49,4 @@ public class ClickedRating extends HttpServlet {
         RequestDispatcher  dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-
-
 }

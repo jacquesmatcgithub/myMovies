@@ -43,6 +43,7 @@ public class CrudMovie {
         int localTemp = (int)weatherResponse.getCurrentObservation().getTempF();
         String weatherConditions = weatherResponse.getCurrentObservation().getWeather();
         String iconName = weatherResponse.getCurrentObservation().getIcon();
+        String iconUrl = weatherResponse.getCurrentObservation().getIconUrl();
 
         UserDao userDao = new UserDao();
         List<User> users = userDao.getByPropertyEqual("loginId", currentUser);
@@ -56,6 +57,7 @@ public class CrudMovie {
                 localTemp,
                 weatherConditions,
                 iconName,
+                iconUrl,
                 users.get(0),
                 movie);
 
