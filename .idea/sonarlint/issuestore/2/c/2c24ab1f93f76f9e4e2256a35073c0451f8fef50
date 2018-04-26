@@ -1,0 +1,8 @@
+
+@squid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ
+Fsquid:S1481"1Remove this unused "moviesLoaded" local variable.(Æëà‚
+Rsquid:S2589"8Remove this expression which always evaluates to "false"(¨Æœèşÿÿÿÿ
+@squid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ
+Osquid:S1161":Add the "@Override" annotation above this method signature(ÅµÄè
+isquid:UselessImportCheck"BRemove this unused import 'org.themoviedb.query.TmdbQueryResults'.(ßº±şÿÿÿÿ
+Esquid:S1172"0Remove this unused method parameter "movieName".(ƒ‰Ö•

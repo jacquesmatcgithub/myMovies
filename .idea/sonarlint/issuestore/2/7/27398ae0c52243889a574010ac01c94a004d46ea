@@ -1,17 +1,13 @@
 
-\squid:S1854";Remove this useless assignment to local variable "session".(ûİÙ¹şÿÿÿÿ8ö›”Ò¯,
-Vsquid:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8ö›”Ò¯,
-fsquid:S1192"JDefine a constant instead of duplicating this literal "autofocus" 6 times.(ŠÙê˜8ö›”Ò¯,
-lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(Ê¼«¸ıÿÿÿÿ8ö›”Ò¯,
-Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8ö›”Ò¯,
-Fsquid:S1068"*Remove this unused "logger" private field.(æ×âÁ8ö›”Ò¯,
-Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(Ê¼«¸ıÿÿÿÿ8ö›”Ò¯,
-Hsquid:S1481"'Remove this unused "id" local variable.(èÑöÏüÿÿÿÿ8ö›”Ò¯,
-Msquid:S1135"2Complete the task associated to this TODO comment.( ıİR8ö›”Ò¯,
-_squid:S00107"=Method has 10 parameters, which is greater than 7 authorized.(ÖÊäÔÿÿÿÿÿ8ö›”Ò¯,
-Msquid:S1481",Remove this unused "session" local variable.(ûİÙ¹şÿÿÿÿ8ö›”Ò¯,
-Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8ö›”Ò¯,
-Gsquid:S1172"&Remove these unused method parameters.(‚Ÿ¸âıÿÿÿÿ8ö›”Ò¯,
-Ssquid:S1135"2Complete the task associated to this TODO comment.(•ˆÄµúÿÿÿÿ8ö›”Ò¯,
-_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ö¢¡ÿÿÿÿÿÿ8ö›”Ò¯,
-Wsquid:S1854"6Remove this useless assignment to local variable "id".(èÑöÏüÿÿÿÿ8ö›”Ò¯,
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(Ê¼«¸ıÿÿÿÿ8‰»Òú¯,
+dsquid:S1192"HDefine a constant instead of duplicating this literal "loginId" 4 times.(´ìÍí8‰»Òú¯,
+fsquid:S1192"JDefine a constant instead of duplicating this literal "autofocus" 6 times.(ŠÙê˜8‰»Òú¯,
+Fsquid:S1068"*Remove this unused "logger" private field.(æ×âÁ8‰»Òú¯,
+Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8‰»Òú¯,
+Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8‰»Òú¯,
+lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(Ê¼«¸ıÿÿÿÿ8‰»Òú¯,
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(¶¢¦Â8‰»Òú¯,
+Msquid:S1481",Remove this unused "session" local variable.(ûİÙ¹şÿÿÿÿ8‰»Òú¯,
+_squid:S00107"=Method has 10 parameters, which is greater than 7 authorized.(ÖÊäÔÿÿÿÿÿ8‰»Òú¯,
+\squid:S1854";Remove this useless assignment to local variable "session".(ûİÙ¹şÿÿÿÿ8‰»Òú¯,
+Vsquid:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8‰»Òú¯,
