@@ -25,6 +25,7 @@ http://api.wunderground.com/api/bbb31fc503e799ce/geolookup/q/autoip.json
 
 Then use the city & state to get current conditions in US City
 http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/WI/Madison.json
+http://api.wunderground.com/api/bbb31fc503e799ce/conditions/q/NY/New+York.json
 
 Store the weather condition gif location in the viewing habits table
 use the weather: json element

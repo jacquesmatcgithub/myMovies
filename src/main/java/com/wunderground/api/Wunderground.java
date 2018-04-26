@@ -13,6 +13,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
 public class Wunderground {
@@ -39,13 +40,16 @@ public class Wunderground {
         String city = users.get(0).getCity();
         String state = users.get(0).getState();
 
+        city = URLEncoder.encode(city, "UTF-8");
+        state = URLEncoder.encode(state, "UTF-8");
+
         String wundergroundApiKey = (String)session.getAttribute("wunderground.api.key");
         String wundergroundConditionsUrl = (String)session.getAttribute("wunderground.conditions.url");
 
         wundergroundConditionsUrl = wundergroundConditionsUrl.replace("{wunderApiKey}", wundergroundApiKey);
         wundergroundConditionsUrl = wundergroundConditionsUrl.replace("{state}", state);
         wundergroundConditionsUrl = wundergroundConditionsUrl.replace("{city}", city);
-        logger.debug("wundergroundConditionsUrl:" + wundergroundConditionsUrl);
+        logger.debug("wundergroundConditionsUrl:", wundergroundConditionsUrl);
 
         return getJsonResponse(wundergroundConditionsUrl);
     }

@@ -1,0 +1,12 @@
+
+Csquid:S1989"'Add a "try/catch" block for "parseInt".(öêé•8ö›”Ò¯,
+Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8ö›”Ò¯,
+Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8ö›”Ò¯,
+Lsquid:S1481"0Remove this unused "currentUser" local variable.(—Âîª8ö›”Ò¯,
+[squid:S1854"?Remove this useless assignment to local variable "currentUser".(—Âîª8ö›”Ò¯,
+psquid:UselessImportCheck"BRemove this unused import 'org.themoviedb.query.TmdbQueryResults'.(ßº±şÿÿÿÿ8ö›”Ò¯,
+jsquid:UselessImportCheck"<Remove this unused import 'org.themoviedb.credits.CrewItem'.(£×³×üÿÿÿÿ8ö›”Ò¯,
+Ysquid:UselessImportCheck"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ö›”Ò¯,
+esquid:UselessImportCheck"<Remove this unused import 'org.themoviedb.credits.CastItem'.(äÁÃª8ö›”Ò¯,
+fsquid:UselessImportCheck"8Remove this unused import 'org.themoviedb.credits.Cast'.(üÛ¿–úÿÿÿÿ8ö›”Ò¯,
+Vsquid:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8ö›”Ò¯,

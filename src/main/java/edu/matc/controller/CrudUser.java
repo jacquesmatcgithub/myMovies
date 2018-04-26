@@ -11,7 +11,8 @@ import java.util.List;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-//*TODO Update the javadoc
+
+import static java.lang.Boolean.compare;
 
 /**
  * The type Crud user.
@@ -108,7 +109,9 @@ public class CrudUser extends HttpServlet {
                         formState);
                 break;
             case BUTTON_DELETE_USER:
-                userDetailsMessage = deleteUser(request, userDao);
+                userDetailsMessage = deleteUser(formLoginId, userDao);
+                User user = userDao.getById(1);
+                formLoginId = user.getLoginId();
                 break;
         }
 
@@ -155,9 +158,15 @@ public class CrudUser extends HttpServlet {
         
         List<User> users = userDao.getByPropertyEqual("loginId", formLoginId);
 
-        if (users.size() == 0) {
+        if (users.isEmpty()) {
+            String roleName = "regular";
+            if (formAdminUser) {
+                roleName = "admin";
+            }
+
             User newUser = new User(
-                    formLoginId, "temp",
+                    formLoginId,
+                    "temp",
                     formFirstName,
                     formLastName,
                     formAdminUser,
@@ -166,9 +175,31 @@ public class CrudUser extends HttpServlet {
                     formCity,
                     formState);
 
-            int id = userDao.insert(newUser);
+            Role newRole = new Role(roleName, formLoginId, newUser);
+
+            RoleDao roleDao = new RoleDao();
+            roleDao.insert(newRole);
+
+//            int id = userDao.insert(newUser);
+
         } else {
             User userToUpdate = users.get(0);
+
+            if (!userToUpdate.getAdmin() == formAdminUser) {
+                RoleDao roleDao = new RoleDao();
+
+                List<Role> roles = roleDao.getByPropertyEqual("loginId", formLoginId);
+                Role role = roles.get(0);
+                if (formAdminUser) {
+                    role.setRoleName("admin");
+                } else {
+                    role.setRoleName("regular");
+                }
+
+                roleDao.saveOrUpdate(role);
+            }
+
+
             userToUpdate.setLoginId(formLoginId);
             userToUpdate.setFirstName(formFirstName);
             userToUpdate.setLastName(formLastName);
@@ -186,12 +217,20 @@ public class CrudUser extends HttpServlet {
 
 
     /**
-     *
-     * @param request
+     * The deleteUser will delete a user from the uer table.
+     * @param formLoginId
      * @param userDao
      * @return
      */
-    private String deleteUser(HttpServletRequest request, UserDao userDao) {
+    private String deleteUser(String formLoginId, UserDao userDao) {
+
+        List<User> users = userDao.getByPropertyEqual("loginId", formLoginId);
+
+        if (!users.isEmpty()) {
+            User user = userDao.getById(users.get(0).getId());
+            userDao.delete(user);
+        }
+
         return MSG_USER_DELETED_SUCCESSFULLY;
     }
 

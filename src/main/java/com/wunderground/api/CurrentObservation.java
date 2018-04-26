@@ -73,13 +73,15 @@ public class CurrentObservation{
 	private String localTzLong;
 
 	@JsonProperty("wind_gust_mph")
-	private int windGustMph;
+	private String windGustMph;
+//	private int windGustMph;
 
 	@JsonProperty("windchill_string")
 	private String windchillString;
 
 	@JsonProperty("wind_gust_kph")
-	private int windGustKph;
+	private String windGustKph;
+//	private int windGustKph;
 
 	@JsonProperty("wind_string")
 	private String windString;
@@ -350,11 +352,11 @@ public class CurrentObservation{
 		return localTzLong;
 	}
 
-	public void setWindGustMph(int windGustMph){
+	public void setWindGustMph(String windGustMph){
 		this.windGustMph = windGustMph;
 	}
 
-	public int getWindGustMph(){
+	public String getWindGustMph(){
 		return windGustMph;
 	}
 
@@ -366,11 +368,11 @@ public class CurrentObservation{
 		return windchillString;
 	}
 
-	public void setWindGustKph(int windGustKph){
+	public void setWindGustKph(String windGustKph){
 		this.windGustKph = windGustKph;
 	}
 
-	public int getWindGustKph(){
+	public String getWindGustKph(){
 		return windGustKph;
 	}
 

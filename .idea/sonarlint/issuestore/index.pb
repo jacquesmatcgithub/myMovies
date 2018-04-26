@@ -1,0 +1,29 @@
+
+g
+7src/main/java/edu/matc/controller/PrepareAdminPage.java,e/5/e53f260aa74518aba89f3d4d6c66d8cf480deea4
+`
+0src/main/java/edu/matc/controller/AppConfig.java,0/2/02de8d6cf83c7633b2fb5c745ed747d7de0a08ef
+_
+/src/main/java/edu/matc/controller/CrudUser.java,2/7/27398ae0c52243889a574010ac01c94a004d46ea
+d
+4src/main/java/edu/matc/controller/ClickedRating.java,8/6/86732025f4cf4542e47d64957819e61ee3870200
+n
+>src/main/java/edu/matc/controller/GenerateMovieSelectGrid.java,f/d/fdade9ed8a45dc9063890f6878f18f3e84ed97c4
+O
+src/main/webapp/WEB-INF/web.xml,2/e/2e22b6edd746fa3dc40ad7276c87c8d87d72a392
+P
+ src/main/webapp/login-failed.jsp,e/f/ef27359241ad41f782aa20b788adeeadd46d3456
+T
+$src/main/webapp/META-INF/context.xml,c/b/cbfb0d2e9b2b9fbf9d54374577c894a38643c6d0
+d
+4src/main/java/edu/matc/controller/SelectedThumb.java,1/e/1e6f9bac754c57ea0e9e8ef3e685888b8d5307bc
+`
+0src/main/java/edu/matc/controller/AdminPage.java,f/5/f5a46836b6e66fb260e692caa4af935ed2105f56
+_
+/src/main/java/edu/matc/persistence/UserDao.java,8/3/830c8c0138f8bd9f801a5875cedb28930eb88955
+Q
+!src/main/webapp/content-admin.jsp,6/b/6b56b41d8d45ce12bbc940363961dbfbc8c7587f
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+V
+&src/main/resources/myMovies.properties,a/6/a6a97506152c8800b241ec6b6cd83c34b9e1e2ac

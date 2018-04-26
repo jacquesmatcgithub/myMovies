@@ -1,0 +1,17 @@
+
+\squid:S1854";Remove this useless assignment to local variable "session".(ûÝÙ¹þÿÿÿÿ8ö›”Ò¯,
+Vsquid:S1161":Add the "@Override" annotation above this method signature(ÅµÄè8ö›”Ò¯,
+fsquid:S1192"JDefine a constant instead of duplicating this literal "autofocus" 6 times.(ŠÙê˜8ö›”Ò¯,
+lsquid:S1301"KReplace this "switch" statement by "if" statements to increase readability.(Ê¼«¸ýÿÿÿÿ8ö›”Ò¯,
+Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8ö›”Ò¯,
+Fsquid:S1068"*Remove this unused "logger" private field.(æ×âÁ8ö›”Ò¯,
+Z"squid:SwitchLastCaseIsDefaultCheck""Add a default case to this switch.(Ê¼«¸ýÿÿÿÿ8ö›”Ò¯,
+Hsquid:S1481"'Remove this unused "id" local variable.(èÑöÏüÿÿÿÿ8ö›”Ò¯,
+Msquid:S1135"2Complete the task associated to this TODO comment.( ýÝR8ö›”Ò¯,
+_squid:S00107"=Method has 10 parameters, which is greater than 7 authorized.(ÖÊäÔÿÿÿÿÿ8ö›”Ò¯,
+Msquid:S1481",Remove this unused "session" local variable.(ûÝÙ¹þÿÿÿÿ8ö›”Ò¯,
+Gsquid:S1989"&Add a "try/catch" block for "forward".(ÜÕˆêøÿÿÿÿ8ö›”Ò¯,
+Gsquid:S1172"&Remove these unused method parameters.(‚Ÿ¸âýÿÿÿÿ8ö›”Ò¯,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(•ˆÄµúÿÿÿÿ8ö›”Ò¯,
+_squid:S1155">Use isEmpty() to check whether the collection is empty or not.(ö¢¡ÿÿÿÿÿÿ8ö›”Ò¯,
+Wsquid:S1854"6Remove this useless assignment to local variable "id".(èÑöÏüÿÿÿÿ8ö›”Ò¯,
