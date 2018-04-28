@@ -73,3 +73,10 @@ W
 'src/main/webapp/menu-sign-in-failed.jsp,e/8/e81115eded4313e712f94cf069fa0e866e5954c8
 P
  src/main/webapp/menu-sign-in.jsp,a/4/a4facdc0e2b8cd117ab797562ae46448396e4568
+_
+/src/main/webapp/menu-show-movie-details-old.jsp,c/a/cad6c859a6f7ad0bd7d43c397d20f5460f45bd0d
+[
++src/main/webapp/menu-show-movie-details.jsp,8/6/869a5f3b50b9bad6d40255341f49572c2afe9f16
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302

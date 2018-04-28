@@ -55,17 +55,26 @@ public class ShowMovieDetails {
         }
 
 
+        // Get the movie ID
         MovieDao movieDao = new MovieDao();
         Movie movie = movieDao.getById(thumbId);
-
         int movieId = movie.getTmdbId();
 
+        // Get the movie details from tmdb
+        QueryTmdb queryTmdb = new QueryTmdb();
+        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbQueryUrl, movieId);
+
+
+        // Populate the movie details page
         showMoviePoster(request, session, movie);
-        showMovieDescription(request, tmdbApiKey, tmdbQueryUrl, movieId);
-        showMovieRatings(request, movie);
+        showMovieDescription(request, tmdbApiKey, tmdbQueryUrl, movieId, tmdbQueryResults);
+        showMovieRatings(request, movie, tmdbQueryResults);
         showCastAndCrew(request, tmdbApiKey, tmdbQueryUrl, movieId);
         showViewingHabit(request, movie);
     }
+
+
+
 
     /**
      * Show movie poster.
@@ -75,8 +84,8 @@ public class ShowMovieDetails {
      * @param movie   the movie
      */
     private void showMoviePoster(HttpServletRequest request,
-                                HttpSession session,
-                                Movie movie) {
+                                 HttpSession session,
+                                 Movie movie) {
         String baseUrlTmdb = (String)session.getAttribute("baseUrlTmdb");
         String backdropSizeTmdb = (String)session.getAttribute("backdropSizeTmdb");
 
@@ -101,10 +110,11 @@ public class ShowMovieDetails {
     private void showMovieDescription(HttpServletRequest request,
                                       String tmdbApiKey,
                                       String tmdbQueryUrl,
-                                      int movieId) {
+                                      int movieId,
+                                      TmdbQueryResults tmdbQueryResults) {
 
-        QueryTmdb queryTmdb = new QueryTmdb();
-        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbQueryUrl, movieId);
+//        QueryTmdb queryTmdb = new QueryTmdb();
+//        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbQueryUrl, movieId);
 
         String movieDescription = tmdbQueryResults.getOverview();
         request.setAttribute("movieDescription", movieDescription);
@@ -116,18 +126,34 @@ public class ShowMovieDetails {
      * @param request the request
      * @param movie   the movie
      */
-    private void showMovieRatings(HttpServletRequest request, Movie movie) {
+    private void showMovieRatings(HttpServletRequest request,
+                                  Movie movie,
+                                  TmdbQueryResults tmdbQueryResults) {
 
         int count = 0;
 
-        //TODO Get the movie rating from the api
-        for (count = 1; count < 6; count++) {
-            request.setAttribute("publicRating" + count, "images/star-no-80.jpeg");
+        double publicRatingDouble = tmdbQueryResults.getVoteAverage();
+        if (publicRatingDouble > 0) {
+            publicRatingDouble = publicRatingDouble / 2;
         }
+
+        int publicRating = (int)Math.round(publicRatingDouble);
+
+//        for (count = 1; count < 6; count++) {
+//            request.setAttribute("publicRating" + count, "images/star-no-80.jpeg");
+//        }
 
         int userRating = movie.getUserRating();
 
         for (count = 1; count < 6; count++) {
+            // Set the public rating stars
+            if (count <= publicRating) {
+                request.setAttribute("publicRating" + count, "images/star-yes-80.jpeg");
+            } else {
+                request.setAttribute("publicRating" + count, "images/star-no-80.jpeg");
+            }
+
+            // Set the user rating stars
             request.setAttribute("ratingNumber" + count, count);
             if (count <= userRating) {
                 request.setAttribute("userRating" + count, "images/star-yes-80.jpeg");
@@ -229,6 +255,5 @@ public class ShowMovieDetails {
         request.setAttribute("lastWatched", lastWatched);
         request.setAttribute("viewings", viewings);
     }
-
 
 }

@@ -1,9 +1,9 @@
 
-dsquid:S1192"HDefine a constant instead of duplicating this literal "movieId" 3 times.(¢ £8ğ·éú¯,
-hsquid:S1192"LDefine a constant instead of duplicating this literal "currentUser" 3 times.(—Âîª8ğ·éú¯,
-Lsquid:S1481"0Remove this unused "currentUser" local variable.(—Âîª8ğ·éú¯,
-Lsquid:S1481"0Remove this unused "currentUser" local variable.(—Âîª8ğ·éú¯,
-squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê‚Ïä8ğ·éú¯,
-[squid:S1854"?Remove this useless assignment to local variable "currentUser".(—Âîª8ğ·éú¯,
-[squid:S1854"?Remove this useless assignment to local variable "currentUser".(—Âîª8ğ·éú¯,
-msquid:UselessImportCheck"DRemove this unused import 'com.wunderground.api.CurrentObservation'.(ÏÌŒ¸8ğ·éú¯,
+dsquid:S1192"HDefine a constant instead of duplicating this literal "movieId" 3 times.(¢ £8¸Ö¦ş¯,
+hsquid:S1192"LDefine a constant instead of duplicating this literal "currentUser" 3 times.(—Âîª8¸Ö¦ş¯,
+Lsquid:S1481"0Remove this unused "currentUser" local variable.(—Âîª8¸Ö¦ş¯,
+Lsquid:S1481"0Remove this unused "currentUser" local variable.(—Âîª8¸Ö¦ş¯,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê‚Ïä8¸Ö¦ş¯,
+[squid:S1854"?Remove this useless assignment to local variable "currentUser".(—Âîª8¸Ö¦ş¯,
+[squid:S1854"?Remove this useless assignment to local variable "currentUser".(—Âîª8¸Ö¦ş¯,
+msquid:UselessImportCheck"DRemove this unused import 'com.wunderground.api.CurrentObservation'.(ÏÌŒ¸8¸Ö¦ş¯,

@@ -9,11 +9,11 @@
             <li><a href="performMovieActions?movieDetailAction=clearStats" onclick="confirmClearStats(this)">Clear Stats</a></li>
             <l1>${signInMessage}</l1>
             <br/><br/><br/>
-            <a href="prepareCollectorPage"><img src="images/back-button-1-small.png"></a>
+            <a href="prepareCollectorPage"><img src="images/back_button.png"></a>
 
             <br/><br/><br/>
             <br/><br/><br/>
-            <br/><br/>
+
 
             <a href="http://www.wunderground.com"><img src="http://icons.wxug.com/graphics/wu2/logo_130x80.png"></a>
 

@@ -8,7 +8,9 @@
             <input type="submit" value="Go!" />
             ${addNewMovieMessage}
         </form>
-        <br/><br><br><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br><br><br/><br/>
+        <a href="suggestMovie"><img src="images/suggest_button.png"></a>
+        <br/><br/><br/><br/>
         <form action="newPassword" method="GET">
             Old Password:<br/>
             <input type="password" name="currentPassword" size="12" maxlength="45"/> <br/>
@@ -17,7 +19,7 @@
             <input type="submit" value="Go!" />
         </form>
         ${passwordMessage}
-        <br/><br/><br/>
+        <br/>
         <b><a href="signOut" style="color:indianred">Sign Out</a></b>
     </div>
 </div>
