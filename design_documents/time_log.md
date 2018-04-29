@@ -60,6 +60,11 @@ Date  | Hours | Notes
 04/21/2018 | 11.0 | Added consumption of wunderground webservice. Added 'watched it' functionality. Created a wunderground class. Moved the code that populates the movie details page to a class. Added functionality for user to rate a movie by clicking on the rating stars.
 04/22/2018 | 9.5 | Adding 'delete movie', 'rate movie', 'clear stats', 'wunderground icon' functionality. Upgrading the movie rating functionality. Also impoved the wunderground icon that gets displayed to be in line with the time of day.
 04/25/2018 | 3.0 | Working on my add user functionality. Fixed a bug in the robopojo wunderground classes.
+04/26/2018 | 3.0 | Wrapping up loose ends and fixing any bugs I can find.
+04/27/2018 | 1.0 | Wrapping up loose ends and fixing any bugs I can find.
+04/28/2018 | 7.0 | Wrapping up loose ends and fixing any bugs I can find.
+04/29/2018 | 6.0 | Wrapping up loose ends and fixing any bugs I can find.
+
 
 
 
