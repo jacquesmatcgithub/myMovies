@@ -71,9 +71,10 @@ public class GenerateMovieSelectGrid extends HttpServlet {
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-            // If the movie is in the user's collection it will not show
-            // on this movie grid.
-            if (thisMovie.getMovieState().equals("IC")) {
+
+            // Only display searched and selected movies
+            if (!(thisMovie.isMovieInSearchResults() || thisMovie.isMovieSelected())) {
+//            if (thisMovie.getMovieState().equals("IC")) {
                 continue;
             }
 

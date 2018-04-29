@@ -114,9 +114,9 @@ public class AddNewMovie extends HttpServlet {
         if (movieTitle.startsWith("the ")) {
             movieTitle = movieTitle.substring(4);
         } else if (movieTitle.startsWith("a ")) {
-            movieTitle = movieTitle.substring(3);
+            movieTitle = movieTitle.substring(2);
         } else if (movieTitle.startsWith("an ")) {
-            movieTitle = movieTitle.substring(4);
+            movieTitle = movieTitle.substring(3);
         }
 
 

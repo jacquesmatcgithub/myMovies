@@ -2,7 +2,9 @@ package edu.matc.controller;
 
 import edu.matc.entity.Movie;
 import edu.matc.entity.User;
+import edu.matc.entity.ViewingHabit;
 import edu.matc.persistence.MovieDao;
+import edu.matc.persistence.ViewingHabitDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @WebServlet (
         name = "SuggestMovie",
@@ -44,7 +49,6 @@ public class SuggestMovie extends HttpServlet {
         List<Movie> suggestList = suggest.multipleMovies(request);
 
         if (!suggestList.isEmpty()) {
-//            url = "/prepareCollectorPage";
             addSuggestedMovies(suggestList);
             url = "/show-suggested-movies.jsp";
         } else {
@@ -81,8 +85,42 @@ public class SuggestMovie extends HttpServlet {
                     thisMovie.getUser());
 
             movieDao.saveOrUpdate(insertMovie);
+
+            addSuggestedMovieViewingHabit(thisMovie.getUser(),
+                                          thisMovie,
+                                          insertMovie);
         }
     }
+
+    private void addSuggestedMovieViewingHabit(User thisUser,
+                                               Movie thisMovie,
+                                               Movie insertMovie) {
+
+        ViewingHabitDao viewingHabitDao = new ViewingHabitDao();
+        Set<ViewingHabit> viewingHabits = thisMovie.getViewingHabits();
+        List<ViewingHabit> habitList = new ArrayList<>(viewingHabits);
+
+        if (!habitList.isEmpty()) {
+            int movieId = habitList.get(0).getMovieId();
+            LocalDate dateWatched= habitList.get(0).getDateWatched();
+            int temp = habitList.get(0).getTemp();
+            String conditions = habitList.get(0).getWeatherConditions();
+            String iconName = habitList.get(0).geticonName();
+            String iconUrl = habitList.get(0).getIconUrl();
+
+            ViewingHabit viewingHabit = new ViewingHabit(movieId,
+                    dateWatched,
+                    temp,
+                    conditions,
+                    iconName,
+                    iconUrl,
+                    thisUser,
+                    insertMovie);
+
+            viewingHabitDao.saveOrUpdate(viewingHabit);
+        }
+    }
+
 }
 
 

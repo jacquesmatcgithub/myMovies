@@ -113,9 +113,6 @@ public class ShowMovieDetails {
                                       int movieId,
                                       TmdbQueryResults tmdbQueryResults) {
 
-//        QueryTmdb queryTmdb = new QueryTmdb();
-//        TmdbQueryResults tmdbQueryResults = queryTmdb.findMovie(tmdbApiKey, tmdbQueryUrl, movieId);
-
         String movieDescription = tmdbQueryResults.getOverview();
         request.setAttribute("movieDescription", movieDescription);
     }
@@ -138,10 +135,6 @@ public class ShowMovieDetails {
         }
 
         int publicRating = (int)Math.round(publicRatingDouble);
-
-//        for (count = 1; count < 6; count++) {
-//            request.setAttribute("publicRating" + count, "images/star-no-80.jpeg");
-//        }
 
         int userRating = movie.getUserRating();
 

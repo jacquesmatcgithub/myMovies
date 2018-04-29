@@ -47,12 +47,6 @@ public class PrepareCollectorPage extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        /**
-         * Here are two ways to get the user id after authentication
-         */
-//        String loginId = request.getUserPrincipal().getName();  This also works
-//        loginId = request.getRemoteUser();
-
         session.setAttribute("currentUser", request.getRemoteUser());
         session.setAttribute("userLevel", "collector");
 

@@ -27,7 +27,7 @@
 
     <div style="width:300px; float:left; padding-left: 25px;">
         <br/>
-        <form action="crudUser" method="GET">
+        <form action="crudUser" method="GET" onsubmit="return confirm('Are you sure?');">
             <table>
                 <tr><td align="right"><h2>Details</h2></td><td align="center"><b style="color:indianred">${userDetailsMessage}</b></td></tr>
                 <tr>
@@ -68,7 +68,7 @@
                     <td></td>
                     <td><br/>
                         <input type="submit" name="adminPageButton" value="Add/Update" />
-                        <input type="submit" name="adminPageButton" value="Delete" onClick="confirmDelete(this.form);"/>
+                        <input type="submit" name="adminPageButton" value="Delete"/>
                     </td>
                 </tr>
             </table>
@@ -89,12 +89,3 @@
         </h2>
     </div>
 </div>
-
-<script type="text/javascript">
-    function confirmDelete(form) {
-        if (confirm("Are you sure you want to delete the user?")) {
-            form.submit();
-        }
-    }
-</script>
-

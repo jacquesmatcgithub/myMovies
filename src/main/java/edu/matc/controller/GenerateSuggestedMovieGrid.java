@@ -71,7 +71,8 @@ public class GenerateSuggestedMovieGrid extends HttpServlet {
         int colCount = 1;
 
         for (Movie thisMovie : movieList) {
-            if (!thisMovie.getMovieState().equals("SU")) {
+//            if (!thisMovie.getMovieState().equals("SU")) {
+            if (!thisMovie.isMovieSuggested()) {
                 continue;
             }
 

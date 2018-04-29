@@ -17,6 +17,7 @@ public class Movie {
     private static final String MOVIE_STATE_IN_COLLECTION = "IC";
     private static final String MOVIE_STATE_SEARCH_RESULTS = "SR";
     private static final String MOVIE_STATE_SEARCH_RESULTS_CLICKED = "SC";
+    private static final String MOVIE_STATE_SUGGESTED_MOVIE = "SU";
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -340,6 +341,19 @@ public class Movie {
      */
     public boolean isMovieInSearchResults() {
         if (getMovieState().equals(MOVIE_STATE_SEARCH_RESULTS)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Is movie suggested boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isMovieSuggested() {
+        if (getMovieState().equals(MOVIE_STATE_SUGGESTED_MOVIE)) {
             return true;
         } else {
             return false;

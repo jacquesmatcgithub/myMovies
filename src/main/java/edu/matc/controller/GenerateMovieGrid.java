@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -43,9 +44,10 @@ public class GenerateMovieGrid extends HttpServlet {
         List<User> users = userDao.getByPropertyEqual("loginId" , currentUser);
 
         Set<Movie> movies = users.get(0).getMovies();
-        List<Movie> movieList = movies.stream().collect(Collectors.toList());
+        List<Movie> movieList = new ArrayList<>(movies);
 
         if (movieList.size() == 0) {
+            out.print(users.get(0).getFirstName() + ", your collection is empty. Start adding movies.");
             return;
         }
 
@@ -59,11 +61,7 @@ public class GenerateMovieGrid extends HttpServlet {
         for (Movie thisMovie : movieList) {
             // If the movie is not in the user's collection it will not show
             // on this movie grid.
-//            String movieState = thisMovie.getMovieState();
-
-//            if (!thisMovie.getState().equals(thisMovie.isMovieInCollection())) {
-//            if (!movieState.equals("IC")) {
-            if (!thisMovie.getMovieState().equals("IC")) {
+            if (!thisMovie.isMovieInCollection()) {
                 continue;
             }
 
