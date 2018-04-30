@@ -63,7 +63,9 @@ Date  | Hours | Notes
 04/26/2018 | 3.0 | Wrapping up loose ends and fixing any bugs I can find.
 04/27/2018 | 1.0 | Wrapping up loose ends and fixing any bugs I can find.
 04/28/2018 | 7.0 | Wrapping up loose ends and fixing any bugs I can find.
-04/29/2018 | 6.0 | Wrapping up loose ends and fixing any bugs I can find.
+04/29/2018 | 9.0 | Wrapping up loose ends and fixing any bugs I can find.
+04/30/2018 | 3.75 | Finalizing video presentation.
+
 
 
 
