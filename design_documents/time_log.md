@@ -65,9 +65,4 @@ Date  | Hours | Notes
 04/28/2018 | 7.0 | Wrapping up loose ends and fixing any bugs I can find.
 04/29/2018 | 9.0 | Wrapping up loose ends and fixing any bugs I can find.
 04/30/2018 | 3.75 | Finalizing video presentation.
-
-
-
-
-
-
+05/03/2018 | 2.0 | Adding some additional Junit tests.
