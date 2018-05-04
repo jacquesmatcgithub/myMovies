@@ -98,24 +98,6 @@ public class RoleDao {
     }
 
 
-    /** Return a list of all roles
-     *
-     * @return All roles
-     */
-    public List<Role> getAll() {
-
-        Session session = sessionFactory.openSession();
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Role> query = builder.createQuery( Role.class );
-        Root<Role> root = query.from(Role.class );
-        List<Role> roles = session.createQuery( query ).getResultList();
-
-        logger.debug("The list of roles " + roles);
-        session.close();
-
-        return roles;
-    }
 
     /**
      * Get role by property (exact match)
@@ -137,26 +119,6 @@ public class RoleDao {
         return roles;
     }
 
-    /**
-     * Get role by property (like)
-     * sample usage: getByPropertyLike("lastname", "C")
-     */
-    public List<Role> getByPropertyLike(String propertyName, String value) {
-        Session session = sessionFactory.openSession();
-
-        logger.debug("Searching for role with {} = {}",  propertyName, value);
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Role> query = builder.createQuery( Role.class );
-        Root<Role> root = query.from( Role.class );
-        Expression<String> propertyPath = root.get(propertyName);
-
-        query.where(builder.like(propertyPath, "%" + value + "%"));
-
-        List<Role> roles = session.createQuery( query ).getResultList();
-        session.close();
-        return roles;
-    }
 
 }
 

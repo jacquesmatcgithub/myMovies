@@ -18,46 +18,6 @@ public class ViewingHabitDao {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     SessionFactory sessionFactory = SessionFactoryProvider.getSessionFactory();
-    /**
-     * Gets all viewingHabits.
-     *
-     * @return the all viewingHabits
-     */
-    public List<ViewingHabit> getAllViewingHabits() {
-
-        Session session = sessionFactory.openSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<ViewingHabit> query = builder.createQuery(ViewingHabit.class);
-        Root<ViewingHabit> root = query.from(ViewingHabit.class);
-        List<ViewingHabit> viewingHabits = session.createQuery(query).getResultList();
-
-        session.close();
-
-        return viewingHabits;
-
-    }
-
-
-
-    /**
-     * Gets a viewingHabit by ID
-     * @param id
-     * @return a viewingHabit
-     */
-    public ViewingHabit getById(int id) {
-
-        Session session = sessionFactory.openSession();
-
-        // This uses the unique ID (@Id) defined in the viewingHabit.java
-        // When searching by the unique id you don't have to set up
-        // all the CriteriaBuilder stuff.
-        ViewingHabit viewingHabit = session.get(ViewingHabit.class, id);
-
-        session.close();
-
-        return viewingHabit;
-
-    }
 
     /**
      * update viewingHabit
@@ -98,85 +58,6 @@ public class ViewingHabitDao {
     }
 
 
-    /** Return a list of all viewingHabits
-     *
-     * @return All viewingHabits
-     */
-    public List<ViewingHabit> getAll() {
-
-        Session session = sessionFactory.openSession();
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<ViewingHabit> query = builder.createQuery( ViewingHabit.class );
-        Root<ViewingHabit> root = query.from(ViewingHabit.class );
-        List<ViewingHabit> viewingHabits = session.createQuery( query ).getResultList();
-
-        logger.debug("The list of viewingHabits " + viewingHabits);
-        session.close();
-
-        return viewingHabits;
-    }
-
-    /**
-     * Get viewingHabit by property (exact match)
-     * sample usage: getByPropertyEqual("lastname", "Curry")
-     */
-    public List<ViewingHabit> getByPropertyEqual(String propertyName, String value) {
-        Session session = sessionFactory.openSession();
-
-        logger.debug("Searching for viewingHabit with " + propertyName + " = " + value);
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<ViewingHabit> query = builder.createQuery( ViewingHabit.class );
-        Root<ViewingHabit> root = query.from(ViewingHabit.class );
-        query.select(root).where(builder.equal(root.get(propertyName), value));
-
-        List<ViewingHabit> viewingHabits = session.createQuery( query ).getResultList();
-
-        session.close();
-        return viewingHabits;
-    }
-
-    /**
-     * Get viewingHabit by property (exact match)
-     * sample usage: getByPropertyEqual("lastname", "Curry")
-     */
-    public List<ViewingHabit> getByIntPropertyEqual(String propertyName, int value) {
-        Session session = sessionFactory.openSession();
-
-        logger.debug("Searching for viewingHabit with " + propertyName + " = " + value);
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<ViewingHabit> query = builder.createQuery( ViewingHabit.class );
-        Root<ViewingHabit> root = query.from(ViewingHabit.class );
-        query.select(root).where(builder.equal(root.get(propertyName), value));
-
-        List<ViewingHabit> viewingHabits = session.createQuery( query ).getResultList();
-
-        session.close();
-        return viewingHabits;
-    }
-
-    /**
-     * Get viewingHabit by property (like)
-     * sample usage: getByPropertyLike("lastname", "C")
-     */
-    public List<ViewingHabit> getByPropertyLike(String propertyName, String value) {
-        Session session = sessionFactory.openSession();
-
-        logger.debug("Searching for viewingHabit with {} = {}",  propertyName, value);
-
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<ViewingHabit> query = builder.createQuery( ViewingHabit.class );
-        Root<ViewingHabit> root = query.from( ViewingHabit.class );
-        Expression<String> propertyPath = root.get(propertyName);
-
-        query.where(builder.like(propertyPath, "%" + value + "%"));
-
-        List<ViewingHabit> viewingHabits = session.createQuery( query ).getResultList();
-        session.close();
-        return viewingHabits;
-    }
 
 }
 
